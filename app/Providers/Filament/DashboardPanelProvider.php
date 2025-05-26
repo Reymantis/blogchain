@@ -12,6 +12,7 @@ use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
+use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -46,7 +47,18 @@ class DashboardPanelProvider extends PanelProvider
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
                 FilamentSpatieLaravelHealthPlugin::make()
-//                    ->authorize(auth()->user()->isSuperAdmin())
+                    ->authorize(
+                        fn () => auth()->user()->isSuperAdmin()
+                    ),
+                FilamentEnvEditorPlugin::make()
+                    ->navigationGroup('Settings')
+                    ->navigationLabel('Env Editor')
+                    ->navigationIcon('heroicon-o-cog-8-tooth')
+                    ->navigationSort(1)
+                    ->slug('env-editor')
+                    ->authorize(
+                        fn () => auth()->user()->isSuperAdmin()
+                    )
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
