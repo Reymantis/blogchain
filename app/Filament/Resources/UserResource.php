@@ -51,7 +51,7 @@ class UserResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('client_ip')
-                   
+
                     ->label('IP Address'),
 
 //                IPToCountryFlagColumn::make('client_ip')->flagPosition('left'),

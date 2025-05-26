@@ -25,9 +25,9 @@ class HealthServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Health::checks([
-            OptimizedAppCheck::new(),
-            DebugModeCheck::new(),
             EnvironmentCheck::new(),
+            DebugModeCheck::new(),
+            OptimizedAppCheck::new(),
         ]);
     }
 }
