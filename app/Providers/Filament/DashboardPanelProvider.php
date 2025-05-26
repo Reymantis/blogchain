@@ -18,6 +18,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 
 class DashboardPanelProvider extends PanelProvider
 {
@@ -43,7 +44,9 @@ class DashboardPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->plugins([
-                FilamentSpatieRolesPermissionsPlugin::make()
+                FilamentSpatieRolesPermissionsPlugin::make(),
+                FilamentSpatieLaravelHealthPlugin::make()
+//                    ->authorize(auth()->user()->isSuperAdmin())
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
