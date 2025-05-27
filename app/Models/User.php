@@ -7,6 +7,7 @@ use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use Conner\Likeable\Likeable;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,11 +15,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
     public function canAccessPanel(Panel $panel): bool
     {
-        return  $this->hasVerifiedEmail();
+        return  true;
     }
 
     /** @use HasFactory<\Database\Factories\UserFactory> */

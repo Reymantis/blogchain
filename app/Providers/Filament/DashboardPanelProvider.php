@@ -19,6 +19,7 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use ShuvroRoy\FilamentSpatieLaravelBackup\FilamentSpatieLaravelBackupPlugin;
 use ShuvroRoy\FilamentSpatieLaravelHealth\FilamentSpatieLaravelHealthPlugin;
 
 class DashboardPanelProvider extends PanelProvider
@@ -38,9 +39,16 @@ class DashboardPanelProvider extends PanelProvider
             ->topbar(true)
             ->colors([
                 'primary' => Color::Red,
+                'gray' => Color::Gray,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
+            ->sidebarCollapsibleOnDesktop(false)
+            ->navigationGroups([
+                'Admin',
+                'Blog',
+                'Settings'
+            ])
             ->pages([
                 Pages\Dashboard::class,
             ])
@@ -50,6 +58,8 @@ class DashboardPanelProvider extends PanelProvider
                     ->authorize(
                         fn () => auth()->user()->isSuperAdmin()
                     ),
+                FilamentSpatieLaravelBackupPlugin::make(),
+
                 FilamentEnvEditorPlugin::make()
                     ->navigationGroup('Settings')
                     ->navigationLabel('Env Editor')
@@ -61,6 +71,7 @@ class DashboardPanelProvider extends PanelProvider
                     )
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
+
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,

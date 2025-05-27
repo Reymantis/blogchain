@@ -22,6 +22,10 @@ class UserResource extends Resource
 
     protected static ?string $navigationGroup = 'Admin';
 
+    protected static ?int $navigationSort = -1;
+
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -76,7 +80,7 @@ class UserResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
+//                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -100,7 +104,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-            'view' => Pages\ViewUser::route('/{record}'),
+//            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
