@@ -50,6 +50,12 @@ class Post extends Model implements HasMedia
         $this->mediaConversion = new MediaConversion($this, 'posts');
     }
 
+    public function estimatedReadTime($wpm = 200): float
+    {
+        $wordCount = str_word_count(strip_tags($this->content));
+        return ceil($wordCount / $wpm);
+    }
+
 
     /**
      * @return BelongsTo

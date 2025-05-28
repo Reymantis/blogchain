@@ -3,6 +3,13 @@
 @tailwind utilities;
 @tailwind variants;
 
+
+
+
 @layer base {
+    :root {
+
+    }
+
 
 }
