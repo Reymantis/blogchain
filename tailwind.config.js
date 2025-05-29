@@ -1,7 +1,8 @@
 import preset from './vendor/filament/support/tailwind.config.preset'
+
 import colors from 'tailwindcss/colors'
 export default {
-    // presets: [preset],
+    presets: [preset],
     darkMode: 'class',
    theme: {
        extend: {

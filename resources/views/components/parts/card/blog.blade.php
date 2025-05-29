@@ -14,7 +14,7 @@
     <div class="relative overflow-clip aspect-video ">
         <img
             src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
-            alt="Post Title"
+            alt="Image for {{ $post->title }} blog post"
             class="w-full aspect-video object-cover transition-transform duration-300 "
         />
 
@@ -52,8 +52,9 @@
             </span>
             </div>
             <span class="text-gray-500 dark:text-gray-400 text-sm">
-            {{ $post->estimatedReadTime() }} min read
+            {{ $post->estimatedReadTime }} min read
           </span>
+            <livewire:parts.like :model="$post" />
         </div>
 
 
