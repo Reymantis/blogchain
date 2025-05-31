@@ -4,13 +4,15 @@ namespace App\Models;
 
 use App\Helpers\MediaConversion;
 use App\Traits\HasMediaConversions;
+use App\Traits\Likable;
 use App\Traits\Live;
-use Conner\Likeable\Likeable;
+
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Redis;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
@@ -22,7 +24,7 @@ class Post extends Model implements HasMedia
     use SoftDeletes;
     use HasTags;
     use InteractsWithMedia;
-    use Likeable;
+    use Likable;
     use Live;
 
     protected $fillable = [
@@ -52,7 +54,6 @@ class Post extends Model implements HasMedia
         parent::__construct($attributes);
         $this->mediaConversion = new MediaConversion($this, 'posts');
     }
-
 
 
     /**

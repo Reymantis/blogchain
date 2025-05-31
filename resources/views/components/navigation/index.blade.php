@@ -6,7 +6,14 @@
             </a>
             <div class="absolute bg-gradient-to-t from-transparent via-gray-200 dark:via-gray-800 to-transparent w-px  right-0 -inset-y-2"></div>
         </div>
-        <x-parts.theme-switch/>
+
+        @if (filament()->auth()->check())
+            <x-filament-panels::user-menu />
+            @else
+            <x-parts.theme-switch/>
+        @endif
+
+
     </div>
 
 </x-parts.card>

@@ -41,7 +41,7 @@
         <div class="flex items-center justify-between mb-0">
             <div class="flex items-center space-x-2">
                 <img
-                    src="https://avatar.iran.liara.run/public/28"
+                    src="{{ $post->user->avatar_url }}"
                     alt="{{ $post->user->name }}"
                     width="32"
                     height="32"
@@ -55,6 +55,7 @@
             {{ $post->estimatedReadTime }} min read
           </span>
             <livewire:parts.like :model="$post" />
+
         </div>
 
 

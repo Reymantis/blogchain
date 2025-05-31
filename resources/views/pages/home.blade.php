@@ -9,13 +9,17 @@
                     obcaecati. Accusamus,
                     animi aut
                     delectus harum incidunt ipsa iure quibusdam, quo reiciendis sequi veritatis, voluptatem.</p>
+                @auth
+                    <img class="rounded-full size-12" src="{{ auth()->user()->avatar_url }}" alt="{{ auth()->user()->name }}">
+                @endcanany
                 <button class="px-6 py-2 rounded-lg border border-white hover:bg-white/25">Read more</button>
             </div>
+
         </x-parts.card>
 
         @foreach($posts as $post)
             @if($loop->iteration %=10)
-            <x-parts.card.blog :$loop :$post />
+            <x-parts.card.blog-2 :$loop :$post />
             @else
                 <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3">Ads</x-parts.card>
             @endif
@@ -30,6 +34,30 @@
             <p class="text-md text-black/50 dark:text-white/75">
                 Whether you're looking to learn new skills, showcase your work, or connect with like-minded individuals, our platform provides the tools and community you need to succeed.
             </p>
+        </x-parts.card>
+        <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">
+            <div x-data="{ tab: 'tab1' }">
+                <x-filament::tabs label="Content tabs">
+                    <x-filament::tabs.item @click="tab = 'tab1'" :alpine-active="'tab === \'tab1\''">
+                        Tab 1
+                    </x-filament::tabs.item>
+
+                    <x-filament::tabs.item @click="tab = 'tab2'" :alpine-active="'tab === \'tab2\''">
+                        Tab 2
+                    </x-filament::tabs.item>
+
+                </x-filament::tabs>
+
+                <div>
+                    <div x-show="tab === 'tab1'">
+                        content 1...
+                    </div>
+
+                    <div x-show="tab === 'tab2'">
+                        content 2...
+                    </div>
+                </div>
+            </div
         </x-parts.card>
     </div>
 

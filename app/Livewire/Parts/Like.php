@@ -4,24 +4,29 @@ namespace App\Livewire\Parts;
 
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class Like extends Component
 {
-
     public Model $model;
+
+
+    public function mount($model)
+    {
+        $this->model = $model;
+
+    }
 
     public function likeModel($id): void
     {
-
         if (auth()->check()) {
-            $userId = auth()->user()->id;
-            if (!$this->model->liked($userId)) {
-                $this->model->like($userId);
+            $userId = auth()->user();
 
+            if (!$this->model->likedBy($userId)) {
+                $this->model->addLike($userId);
             } else {
-                $this->model->unlike($userId);
-
+                $this->model->removelike($userId);
             }
         } else {
             Notification::make()
@@ -30,11 +35,11 @@ class Like extends Component
                 ->iconColor('danger')
                 ->title('You need to log in to like.')
                 ->send();
-
         }
     }
 
-    public function render()
+
+    public function render(): View
     {
         return view('livewire.parts.like');
     }

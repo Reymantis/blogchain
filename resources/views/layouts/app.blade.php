@@ -67,7 +67,7 @@
 <body class="min-h-screen bg-gray-50 flex flex-col p-2 text-gray-800 gap-4 dark:text-gray-200 dark:bg-gray-950 overflow-x-clip selection:bg-primary-400/50
 selection:text-primary-50">
 <x-navigation/>
-<div class="flex flex-rows gap-4 flex-1 relative" >
+<div class="flex flex-rows gap-4 flex-1 relative max-w-full overflow-x-clip" >
     <x-parts.left-sidebar>
         {{ $leftSidebar ?? '' }}
     </x-parts.left-sidebar>

@@ -9,7 +9,8 @@ export default {
            colors: {
                primary: colors.red,
                gray: colors.gray
-           }
+           },
+
        },
    },
     content: [
