@@ -16,17 +16,18 @@
             </div>
 
         </x-parts.card>
-    
-        @foreach($posts as $post)
-            @if($loop->iteration %=10)
-                <x-parts.card.blog-2 :$loop :$post/>
-            @else
-                <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3">Ads</x-parts.card>
-            @endif
-        @endforeach
-        <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 flex justify-between">
-            {{ $posts }}
-        </x-parts.card>
+        @if($posts)
+            @foreach($posts as $post)
+                @if($loop->iteration %=10)
+                    <x-parts.card.blog :$loop :$post/>
+                @else
+                    <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3">Ads</x-parts.card>
+                @endif
+            @endforeach
+            <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 flex justify-between">
+                {{ $posts->links() }}
+            </x-parts.card>
+        @endif
         <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">
             <h1 class="text-3xl dark:text-shadow-sm dark:text-shadow-black-500/25">About Our Platform</h1>
             <p class="text-md text-black/50 dark:text-white/75">Our platform is designed to bring together creators, developers, and innovators from around the
@@ -37,30 +38,30 @@
                 community you need to succeed.
             </p>
         </x-parts.card>
-        <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">
-            <div x-data="{ tab: 'tab1' }">
-                <x-filament::tabs label="Content tabs">
-                    <x-filament::tabs.item @click="tab = 'tab1'" :alpine-active="'tab === \'tab1\''">
-                        Tab 1
-                    </x-filament::tabs.item>
+        {{--        <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">--}}
+        {{--            <div x-data="{ tab: 'tab1' }">--}}
+        {{--                <x-filament::tabs label="Content tabs">--}}
+        {{--                    <x-filament::tabs.item @click="tab = 'tab1'" :alpine-active="'tab === \'tab1\''">--}}
+        {{--                        Tab 1--}}
+        {{--                    </x-filament::tabs.item>--}}
 
-                    <x-filament::tabs.item @click="tab = 'tab2'" :alpine-active="'tab === \'tab2\''">
-                        Tab 2
-                    </x-filament::tabs.item>
+        {{--                    <x-filament::tabs.item @click="tab = 'tab2'" :alpine-active="'tab === \'tab2\''">--}}
+        {{--                        Tab 2--}}
+        {{--                    </x-filament::tabs.item>--}}
 
-                </x-filament::tabs>
+        {{--                </x-filament::tabs>--}}
 
-                <div>
-                    <div x-show="tab === 'tab1'">
-                        content 1...
-                    </div>
+        {{--                <div>--}}
+        {{--                    <div x-show="tab === 'tab1'">--}}
+        {{--                        content 1...--}}
+        {{--                    </div>--}}
 
-                    <div x-show="tab === 'tab2'">
-                        content 2...
-                    </div>
-                </div>
-            </div
-        </x-parts.card>
+        {{--                    <div x-show="tab === 'tab2'">--}}
+        {{--                        content 2...--}}
+        {{--                    </div>--}}
+        {{--                </div>--}}
+        {{--            </div--}}
+        {{--        </x-parts.card>--}}
     </div>
 
     <x-slot name="leftSidebar">

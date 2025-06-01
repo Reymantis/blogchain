@@ -4,6 +4,7 @@ namespace App\Helpers;
 
 use App\Models\Category;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 
 class Menu
 {
@@ -18,22 +19,24 @@ class Menu
                 'children' => null
             ],
             [
+                'name' => 'Categories',
+                'route' => 'about-us',
+                'active' => 'about-us',
+                'children' => $category = Cache::remember('top-nav-categories', 120, function () {
+                    return Category::live()->get()->map(function ($category) {
+                        return [
+                            'id' => $category->id,
+                            'name' => $category->name,
+                            'slug' => $category->slug
+                        ];
+                    });
+                })
+            ],
+            [
                 'name' => 'About Us',
                 'route' => 'about-us',
                 'active' => 'about-us',
                 'children' => null
-            ],
-            [
-                'name' => 'Categories',
-                'route' => 'about-us',
-                'active' => 'about-us',
-                'children' => Category::get()->map(function ($category) {
-                    return [
-                        'id' => $category->id,
-                        'name' => $category->name,
-                        'slug' => $category->slug
-                    ];
-                })
             ],
             [
                 'name' => 'Contact Us',

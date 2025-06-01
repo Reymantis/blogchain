@@ -19,9 +19,9 @@
         />
 
         @if($loop->first)
-        <div class="absolute top-4 left-4">
-            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>
-        </div>
+            <div class="absolute top-4 left-4">
+                <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>
+            </div>
         @endif
     </div>
 
@@ -55,7 +55,7 @@
             {{ $post->estimatedReadTime }} min read
           </span>
             @if(config('enable_page_views'))
-                <livewire:parts.like :model="$post" />
+                <livewire:parts.like :model="$post"/>
             @endif
         </div>
 

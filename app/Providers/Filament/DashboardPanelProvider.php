@@ -40,7 +40,7 @@ class DashboardPanelProvider extends PanelProvider
             ->topbar(true)
             ->colors([
                 'primary' => Color::Red,
-                'gray' => Color::Gray,
+                'gray' => Color::Neutral,
             ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
@@ -56,10 +56,10 @@ class DashboardPanelProvider extends PanelProvider
             ->plugins([
                 FilamentSpatieRolesPermissionsPlugin::make(),
                 FilamentSpatieLaravelHealthPlugin::make()
-                    ->authorize(fn () => auth()->user()->isSuperAdmin()),
+                    ->authorize(fn() => auth()->user()->isSuperAdmin()),
 
                 FilamentSpatieLaravelBackupPlugin::make()
-                    ->authorize(fn () => auth()->user()->isSuperAdmin()),
+                    ->authorize(fn() => auth()->user()->isSuperAdmin()),
 
                 FilamentEnvEditorPlugin::make()
                     ->navigationGroup('Settings')
@@ -67,10 +67,9 @@ class DashboardPanelProvider extends PanelProvider
                     ->navigationIcon('heroicon-o-cog-8-tooth')
                     ->navigationSort(1)
                     ->slug('env-editor')
-                    ->authorize(fn () => auth()->user()->isSuperAdmin()),
+                    ->authorize(fn() => auth()->user()->isSuperAdmin()),
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
-
             ->widgets([
                 Widgets\AccountWidget::class,
                 Widgets\FilamentInfoWidget::class,
