@@ -21,7 +21,6 @@
                         class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
                     />
                 </a>
-
             </div>
             <div class="w-12 rounded-lg bg-gray-50 dark:bg-gray-800/50 p-2 border border-gray-200 dark:border-gray-800">
 
@@ -48,7 +47,6 @@
                         <x-heroicon-o-clock class="size-4 "/>
                     </button>
                 </x-parts.tooltip>
-
 
             </div>
         </div>
