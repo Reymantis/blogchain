@@ -6,21 +6,20 @@ use App\Helpers\MediaConversion;
 use App\Traits\HasMediaConversions;
 use App\Traits\Likable;
 use App\Traits\Live;
-
 use App\Traits\LogsViews;
+use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Redis;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Tags\HasTags;
 
 class Post extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\PostFactory> */
+    /** @use HasFactory<PostFactory> */
     use HasFactory;
     use SoftDeletes;
     use HasTags;
@@ -38,6 +37,7 @@ class Post extends Model implements HasMedia
         'category_id',
         'user_id',
         'view_count',
+        'approved_at'
     ];
 
     protected $casts = [
@@ -95,7 +95,6 @@ class Post extends Model implements HasMedia
             return ceil($wordCount / $wpm);
         });
     }
-
 
 
 }

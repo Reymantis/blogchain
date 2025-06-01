@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
+use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -14,7 +15,6 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
-use TangoDevIt\FilamentEmojiPicker\EmojiPickerAction;
 
 class PostResource extends Resource
 {
@@ -36,17 +36,21 @@ class PostResource extends Resource
 
                 Forms\Components\TextInput::make('title')
                     ->required()
-                    ->suffixAction(EmojiPickerAction::make('emoji-title'))
+//                    ->suffixAction(EmojiPickerAction::make('emoji-title'))
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->maxLength(191),
 
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(191),
 
-                Forms\Components\Select::make('category_id')
-                    ->relationship(name: 'category', titleAttribute: 'name')
+                SelectTree::make('category_id')
+                    ->label('Category')
+                    ->expandSelected(true)
+                    ->enableBranchNode()
+                    ->defaultOpenLevel(2)
+                    ->relationship('category', 'name', 'parent_id')
                     ->required()
                     ->columnSpanFull(),
 
@@ -141,7 +145,7 @@ class PostResource extends Resource
         ];
     }
 
-    public static function getEloquentQuery(): \Illuminate\Database\Eloquent\Builder
+    public static function getEloquentQuery(): Builder
     {
         return parent::getEloquentQuery()
             ->where('user_id', auth()->id())

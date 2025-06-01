@@ -4,30 +4,31 @@ namespace App\Models;
 
 use App\Helpers\MediaConversion;
 use App\Traits\Live;
+use Database\Factories\CategoryFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Spatie\Image\Enums\CropPosition;
-use Spatie\Image\Enums\Fit;
+use Kalnoy\Nestedset\NodeTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Category extends Model implements HasMedia
 {
-    /** @use HasFactory<\Database\Factories\CategoryFactory> */
+    /** @use HasFactory<CategoryFactory> */
     use HasFactory;
     use SoftDeletes;
     use InteractsWithMedia;
     use Live;
+    use NodeTrait;
 
     protected $fillable = [
         'name',
         'slug',
         'description',
         'color',
-        'live'
+        'live',
+        'parent_id'
     ];
 
     protected $casts = [

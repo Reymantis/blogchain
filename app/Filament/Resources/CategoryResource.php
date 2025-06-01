@@ -6,6 +6,7 @@ use App\Filament\Resources\CategoryResource\Pages;
 use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -37,12 +38,24 @@ class CategoryResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->live(onBlur: true)
-                    ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
                     ->maxLength(255),
 
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
+
+                Select::make('parent_id')
+                    ->label('Parent Category')
+                    ->relationship(
+                        name: 'parent',
+                        titleAttribute: 'name',
+                        modifyQueryUsing: fn($query) => $query->whereIsRoot()
+                    )
+                    ->searchable()
+                    ->preload()
+                    ->nullable()
+                ,
 
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),

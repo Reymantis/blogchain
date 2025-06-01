@@ -6,8 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -21,7 +20,9 @@ return new class extends Migration
             $table->foreignIdFor(Category::class);
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
+            $table->unsignedBigInteger('view_count')->default(0);
             $table->boolean('live')->default(false);
+            $table->timestamp('approved_at')->nullable()->default(null);
             $table->softDeletes();
             $table->timestamps();
         });
