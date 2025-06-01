@@ -22,8 +22,8 @@ class Menu
                 'name' => 'Categories',
                 'route' => 'about-us',
                 'active' => 'about-us',
-                'children' => $category = Cache::remember('top-nav-categories', 120, function () {
-                    return Category::live()->get()->map(function ($category) {
+                'children' => $category = Cache::remember('top-nav-categories', 30, function () {
+                    return Category::live()->whereIsRoot()->get()->map(function ($category) {
                         return [
                             'id' => $category->id,
                             'name' => $category->name,
