@@ -83,6 +83,9 @@ class CategoryResource extends Resource
                 Tables\Columns\TextColumn::make('slug')
                     ->searchable(),
 
+                Tables\Columns\TextColumn::make('parent.name')
+                    ->searchable(),
+
                 Tables\Columns\TextColumn::make('posts_count')
                     ->label('Posts Count')
                     ->alignCenter()
