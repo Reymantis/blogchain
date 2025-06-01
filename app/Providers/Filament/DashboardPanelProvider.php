@@ -8,6 +8,7 @@ use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
+use Filament\Pages\Auth\Register;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -29,10 +30,10 @@ class DashboardPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->spa()
-            ->id('dashboard')
-            ->path('dashboard')
+            ->id('admin')
+            ->path('admin')
             ->login()
-            ->registration()
+            ->registration(config('filament.registration_enabled') ? Register::class : null)
             ->passwordReset()
             ->emailVerification()
             ->profile()

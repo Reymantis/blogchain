@@ -7,6 +7,7 @@ use App\Traits\HasMediaConversions;
 use App\Traits\Likable;
 use App\Traits\Live;
 
+use App\Traits\LogsViews;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -25,6 +26,7 @@ class Post extends Model implements HasMedia
     use HasTags;
     use InteractsWithMedia;
     use Likable;
+    use LogsViews;
     use Live;
 
     protected $fillable = [
@@ -35,6 +37,7 @@ class Post extends Model implements HasMedia
         'live',
         'category_id',
         'user_id',
+        'view_count',
     ];
 
     protected $casts = [
@@ -92,6 +95,7 @@ class Post extends Model implements HasMedia
             return ceil($wordCount / $wpm);
         });
     }
+
 
 
 }

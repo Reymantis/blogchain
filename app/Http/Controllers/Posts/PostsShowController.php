@@ -15,6 +15,7 @@ class PostsShowController extends Controller
      */
     public function __invoke(Category $category, Post $post): View
     {
+        $post->logView();
         $post->load('user', 'media', 'tags');
         return view('pages.posts.show', compact('category', 'post'));
     }

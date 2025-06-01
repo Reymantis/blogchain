@@ -16,7 +16,7 @@ class HomePageController extends Controller
      */
     public function __invoke(): View
     {
-        $posts = Post::with('user', 'media', 'category')->paginate(16);
+        $posts = Post::with('user', 'media', 'category')->orderBy('view_count', 'desc')->paginate(12);
         return view('pages.home', compact('posts'));
     }
 }

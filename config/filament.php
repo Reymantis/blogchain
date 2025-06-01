@@ -2,6 +2,8 @@
 
 return [
 
+    'registration_enabled' => env('FILAMENT_REGISTRATION_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Broadcasting
