@@ -48,7 +48,7 @@ class PostResource extends Resource
                 SelectTree::make('category_id')
                     ->label('Category')
                     ->expandSelected(true)
-                    ->enableBranchNode()
+                    ->enableBranchNode(false)
                     ->defaultOpenLevel(2)
                     ->relationship('category', 'name', 'parent_id')
                     ->required()
