@@ -54,8 +54,9 @@
             <span class="text-gray-500 dark:text-gray-400 text-sm">
             {{ $post->estimatedReadTime }} min read
           </span>
-            <livewire:parts.like :model="$post" />
-
+            @if(config('enable_page_views'))
+                <livewire:parts.like :model="$post" />
+            @endif
         </div>
 
 

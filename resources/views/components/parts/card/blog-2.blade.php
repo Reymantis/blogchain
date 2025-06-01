@@ -27,7 +27,7 @@
 
                 <x-parts.tooltip text="Bookmark" position="left">
                     <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
-                        <x-heroicon-s-bookmark-slash class="size-4" />
+                        <x-heroicon-s-bookmark-slash class="size-4"/>
                     </button>
                 </x-parts.tooltip>
 
@@ -50,16 +50,13 @@
                 </x-parts.tooltip>
 
 
-
-
-
             </div>
         </div>
 
         @if($loop->first)
-{{--        <div class="absolute top-4 left-4">--}}
-{{--            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>--}}
-{{--        </div>--}}
+            {{--        <div class="absolute top-4 left-4">--}}
+            {{--            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>--}}
+            {{--        </div>--}}
         @endif
     </div>
 
@@ -78,32 +75,36 @@
 
         <div class="flex items-center justify-between mb-0">
             <x-parts.tooltip text="Post author" position="top">
-            <div class="flex items-center space-x-2">
-                <img
-                    src="{{ $post->user->avatar_url }}"
-                    alt="{{ $post->user->name }}"
-                    width="32"
-                    height="32"
-                    class="rounded-full"
-                />
-                <span class="text-gray-500 dark:text-gray-400 text-sm">
+                <div class="flex items-center space-x-2">
+                    <img
+                        src="{{ $post->user->avatar_url }}"
+                        alt="{{ $post->user->name }}"
+                        width="32"
+                        height="32"
+                        class="rounded-full"
+                    />
+                    <span class="text-gray-500 dark:text-gray-400 text-sm">
               {{ $post->user->name }}
             </span>
-            </div>
-            </x-parts.tooltip>
-            <div class="flex space-x-3">
-            <x-parts.tooltip text="Post unique views" position="top">
-                <div class="flex space-x-2 items-center">
-                    <x-heroicon-s-eye class="size-6 text-gray-500"/>
-                    <span>
-                    {{ $post->getViewCount() }}
-                </span>
                 </div>
             </x-parts.tooltip>
-            <x-parts.tooltip text="Like post" position="top">
-                <livewire:parts.like :model="$post" />
-            </x-parts.tooltip>
+            <div class="flex space-x-3">
+                @if(config('blogchain.enable_likes'))
+                    <x-parts.tooltip text="Post unique views" position="top">
+                        <div class="flex space-x-2 items-center">
+                            <x-heroicon-s-eye class="size-6 text-gray-500"/>
+                            <span>
+                    {{ $post->getViewCount() }}
+                </span>
+                        </div>
+                    </x-parts.tooltip>
+                @endif
 
+                @if(config('blogchain.enable_page_views'))
+                    <x-parts.tooltip text="Like post" position="top">
+                        <livewire:parts.like :model="$post"/>
+                    </x-parts.tooltip>
+                @endif
             </div>
 
         </div>

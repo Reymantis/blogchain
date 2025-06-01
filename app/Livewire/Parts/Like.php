@@ -20,6 +20,8 @@ class Like extends Component
 
     public function likeModel($id): void
     {
+        if (!config('blogchain.enable_likes')) return;
+
         if (auth()->check()) {
             $userId = auth()->user();
 

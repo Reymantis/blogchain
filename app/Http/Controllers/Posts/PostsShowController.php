@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Posts;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PostsShowController extends Controller
@@ -15,7 +14,9 @@ class PostsShowController extends Controller
      */
     public function __invoke(Category $category, Post $post): View
     {
-        $post->logView();
+        if (config('blogchain.enable_page_views')) {
+            $post->logView();
+        }
         $post->load('user', 'media', 'tags');
         return view('pages.posts.show', compact('category', 'post'));
     }
