@@ -19,6 +19,13 @@
                 <x-heroicon-o-chevron-right class="size-6"/>
             </span>
         </button>
-       {{ $slot }}
+        @if(trim($slot))
+            {{ $slot }}
+
+        @else
+            <x-sidebar.categories/>
+        @endif
+
+
     </x-parts.card>
 </aside>

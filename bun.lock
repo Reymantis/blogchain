@@ -3,6 +3,7 @@
   "workspaces": {
     "": {
       "dependencies": {
+        "@alpinejs/collapse": "^3.14.9",
         "@alpinejs/resize": "^3.14.9",
       },
       "devDependencies": {
@@ -10,20 +11,22 @@
         "@designbycode/tailwindcss-text-shadow": "^2.2.1",
         "@tailwindcss/forms": "^0.5.10",
         "@tailwindcss/typography": "^0.5.16",
-        "@tailwindcss/vite": "^4.1.7",
+        "@tailwindcss/vite": "^4.1.8",
         "autoprefixer": "^10.4.21",
         "axios": "^1.9.0",
         "concurrently": "^9.1.2",
         "laravel-vite-plugin": "^1.2.0",
-        "postcss": "^8.5.3",
+        "postcss": "^8.5.4",
         "postcss-nesting": "^13.0.1",
-        "tailwindcss": "3",
+        "tailwindcss": "^3.4.17",
         "vite": "^6.3.5",
       },
     },
   },
   "packages": {
     "@alloc/quick-lru": ["@alloc/quick-lru@5.2.0", "", {}, "sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw=="],
+
+    "@alpinejs/collapse": ["@alpinejs/collapse@3.14.9", "", {}, "sha512-cUjbBVo4KR/CfFg0cLB+Q7a8SnjmD4MdxmtZvFjh25Dlf/ZWYPSPx/28b+aAykuX/SUoDPQRmdFiVVvq+iILHw=="],
 
     "@alpinejs/resize": ["@alpinejs/resize@3.14.9", "", {}, "sha512-UmKDn8MiuBLQxhohidze3NniMmXwFkLoul+IWnCDZO1mPCR0Q4227wjAYyj0P8pQwgARMUTiHrwdpYUId3vtnA=="],
 

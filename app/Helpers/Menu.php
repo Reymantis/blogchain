@@ -2,9 +2,8 @@
 
 namespace App\Helpers;
 
-use App\Models\Category;
+use App\View\Composers\CategoriesComposer;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Cache;
 
 class Menu
 {
@@ -20,17 +19,19 @@ class Menu
             ],
             [
                 'name' => 'Categories',
-                'route' => 'about-us',
-                'active' => 'about-us',
-                'children' => $category = Cache::remember('top-nav-categories', 30, function () {
-                    return Category::live()->whereIsRoot()->get()->map(function ($category) {
+                'route' => 'categories.index',
+                'active' => 'categories.index',
+                'children' => CategoriesComposer::getCategories()
+                    ->whereNull('parent_id') // Assuming root categories
+                    ->map(function ($category) {
                         return [
                             'id' => $category->id,
                             'name' => $category->name,
-                            'slug' => $category->slug
+                            'slug' => $category->slug,
+                            'route' => 'categories.show',
+                            'active' => 'categories.show',
                         ];
-                    });
-                })
+                    })
             ],
             [
                 'name' => 'About Us',

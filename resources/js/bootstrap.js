@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { Livewire, Alpine } from '../../vendor/livewire/livewire/dist/livewire.esm';
+import {Alpine, Livewire} from '../../vendor/livewire/livewire/dist/livewire.esm';
 import resize from '@alpinejs/resize'
+import {collapse} from "@alpinejs/collapse/builds/module.js";
 
 
 window.axios = axios;
@@ -50,12 +51,12 @@ document.addEventListener('alpine:init', () => {
         return () => {
             const current = Alpine.store('theme')
             const next = current === 'light' ? 'dark' : current === 'dark' ? 'system' : 'light'
-            const event = new CustomEvent('theme-changed', { detail: next })
+            const event = new CustomEvent('theme-changed', {detail: next})
             window.dispatchEvent(event)
         }
     })
 })
-
+Alpine.plugin(collapse)
 Alpine.plugin(resize);
 // Alpine.plugin(darkMode);
 Livewire.start();

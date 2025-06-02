@@ -12,7 +12,7 @@
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
+    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet"/>
 
 
     <!-- Styles / Scripts -->
@@ -64,14 +64,14 @@
 
 
 </head>
-<body class="min-h-screen bg-gray-50 flex flex-col p-2 text-gray-800 gap-4 dark:text-gray-200 dark:bg-gray-950 overflow-x-clip selection:bg-primary-400/50
+<body class="min-h-screen bg-gray-50 max-w-full flex flex-col p-2 text-gray-800 gap-4 dark:text-gray-200 dark:bg-gray-950 overflow-x-clip selection:bg-primary-400/50
 selection:text-primary-50">
 <x-navigation/>
-<div class="flex flex-rows gap-4 flex-1 relative max-w-full overflow-x-clip" >
+<div class="flex flex-rows gap-4 flex-1 relative max-w-full overflow-x-clip">
     <x-parts.left-sidebar>
         {{ $leftSidebar ?? '' }}
     </x-parts.left-sidebar>
-    <main class="flex-1 " >
+    <main class="flex-1 ">
         {{ $slot }}
     </main>
     <x-parts.right-sidebar>

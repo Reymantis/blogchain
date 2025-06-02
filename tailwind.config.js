@@ -1,18 +1,24 @@
 import preset from './vendor/filament/support/tailwind.config.preset'
 
 import colors from 'tailwindcss/colors'
+
 export default {
     presets: [preset],
     darkMode: 'class',
-   theme: {
-       extend: {
-           colors: {
-               primary: colors.lime,
-               gray: colors.neutral
-           },
+    theme: {
+        extend: {
+            colors: {
+                primary: colors.red,
+                gray: colors.neutral
+            },
+            listStyleType: {
+                square: 'square',
+                circle: 'circle',
+                roman: 'upper-roman',
+            }
 
-       },
-   },
+        },
+    },
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.{js,ts}",
