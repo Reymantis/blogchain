@@ -2,19 +2,22 @@
     'post',
     'loop' => null
 ])
+@php
+    //    dd($post);
+@endphp
 
 @if($post)
     <x-parts.card
         no-padding
         @class([
         'bg-white dark:bg-gray-800 rounded-lg  hover:shadow-lg h-full flex flex-col group',
-        'col-span-2 row-span-2' => (boolean) $loop->first
+//        'col-span-2 row-span-2' => (boolean) $loop->first
         ])
     >
         <div class="relative  ">
             <div class="flex p-2 gap-2">
                 <div class="aspect-video flex-1">
-                    <a wire:navigate href="{{ route('post.show', [$post->category, $post]) }}">
+                    <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}">
                         <img
                             src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
                             alt="Image for {{ $post->title }} blog post"
@@ -42,7 +45,7 @@
                         </button>
                     </x-parts.tooltip>
 
-                    <x-parts.tooltip text="Reading time 1 minute" position="left">
+                    <x-parts.tooltip :text="'Reading time ' . $post->estimatedReadTime . ' ' . Str::plural('minute', $post->estimatedReadTime)" position="left">
                         <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
                             <x-heroicon-o-clock class="size-4 "/>
                         </button>
@@ -60,7 +63,7 @@
 
         <div class="p-6 flex-1 flex flex-col">
 
-            <a wire:navigate href="{{ route('post.show', [$post->category, $post]) }}" class="group-link">
+            <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}" class="group-link">
                 <h3 class="font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-md
             2xl:text-xl line-clamp-2">
                     {{ $post->title }}

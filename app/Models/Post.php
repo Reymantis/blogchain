@@ -83,6 +83,9 @@ class Post extends Model implements HasMedia
         $this->mediaConversion->registerMediaCollections();
     }
 
+    /**
+     * @return Attribute
+     */
     public function estimatedReadTime(): Attribute
     {
         return Attribute::get(function () {

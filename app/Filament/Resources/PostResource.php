@@ -29,7 +29,9 @@ class PostResource extends Resource
         return $form
             ->schema([
                 Forms\Components\SpatieMediaLibraryFileUpload::make('image')
+                    ->panelLayout('grid')
                     ->image()
+                    ->multiple()
                     ->imageEditor()
                     ->collection('posts')
                     ->columnSpanFull(),
@@ -52,6 +54,7 @@ class PostResource extends Resource
                     ->defaultOpenLevel(2)
                     ->relationship('category', 'name', 'parent_id')
                     ->required()
+                    ->searchable()
                     ->columnSpanFull(),
 
                 Forms\Components\SpatieTagsInput::make('tags')

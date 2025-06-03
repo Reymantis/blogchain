@@ -3,15 +3,26 @@
 namespace App\Http\Controllers\Posts;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Category;
+use Illuminate\View\View;
 
 class PostsIndexController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(Category $category): View
     {
-        //
+        $category->load('ancestors');
+
+        $posts = $category->posts()
+            ->with(['category', 'media', 'user'])
+            ->paginate(12); // 10 posts per page
+
+
+        return view('pages.posts.index', [
+            'category' => $category,
+            'posts' => $posts,
+        ]);
     }
 }

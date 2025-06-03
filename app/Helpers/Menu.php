@@ -30,6 +30,7 @@ class Menu
                             'slug' => $category->slug,
                             'route' => 'categories.show',
                             'active' => 'categories.show',
+                            'children_count' => $category->children_count,
                         ];
                     })
             ],

@@ -18,8 +18,14 @@
                     @foreach($item->children as $child)
                         <x-filament::dropdown.list.item
                             href="{{ route($child['route'], $child['slug']) }}"
-                            tag="a" wire:navigate="true">
-                            {{ $child['name'] }}
+                            tag="a" wire:navigate="true"
+                            @class([
+                            "flex items-center !justify-between",
+
+                            ])
+                        >
+                            <span>{{ $child['name'] }}</span>
+                            <small class="float-right text-xs text-black/25 dark:text-white/25">({{ $child['children_count'] }})</small>
                         </x-filament::dropdown.list.item>
                     @endforeach
                 </x-filament::dropdown.list>

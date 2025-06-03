@@ -12,7 +12,6 @@
 
         <div class="flex space-x-3 items-center">
             @if (filament()->auth()->check())
-
                 <x-filament-panels::user-menu/>
             @else
                 <a wire:navigate class="px-2 py-1 text-sm hover:bg-primary-500 rounded-md"
@@ -24,8 +23,8 @@
                 }}">
                     Register
                 </a>
-                <x-parts.theme-switch/>
             @endif
+            <x-parts.theme-switch/>
             <button @click="menuOpen = !menuOpen" class="lg:hidden">
                 <x-heroicon-s-bars-3 class="size-5"/>
             </button>

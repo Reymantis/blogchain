@@ -1,4 +1,5 @@
-<x-app-layout>
+<x-app-layout title="Home">
+
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
         <x-parts.card class="bg-gradient-to-bl from-primary-400 to-primary-600 dark:from-gray-900 dark:to-primary-900 text-white col-span-2
         md:col-span-2  2xl:col-span-3">
@@ -22,9 +23,9 @@
                     <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3">Ads</x-parts.card>
                 @endif
             @endforeach
-            <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 flex justify-between">
-                {{ $posts->links() }}
-            </x-parts.card>
+            {{--            <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 flex justify-between">--}}
+            {{--                {{ $posts->links() }}--}}
+            {{--            </x-parts.card>--}}
         @endif
         <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">
             <h1 class="text-3xl dark:text-shadow-sm dark:text-shadow-black-500/25">About Our Platform</h1>
@@ -39,6 +40,24 @@
             </p>
         </x-parts.card>
 
+        <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3 space-y-3">
+            <p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
+            <div class="size-3 mr-1 bg-lime-500 inline-block rounded-full animate-pulse"></div>
+            Active Users online: <span class="text-lime-500 font-semibold">{{ $usersActive->count() }}</span>
+            </p>
+
+            @if($usersActive->count())
+                @foreach($usersActive as $user)
+                    <a href="#" class="flex items-center text-sm space-x-1">
+                        <img class="size-6 rounded-full inline-block" src="{{ $user->avatar ?? 'https://ui-avatars.com/api/?name='.$user->name
+                        .'&color=7F9CF5&background=EBF4FF'  }}"
+                             alt="{{ $user->name }}">
+                        <span>{{ $user->name }}</span>
+                    </a>
+                @endforeach
+            @endif
+        </x-parts.card>
+
     </div>
 
     {{--    <x-slot name="leftSidebar">--}}
@@ -46,6 +65,10 @@
     {{--    </x-slot>--}}
 
     <x-slot name="rightSidebar">
+        <p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
+            <x-heroicon-m-tag class="size-5"/>
+            <span>Most Popular Tags</span>
+        </p>
         <div class=" flex-wrap flex gap-2">
             @foreach($tags as $tag)
                 <a class="text-xs font-light px-2 break-keep py-0.5 rounded-md mr-1 text-gray-400 border-gray-400 hover:text-primary-500

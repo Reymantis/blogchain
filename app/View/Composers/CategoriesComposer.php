@@ -15,7 +15,7 @@ class CategoriesComposer
     {
         // Cache the categories here instead of in Menu class
         $this->categories = Cache::remember('categories', 30, function () {
-            return Category::live()->get();
+            return Category::live()->with('children')->withCount('children')->get();
         });
 
         // Share globally so Menu class can access it
@@ -25,7 +25,7 @@ class CategoriesComposer
     public static function getCategories(): Collection
     {
         return Cache::remember('categories', 30, function () {
-            return Category::live()->get();
+            return Category::live()->with('children')->withCount('children')->get();
         });
     }
 

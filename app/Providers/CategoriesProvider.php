@@ -22,15 +22,12 @@ class CategoriesProvider extends ServiceProvider
     {
         $this->app->singleton('categories', function () {
             return cache()->remember('categories.all', 3600, function () {
-                return Category::withCount('posts')->get();
+                return Category::withCount(['posts', 'children'])->get();
             });
         });
 
         view()->composer('*', function ($view) {
             $view->with('categories', app('categories'));
-
         });
-
-
     }
 }
