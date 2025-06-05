@@ -22,9 +22,7 @@
         <div class="overflow-auto h-full pr-3 no-scrollbar-track relative">
             @if(trim($slot))
                 {{ $slot }}
-
             @else
-
                 <x-sidebar.categories/>
             @endif
         </div>

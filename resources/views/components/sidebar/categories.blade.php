@@ -1,5 +1,5 @@
-<div>
-    <p class="text-lg sticky top-0 text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
+<div class="sticky top-0 pb-12">
+    <p class="text-lg  text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
         <x-heroicon-m-folder class="size-5"/>
         <span>Categories Tree</span>
     </p>
@@ -24,10 +24,9 @@
                                     @class([
                                        'rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-white/5 block dark:text-gray-100/75 items-center
                                        hover:text-primary-500 dark:hover:text-primary-400',
-                                       'text-primary-500 !text-primary-400 bg-gray-50 dark:bg-white/5' =>
+                                       'text-primary-500 text-primary-400 bg-gray-50 dark:bg-white/5' =>
                                            request()->routeIs('posts.index') && request()->route('category')->is($child),
-                                           'line-through opacity-25 cursor-not-allowed ' => $child->posts_count
-                                           === 0,
+                                           'line-through opacity-25 cursor-not-allowed ' => !$child->posts_count,
                                      ])>
                                     {{ $child->name }}
                                 </a>
