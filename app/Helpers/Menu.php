@@ -35,6 +35,12 @@ class Menu
                     })
             ],
             [
+                'name' => 'Contributes',
+                'route' => 'users.index',
+                'active' => 'users.index',
+                'children' => null
+            ],
+            [
                 'name' => 'About Us',
                 'route' => 'about-us',
                 'active' => 'about-us',

@@ -60,9 +60,6 @@
 
     </div>
 
-    {{--    <x-slot name="leftSidebar">--}}
-    {{--       --}}
-    {{--    </x-slot>--}}
 
     <x-slot name="rightSidebar">
         <p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
