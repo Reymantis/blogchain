@@ -17,7 +17,7 @@ class HomePageController extends Controller
     {
         $usersActive = ActiveUsers::get();
 //        $totalTagsCount = Tag::count();
-        $tags = Tag::get()->take(30);
+        $tags = Tag::get()->take(120);
         $posts = Post::with('user', 'media', 'category')->orderBy('view_count', 'desc')->get()->take(6);
         return view('pages.home', compact('posts', 'tags', 'usersActive'));
     }

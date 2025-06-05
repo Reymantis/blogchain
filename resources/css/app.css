@@ -4,12 +4,29 @@
 @tailwind variants;
 
 
-
-
 @layer base {
     :root {
 
     }
+}
 
 
+@layer utilities {
+    .no-scrollbar-track::-webkit-scrollbar-track {
+        @apply bg-white/5;
+    }
+
+    .no-scrollbar-track::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .no-scrollbar-track::-webkit-scrollbar-thumb {
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 6px;
+    }
+
+    .no-scrollbar-track {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.3) transparent; /* thumb color, track color */
+    }
 }

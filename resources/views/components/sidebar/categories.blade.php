@@ -1,5 +1,5 @@
 <div>
-    <p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
+    <p class="text-lg sticky top-0 text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
         <x-heroicon-m-folder class="size-5"/>
         <span>Categories Tree</span>
     </p>
@@ -20,7 +20,7 @@
                     <ul class="list-outside list-circle pl-2">
                         @foreach($category->children as $child)
                             <li class="ml-4">
-                                <a href="{{ route('posts.index', $child->slug) }}"
+                                <a wire:navigate href="{{ route('posts.index', $child->slug) }}"
                                     @class([
                                        'rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-white/5 block dark:text-gray-100/75 items-center
                                        hover:text-primary-500 dark:hover:text-primary-400',

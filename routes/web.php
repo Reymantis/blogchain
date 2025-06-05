@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Route;
 
 request()->server->add(['REMOTE_ADDR' => '148.0.0.1']);
 
+
 Route::get('/', HomePageController::class)->name('home');
+//Route::view('/', 'test-layout')->name('test-layout');
+
 Route::view('/about-us', 'pages.about-us')->name('about-us');
 Route::get('/categories/{category:slug}', CategoriesShowController::class)->name('categories.show');
 Route::get('/articles/{category:slug}', PostsIndexController::class)->name('posts.index');
