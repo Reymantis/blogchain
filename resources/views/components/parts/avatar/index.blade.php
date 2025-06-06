@@ -10,7 +10,7 @@
         '2xl' => 'size-20',
     ];
 
-        $classes = ' rounded-full bg-primary-500 ';
+        $classes = ' rounded-full bg-gray-200 dark:bg-white/5 overflow-clip  ';
         $classes .= $sizes[$size]
 @endphp
 

@@ -21,7 +21,7 @@ class CategoriesProvider extends ServiceProvider
     public function boot(): void
     {
         $this->app->singleton('categories', function () {
-            return cache()->remember('categories.all', 3600, function () {
+            return cache()->remember('categories.all', config('cache.time_to_live'), function () {
                 return Category::withCount(['posts', 'children'])->get();
             });
         });

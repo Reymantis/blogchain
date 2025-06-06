@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use App\Services\ActiveUsers;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Tags\Tag;
 
 class HomePageController extends Controller
@@ -17,8 +18,8 @@ class HomePageController extends Controller
     {
         $usersActive = ActiveUsers::get();
 //        $totalTagsCount = Tag::count();
-        $tags = Tag::get()->take(120);
-        $posts = Post::with('user', 'media', 'category')->orderBy('view_count', 'desc')->get()->take(6);
+        $tags = Cache::remember('front-page.tags', now()->addDay(), fn() => Tag::get()->take(20));
+        $posts = Cache::remember('front-page.posts', config('cache.time_to_live'), fn() => Post::with('user', 'media', 'category')->orderBy('view_count', 'desc')->get()->take(6));
         return view('pages.home', compact('posts', 'tags', 'usersActive'));
     }
 }

@@ -1,20 +1,7 @@
 <x-app-layout title="Home">
 
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
-        <x-parts.card class="bg-gradient-to-bl from-primary-400 to-primary-600 dark:from-gray-900 dark:to-primary-900 text-white col-span-2
-        md:col-span-2  2xl:col-span-3">
-            <div class="max-w-2xl space-y-4">
-                <h1 class="text-6xl font-bold text-shadow-sm text-shadow-black/25">{{ config('app.name') }}</h1>
-                <p class="text-xl text-white/75 text-shadow-sm text-shadow-black/10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A, doloremque
-                    ducimus eaque hic inventore ipsum
-                    obcaecati. Accusamus,
-                    animi aut
-                    delectus harum incidunt ipsa iure quibusdam, quo reiciendis sequi veritatis, voluptatem.</p>
-
-                <button class="px-6 py-2 rounded-lg border border-white hover:bg-white/25">Read more</button>
-            </div>
-
-        </x-parts.card>
+        <x-hero class="col-span-2 md:col-span-2  2xl:col-span-3"/>
         @if($posts)
             @foreach($posts as $post)
                 @if($loop->iteration %=10)

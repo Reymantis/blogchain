@@ -26,7 +26,7 @@
                                        hover:text-primary-500 dark:hover:text-primary-400',
                                        'text-primary-500 text-primary-400 bg-gray-50 dark:bg-white/5' =>
                                            request()->routeIs('posts.index') && request()->route('category')->is($child),
-                                           'line-through opacity-25 cursor-not-allowed ' => !$child->posts_count,
+                                           'line-through opacity-25 ' => !$child->posts_count,
                                      ])>
                                     {{ $child->name }}
                                 </a>

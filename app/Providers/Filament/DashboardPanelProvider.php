@@ -36,7 +36,7 @@ class DashboardPanelProvider extends PanelProvider
             ->registration(config('filament.registration_enabled') ? Register::class : null)
             ->passwordReset()
             ->emailVerification()
-            ->profile()
+//            ->profile()
             ->topbar(true)
             ->colors([
                 'primary' => Color::Red,

@@ -61,6 +61,7 @@
     <div x-show="open"
          @click.away="open = false"
          x-transition
+         x-cloak
          class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 z-50">
         <div class="py-1">
             <button @click="theme = 'light'; syncTheme(); open = false"
