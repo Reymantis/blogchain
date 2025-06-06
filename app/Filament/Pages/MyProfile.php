@@ -3,6 +3,8 @@
 namespace App\Filament\Pages;
 
 use App\Models\User;
+use Closure;
+use Exception;
 use Filament\Actions\Action;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,6 +13,7 @@ use Filament\Pages\Page;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\ValidationException;
 
 class MyProfile extends Page implements Forms\Contracts\HasForms
 {
@@ -24,6 +27,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
 
     public ?array $profileData = [];
     public ?array $passwordData = [];
+    public ?array $socialData = [];
 
 
     public function mount(): void
@@ -33,6 +37,9 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
             $user->attributesToArray(),
         );
         $this->editPasswordForm->fill();
+        $this->editSocialForm->fill(
+            $user->attributesToArray(),
+        );
     }
 
 
@@ -62,10 +69,20 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('name')
                         ->required()
                         ->maxLength(255),
+
+                    Forms\Components\TextInput::make('username')
+                        ->unique()
+                        ->required()
+                        ->maxLength(255),
+
                     Forms\Components\TextInput::make('email')
                         ->email()
                         ->required()
                         ->maxLength(255),
+
+                    Forms\Components\Textarea::make('bio')
+                        ->label('Bio'),
+
                 ])
         ])
             ->model(User::class)
@@ -98,6 +115,108 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
         ])
             ->model(User::class)
             ->statePath('passwordData');
+    }
+
+
+    public function editSocialForm(Form $form): Forms\Form
+    {
+        return $form->schema([
+            Forms\Components\Section::make('Social Media Links')
+                ->description('Update your social media profiles')
+                ->aside()
+                ->schema([
+                    Forms\Components\TextInput::make('website')
+                        ->label('Website')
+                        ->url()
+                        ->placeholder('https://example.com')
+                        ->prefixIcon('heroicon-o-globe-alt')
+                        ->maxLength(255)
+                        ->validationAttribute('website'),
+                    Forms\Components\TextInput::make('social_facebook')
+                        ->label('Facebook Profile')
+                        ->placeholder('https://facebook.com/username or https://fb.me/username')
+                        ->prefixIcon('heroicon-o-user-group')
+                        ->maxLength(255)
+                        ->validationAttribute('Facebook profile')
+                        ->rule(function () {
+                            return function (string $attribute, $value, Closure $fail) {
+                                if (empty($value)) return;
+
+                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+                                    return;
+                                }
+
+                                if (!preg_match('/^https?:\/\/(www\.)?(facebook\.com|fb\.me)\/[a-zA-Z0-9._-]+\/?$/', $value)) {
+                                    $fail('Please enter a valid Facebook profile URL (e.g., https://facebook.com/username).');
+                                }
+                            };
+                        }),
+                    Forms\Components\TextInput::make('social_x')
+                        ->label('X (Twitter) Profile')
+                        ->placeholder('https://x.com/username or https://twitter.com/username')
+                        ->prefixIcon('heroicon-o-hashtag')
+                        ->maxLength(255)
+                        ->validationAttribute('X profile')
+                        ->rule(function () {
+                            return function (string $attribute, $value, Closure $fail) {
+                                if (empty($value)) return;
+
+                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+                                    return;
+                                }
+
+                                if (!preg_match('/^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[a-zA-Z0-9_]+\/?$/', $value)) {
+                                    $fail('Please enter a valid X/Twitter profile URL (e.g., https://x.com/username).');
+                                }
+                            };
+                        }),
+                    Forms\Components\TextInput::make('social_youtube')
+                        ->label('Youtube Channel')
+                        ->placeholder('https://youtube.com/@username or https://youtube.com/c/channelname')
+                        ->prefixIcon('heroicon-o-play')
+                        ->maxLength(255)
+                        ->validationAttribute('YouTube channel')
+                        ->rule(function () {
+                            return function (string $attribute, $value, Closure $fail) {
+                                if (empty($value)) return;
+
+                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+                                    return;
+                                }
+
+                                if (!preg_match('/^https?:\/\/(www\.)?youtube\.com\/([@c]\/[a-zA-Z0-9_-]+|channel\/[a-zA-Z0-9_-]+|user\/[a-zA-Z0-9_-]+)\/?$/', $value)) {
+                                    $fail('Please enter a valid YouTube channel URL (e.g., https://youtube.com/@username).');
+                                }
+                            };
+                        }),
+                    Forms\Components\TextInput::make('social_github')
+                        ->label('Github Profile')
+                        ->placeholder('https://github.com/username')
+                        ->prefixIcon('heroicon-o-code-bracket')
+                        ->maxLength(255)
+                        ->validationAttribute('GitHub profile')
+                        ->rule(function () {
+                            return function (string $attribute, $value, Closure $fail) {
+                                if (empty($value)) return;
+
+                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+                                    return;
+                                }
+
+                                if (!preg_match('/^https?:\/\/(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/', $value)) {
+                                    $fail('Please enter a valid GitHub profile URL (e.g., https://github.com/username).');
+                                }
+                            };
+                        }),
+                ])
+        ])
+            ->model(User::class)
+            ->statePath('socialData');
+
     }
 
     public function saveProfile(): void
@@ -157,11 +276,41 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
             ->send();
     }
 
+    public function saveSocial(): void
+    {
+        try {
+            // Validate the form first
+            $this->editSocialForm->validate();
+
+            $data = $this->editSocialForm->getState();
+
+            $user = auth()->user();
+            $user->update($data);
+
+            Notification::make()
+                ->success()
+                ->title('Social Media Updated')
+                ->body('Your social media links have been updated successfully.')
+                ->send();
+
+        } catch (ValidationException $e) {
+            // Re-throw validation exception to show field errors
+            throw $e;
+        } catch (Exception $e) {
+            Notification::make()
+                ->danger()
+                ->title('Error')
+                ->body('An error occurred while updating your social media links.')
+                ->send();
+        }
+    }
+
     protected function getForms(): array
     {
         return [
             'editProfileForm',
-            'editPasswordForm'
+            'editPasswordForm',
+            'editSocialForm'
         ];
     }
 
@@ -176,6 +325,10 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                 ->label('Update Password')
                 ->action('savePassword')
                 ->color('success'),
+            Action::make('saveSocial')
+                ->label('Update Social Media')
+                ->action('saveSocial')
+                ->color('info'),
         ];
     }
 }

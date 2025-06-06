@@ -19,9 +19,11 @@ return new class extends Migration {
             $table->string('password');
             $table->string('username')->unique()->nullable();
             $table->text('bio')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('github')->nullable();
-            $table->string('twitter')->nullable();
+            $table->string('website')->nullable();
+            $table->string('social_facebook')->nullable();
+            $table->string('social_github')->nullable();
+            $table->string('social_x')->nullable();
+            $table->string('social_youtube')->nullable();
             $table->rememberToken();
             $table->softDeletes();
             $table->timestamps();

@@ -33,7 +33,14 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         'email',
         'password',
         'email_verified_at',
-        'avatar'
+        'avatar',
+        'username',
+        'bio',
+        'social_facebook',
+        'social_github',
+        'social_x',
+        'website'
+
     ];
 
     /** @use HasFactory<UserFactory> */

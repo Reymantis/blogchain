@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
-use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -12,7 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Mohammadhprp\IPToCountryFlagColumn\Columns\IPToCountryFlagColumn;
+use Spatie\Permission\Models\Role;
 
 class UserResource extends Resource
 {
@@ -23,7 +22,6 @@ class UserResource extends Resource
     protected static ?string $navigationGroup = 'Admin';
 
     protected static ?int $navigationSort = -1;
-
 
 
     public static function form(Form $form): Form
@@ -37,11 +35,19 @@ class UserResource extends Resource
                     ->email()
                     ->required()
                     ->maxLength(191),
-                Forms\Components\DateTimePicker::make('email_verified_at'),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(191),
+                Forms\Components\DateTimePicker::make('email_verified_at')
+                    ->columnSpanFull(),
+//                Forms\Components\TextInput::make('password')
+//                    ->password()
+//                    ->required()
+//                    ->maxLength(191),
+                Forms\Components\Select::make('role')
+                    ->relationship('roles', 'name')
+                    ->multiple()
+                    ->searchable()
+                    ->preload()
+                    ->getOptionLabelFromRecordUsing(fn(Role $record) => "{$record->name} ({$record->guard_name})")
+                    ->columnSpanFull(),
             ]);
     }
 
@@ -55,7 +61,6 @@ class UserResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('client_ip')
-
                     ->label('IP Address'),
 
 //                IPToCountryFlagColumn::make('client_ip')->flagPosition('left'),
@@ -95,7 +100,8 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+//            RolesRelationManager::class
+
         ];
     }
 
