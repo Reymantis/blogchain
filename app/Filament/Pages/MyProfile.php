@@ -24,19 +24,17 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
 
     public ?array $profileData = [];
     public ?array $passwordData = [];
-    public ?array $deleteData = [];
+
 
     public function mount(): void
     {
         $user = Auth::user();
-
         $this->editProfileForm->fill(
             $user->attributesToArray(),
         );
-
         $this->editPasswordForm->fill();
-        $this->deleteAccountForm->fill();
     }
+
 
     public function editProfileForm(Form $form): Forms\Form
     {
@@ -59,6 +57,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->panelAspectRatio('3:1')
                         ->uploadingMessage('Uploading avatar...')
                         ->image(),
+
 
                     Forms\Components\TextInput::make('name')
                         ->required()
@@ -101,7 +100,6 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
             ->statePath('passwordData');
     }
 
-
     public function saveProfile(): void
     {
         $data = $this->editProfileForm->getState();
@@ -118,6 +116,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                 ->send();
 
             redirect()->intended(route('filament.dashboard.auth.email-verification.prompt'));
+
         }
 
         $user->update($data);
@@ -158,102 +157,25 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
             ->send();
     }
 
-    public function deleteAccountForm(Form $form): Forms\Form
-    {
-        return $form->schema([
-            Forms\Components\Section::make('Delete Account')
-                ->description('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.')
-                ->aside()
-                ->schema([
-                    Forms\Components\Placeholder::make('warning')
-                        ->content('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.')
-                        ->columnSpanFull(),
-                    Forms\Components\TextInput::make('password')
-                        ->label('Password')
-                        ->password()
-                        ->required()
-                        ->helperText('For your security, please confirm your password to continue.')
-                        ->rules(['current_password']),
-                ])
-                ->footerActions([
-                    Forms\Components\Actions\Action::make('deleteAccount')
-                        ->label('Delete Account')
-                        ->color('danger')
-                        ->requiresConfirmation()
-                        ->modalHeading('Delete Account')
-                        ->modalDescription('Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.')
-                        ->modalSubmitActionLabel('Delete Account')
-                        ->modalCancelActionLabel('Cancel')
-                        ->action(function () {
-                            $this->deleteAccount();
-                        })
-                ])
-        ])
-            ->model(User::class)
-            ->statePath('deleteData');
-    }
-
-    public function deleteAccount()
-    {
-        $data = $this->deleteAccountForm->getState();
-        $user = auth()->user();
-
-        // Verify password
-        if (!Hash::check($data['password'], $user->password)) {
-            Notification::make()
-                ->danger()
-                ->title('Error')
-                ->body('The password you entered was incorrect.')
-                ->send();
-            return;
-        }
-
-        // Log out the user
-        Auth::logout();
-
-        // Delete the user account
-        $user->delete();
-
-        // Redirect to home page
-        return redirect('/')->with('status', 'Your account has been deleted.');
-    }
-
     protected function getForms(): array
     {
         return [
             'editProfileForm',
-            'editPasswordForm',
-            'deleteAccountForm'
+            'editPasswordForm'
         ];
     }
+
 
     protected function getFormActions(): array
     {
         return [
             Action::make('saveProfile')
-                ->label('Save')
-                ->action('saveProfile')
-                ->keyBindings(['mod+s'])
-                ->extraAttributes([
-                    'wire:loading.attr' => 'disabled',
-                    'wire:loading.class' => 'opacity-50 cursor-not-allowed',
-                ])
-                ->icon('heroicon-m-check')
-                ->iconPosition('after')
-                ->loadingIndicator()
-                ->button(),
+                ->label('Save Profile')
+                ->action('saveProfile'),
             Action::make('savePassword')
-                ->label('Save')
+                ->label('Update Password')
                 ->action('savePassword')
-                ->color('gray')
-                ->extraAttributes([
-                    'wire:loading.attr' => 'disabled',
-                    'wire:loading.class' => 'opacity-50 cursor-not-allowed',
-                ])
-                ->icon('heroicon-m-check')
-                ->iconPosition('after')
-                ->loadingIndicator()
-                ->button(),
+                ->color('success'),
         ];
     }
 }
