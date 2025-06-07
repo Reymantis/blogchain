@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8edefdaa700e2ce922034b659d3e91ff",
+    "content-hash": "4620d41d4cdb01c4e59d149c15fa8e7d",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -68,6 +68,64 @@
                 "source": "https://github.com/Althinect/filament-spatie-roles-permissions/tree/v2.3.1"
             },
             "time": "2025-03-28T04:15:22+00:00"
+        },
+        {
+            "name": "andreiio/blade-remix-icon",
+            "version": "3.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/andreiio/blade-remix-icon.git",
+                "reference": "c70c6f3e9b578aed9ab5901171aa2286ac1a58e8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/andreiio/blade-remix-icon/zipball/c70c6f3e9b578aed9ab5901171aa2286ac1a58e8",
+                "reference": "c70c6f3e9b578aed9ab5901171aa2286ac1a58e8",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.0",
+                "php": "^7.4|^8.0|^8.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "AndreiIonita\\BladeRemixIcon\\BladeRemixIconServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "AndreiIonita\\BladeRemixIcon\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrei Ioniță",
+                    "homepage": "https://andrei.io"
+                }
+            ],
+            "description": "A package to easily make use of Remix Icon in your Laravel Blade views.",
+            "support": {
+                "issues": "https://github.com/andreiio/blade-remix-icon/issues",
+                "source": "https://github.com/andreiio/blade-remix-icon/tree/3.6.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/code4romania",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-12-17T18:28:03+00:00"
         },
         {
             "name": "anourvalar/eloquent-serialize",

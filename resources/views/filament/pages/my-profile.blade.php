@@ -1,9 +1,9 @@
 <x-filament-panels::page>
-    <div class="space-y-8">
+    <div class="space-y-6">
         <!-- Profile Information Section -->
         <div>
             {{ $this->editProfileForm }}
-            <div class="my-6 flex justify-end">
+            <div class="mt-3 flex justify-end">
                 <x-filament::button
                     wire:click="saveProfile"
                     wire:loading.attr="disabled"
@@ -19,17 +19,14 @@
         <!-- Password Section -->
         <div>
             {{ $this->editPasswordForm }}
-            <div class="my-6 flex justify-end">
+            <div class="mt-3 flex justify-end">
                 <x-filament::button
                     wire:click="savePassword"
                     wire:loading.attr="disabled"
                     wire:target="savePassword"
                     type="button"
-
                 >
-
                     Update Password
-
                 </x-filament::button>
             </div>
         </div>
@@ -37,7 +34,7 @@
         <!-- Social Media Section -->
         <div>
             {{ $this->editSocialForm }}
-            <div class="my-6 flex justify-end">
+            <div class="mt-3 flex justify-end">
                 <x-filament::button
                     wire:click="saveSocial"
                     wire:loading.attr="disabled"

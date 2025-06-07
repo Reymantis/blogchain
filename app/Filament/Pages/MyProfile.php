@@ -135,7 +135,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('social_facebook')
                         ->label('Facebook Profile')
                         ->placeholder('https://facebook.com/username or https://fb.me/username')
-                        ->prefixIcon('heroicon-o-user-group')
+                        ->prefixIcon('ri-facebook-fill')
                         ->maxLength(255)
                         ->validationAttribute('Facebook profile')
                         ->rule(function () {
@@ -155,7 +155,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('social_x')
                         ->label('X (Twitter) Profile')
                         ->placeholder('https://x.com/username or https://twitter.com/username')
-                        ->prefixIcon('heroicon-o-hashtag')
+                        ->prefixIcon('ri-twitter-x-fill')
                         ->maxLength(255)
                         ->validationAttribute('X profile')
                         ->rule(function () {
@@ -175,7 +175,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('social_youtube')
                         ->label('Youtube Channel')
                         ->placeholder('https://youtube.com/@username or https://youtube.com/c/channelname')
-                        ->prefixIcon('heroicon-o-play')
+                        ->prefixIcon('ri-youtube-fill')
                         ->maxLength(255)
                         ->validationAttribute('YouTube channel')
                         ->rule(function () {
@@ -195,7 +195,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\TextInput::make('social_github')
                         ->label('Github Profile')
                         ->placeholder('https://github.com/username')
-                        ->prefixIcon('heroicon-o-code-bracket')
+                        ->prefixIcon('ri-github-fill')
                         ->maxLength(255)
                         ->validationAttribute('GitHub profile')
                         ->rule(function () {
