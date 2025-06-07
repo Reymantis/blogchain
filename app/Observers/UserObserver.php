@@ -12,7 +12,7 @@ class UserObserver
      */
     public function created(User $user): void
     {
-            $user->assignRole('Moderator');
+            $user->assignRole('Blogger');
     }
 
     /**
