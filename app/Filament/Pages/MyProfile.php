@@ -50,9 +50,13 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                 ->description('Update user name and email')
                 ->aside()
                 ->schema([
-
                     Forms\Components\FileUpload::make('avatar')
                         ->directory('avatars')
+                        ->disk('s3')
+                        ->visibility('public')
+                        ->openable() // Optional: allows viewing/downloading
+                        ->downloadable() // Optional: allows downloading
+                        ->preserveFilenames() // Optional: keeps original filenames
                         ->dehydrated()
                         ->avatar()
                         ->imageEditor()
@@ -71,7 +75,12 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->maxLength(255),
 
                     Forms\Components\TextInput::make('username')
-                        ->unique()
+                        ->rules([
+                            'string',
+                            'max:25',
+                            'alpha_dash',
+                            'unique:users,username,' . auth()->id(),
+                        ])
                         ->required()
                         ->maxLength(255),
 
