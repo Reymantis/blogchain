@@ -7,6 +7,7 @@ use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
+use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
 use Filament\Resources\Resource;
@@ -28,48 +29,119 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\SpatieMediaLibraryFileUpload::make('image')
-                    ->panelLayout('grid')
-                    ->image()
-                    ->multiple()
-                    ->imageEditor()
-                    ->collection('posts')
-                    ->columnSpanFull(),
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Featured Image')
+                            ->icon('heroicon-o-photo')
+                            ->schema([
+                                Forms\Components\SpatieMediaLibraryFileUpload::make('image')
+                                    ->image()
+                                    ->imageEditor()
+                                    ->collection('posts')
+                                    ->columnSpanFull(),
+                            ]),
+                        Tabs\Tab::make('Featured Video')
+                            ->icon('heroicon-o-film')
+                            ->schema([
+                                Forms\Components\TextInput::make('Youtube URL')
+                                    ->label('Youtube Video URL')
+                                    ->required()
+                                    ->columnSpanFull()
+                                    ->maxLength(191)
+                                    ->url()
+                                    ->nullable()
+                                    ->rules([
+                                        function () {
+                                            return function (string $attribute, $value, \Closure $fail) {
+                                                // Comprehensive YouTube URL patterns
+                                                $patterns = [
+                                                    '/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/',
+                                                    '/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/',
+                                                    '/youtube\.com\/v\/([a-zA-Z0-9_-]{11})/',
+                                                    '/youtu\.be\/([a-zA-Z0-9_-]{11})/',
+                                                ];
 
-                Forms\Components\TextInput::make('title')
-                    ->required()
-//                    ->suffixAction(EmojiPickerAction::make('emoji-title'))
-                    ->live(onBlur: true)
-                    ->afterStateUpdated(fn(Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                    ->maxLength(191),
+                                                $isValid = false;
+                                                foreach ($patterns as $pattern) {
+                                                    if (preg_match($pattern, $value, $matches)) {
+                                                        $isValid = true;
+                                                        break;
+                                                    }
+                                                }
 
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(191),
+                                                if (!$isValid) {
+                                                    $fail('Please enter a valid YouTube video URL.');
+                                                }
+                                            };
+                                        },
+                                    ])
+                                    ->reactive()
+                                    ->afterStateUpdated(function ($state, callable $set) {
+                                        // Optional: Extract video ID and store it separately
+                                        if ($state) {
+                                            $patterns = [
+                                                '/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/',
+                                                '/youtube\.com\/embed\/([a-zA-Z0-9_-]{11})/',
+                                                '/youtube\.com\/v\/([a-zA-Z0-9_-]{11})/',
+                                                '/youtu\.be\/([a-zA-Z0-9_-]{11})/',
+                                            ];
 
-                SelectTree::make('category_id')
-                    ->label('Category')
-                    ->expandSelected(true)
-                    ->enableBranchNode(false)
-                    ->defaultOpenLevel(2)
-                    ->relationship('category', 'name', 'parent_id')
-                    ->required()
-                    ->searchable()
-                    ->columnSpanFull(),
+                                            foreach ($patterns as $pattern) {
+                                                if (preg_match($pattern, $state, $matches)) {
+                                                    $set('video_id', $matches[1]);
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    }),
+                            ]),
 
-                Forms\Components\SpatieTagsInput::make('tags')
-                    ->type('posts')
-                    ->columnSpanFull(),
+                    ])->columnSpanFull(),
 
-                Forms\Components\Textarea::make('description')
-                    ->rows(3)
-                    ->columnSpanFull(),
+                Tabs::make('Post Details')
+                    ->tabs([
+                        Tabs\Tab::make('Main Content')
+                            ->icon('heroicon-o-document-text')
+                            ->schema([
+                                Forms\Components\TextInput::make('title')
+                                    ->required()
+                                    ->columnSpanFull()
+                                    ->unique(ignoreRecord: true)
+                                    ->maxLength(191),
 
-                Forms\Components\RichEditor::make('content')
-                    ->columnSpanFull(),
+                                SelectTree::make('category_id')
+                                    ->label('Category')
+                                    ->expandSelected(true)
+                                    ->enableBranchNode(false)
+                                    ->defaultOpenLevel(2)
+                                    ->relationship('category', 'name', 'parent_id')
+                                    ->required()
+                                    ->searchable()
+                                    ->columnSpanFull(),
 
-                Forms\Components\Toggle::make('live')
-                    ->required(),
+                                Forms\Components\RichEditor::make('content')
+                                    ->columnSpanFull(),
+
+                                Forms\Components\Toggle::make('live')
+                                    ->required(),
+                            ]),
+                        Tabs\Tab::make('SEO')
+                            ->icon('heroicon-o-bars-3-bottom-right')
+                            ->schema([
+                                Forms\Components\SpatieTagsInput::make('tags')
+                                    ->type('posts')
+                                    ->columnSpanFull(),
+
+                                Forms\Components\Textarea::make('description')
+                                    ->rows(3)
+                                    ->columnSpanFull(),
+                            ]),
+
+                    ])->columnSpanFull(),
+
+
+
+
             ]);
     }
 

@@ -22,9 +22,7 @@
         </x-parts.card>
 
         @foreach($category->children as $children)
-            <x-parts.card class="col-span-1">
-                {{ $children->name }}
-            </x-parts.card>
+            <x-parts.card.category :category="$children" class="col-span-1"/>
         @endforeach
     </div>
 

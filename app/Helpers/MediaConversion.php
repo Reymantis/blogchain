@@ -25,6 +25,7 @@ class MediaConversion
             ->useFallbackUrl('https://placehold.co/600x400')
             ->useFallbackUrl('https://placehold.co/600x400', 'card')
             ->useFallbackUrl('https://placehold.co/1200x800', 'main')
+            ->singleFile()
             ->registerMediaConversions(function (Media $media) {
                 $this->model
                     ->addMediaConversion('thumbnail')

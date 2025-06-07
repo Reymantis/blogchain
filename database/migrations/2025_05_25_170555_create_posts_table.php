@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->text('description')->nullable();
             $table->longText('content')->nullable();
             $table->unsignedBigInteger('view_count')->default(0);
+            $table->string('youtube_url')->nullable();
             $table->boolean('live')->default(false);
             $table->timestamp('approved_at')->nullable()->default(null);
             $table->softDeletes();

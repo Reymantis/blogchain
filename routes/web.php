@@ -8,7 +8,7 @@ use App\Http\Controllers\Users\UsersIndexController;
 use App\Http\Controllers\Users\UsersShowController;
 use Illuminate\Support\Facades\Route;
 
-request()->server->add(['REMOTE_ADDR' => '148.0.0.1']);
+//request()->server->add(['REMOTE_ADDR' => '148.0.0.1']);
 
 
 Route::get('/', HomePageController::class)->name('home');
