@@ -15,6 +15,7 @@ Route::get('/', HomePageController::class)->name('home');
 //Route::view('/', 'test-layout')->name('test-layout');
 
 Route::view('/about-us', 'pages.about-us')->name('about-us');
+Route::view('/contact-us', 'pages.contact-us')->name('contact-us');
 Route::get('/contributors', UsersIndexController::class)->name('users.index');
 Route::get('/contributors/{user}', UsersShowController::class)->name('users.show');
 Route::get('/categories/{category:slug}', CategoriesShowController::class)->name('categories.show');

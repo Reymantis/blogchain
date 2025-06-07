@@ -48,8 +48,8 @@ class Menu
             ],
             [
                 'name' => 'Contact Us',
-                'route' => 'about-us',
-                'active' => 'about-us',
+                'route' => 'contact-us',
+                'active' => 'contact-us',
                 'children' => null
             ],
         ];
