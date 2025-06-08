@@ -1,6 +1,6 @@
 <x-app-layout :title="$category->name">
     {{--    {{ dd(json_encode($category, JSON_PRETTY_PRINT)) }}--}}
-    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 auto-rows-fr">
+    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
         <x-parts.card class="col-span-2  md:col-span-2  2xl:col-span-3">
             <h1>
                 <div class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold">
@@ -21,9 +21,30 @@
             </h1>
         </x-parts.card>
 
-        @foreach($category->children as $children)
-            <x-parts.card.category :category="$children" class="col-span-1"/>
-        @endforeach
+        @if($posts->count())
+            @foreach($posts as $post)
+                <x-parts.card.blog-2 :$post :$loop/>
+            @endforeach
+        @else
+            <x-parts.card class="col-span-2 grid place-content-center md:col-span-2 2xl:col-span-3 min-h-[400px]">
+                <div class="text-center space-y-2 ">
+                    <div class="size-12 mx-auto rounded-full grid place-content-center bg-gray-100 dark:bg-white/5">
+                        <x-heroicon-s-x-mark class="size-8 text-gray-400"/>
+                    </div>
+                    <h3 class="text-xl font-semibold">No article found in category <strong>{{ $category->name }}</strong></h3>
+                    <p>
+                        Do you want to contribute to this category?
+                    </p>
+                    <div class="space-x-2">
+                        <a class="hover:underline" href="{{ route('filament.admin.auth.login') }}">Sign-In</a>
+                        <span>or</span>
+                        <a class="hover:underline" href="{{ route('filament.admin.auth.register') }}">Sign-Up</a>
+                    </div>
+                </div>
+            </x-parts.card>
+        @endif
+        {{ $posts->links() }}
+
     </div>
 
 
