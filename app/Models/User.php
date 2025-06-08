@@ -2,9 +2,8 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
-use Conner\Likeable\Likeable;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
@@ -50,6 +49,8 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
     use HasSuperAdmin;
     use SoftDeletes;
     use InteractsWithMedia;
+
+
 
     protected $appends = ['avatar_url'];
     /**
@@ -120,6 +121,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
      */
     public function registerMediaConversions(?Media $media = null): void
     {
+
         $this
             ->addMediaConversion('small')
             ->fit(Fit::Crop, 100, 100)

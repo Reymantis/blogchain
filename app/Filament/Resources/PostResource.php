@@ -36,8 +36,6 @@ class PostResource extends Resource
                             ->schema([
                                 Forms\Components\SpatieMediaLibraryFileUpload::make('image')
                                     ->image()
-                                    ->imageEditor()
-                                    ->disk('s3')
                                     ->visibility('public')
                                     ->collection('posts')
                                     ->columnSpanFull(),

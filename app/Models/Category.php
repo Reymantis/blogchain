@@ -10,8 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
+use Spatie\Image\Enums\CropPosition;
+use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Category extends Model implements HasMedia
 {
@@ -54,12 +57,26 @@ class Category extends Model implements HasMedia
         return $this->hasMany(Post::class);
     }
 
-    /**
-     * @return void
-     */
     public function registerMediaCollections(): void
     {
-        $this->mediaConversion->registerMediaCollections();
+        $this->addMediaCollection('categories')
+            ->useFallbackUrl('https://placehold.co/600x400')
+            ->useFallbackUrl('https://placehold.co/600x400', 'card')
+            ->useFallbackUrl('https://placehold.co/1200x800', 'main')
+            ->singleFile()
+            ->registerMediaConversions(function (Media $media) {
+                foreach (config('media-conversion.default') as $key => $image) {
+                    $this->addMediaConversion($key)
+                        ->format($image['format'])
+                        ->fit(Fit::Max, $image['width'], $image['height'])
+//                       ->fit(Fit::Crop, $image['width'], $image['height'])
+                        ->nonQueued()
+                        ->crop($image['width'], $image['height'], CropPosition::Center)
+                        ->width($image['width'])
+                        ->height($image['height'])
+                        ->format($image['format']);
+                }
+            });
     }
 
 

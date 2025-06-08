@@ -29,8 +29,6 @@ class CategoryResource extends Resource
                 Forms\Components\SpatieMediaLibraryFileUpload::make('image')
                     ->image()
                     ->imageEditor()
-                    ->disk('s3')
-                    ->visibility('public')
                     ->collection('categories')
                     ->columnSpanFull(),
 
