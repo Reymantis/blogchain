@@ -40,10 +40,8 @@
                 </div>
             </x-parts.card>
         @endif
+        {{ $posts->links() }}
 
-        <x-parts.card class="col-span-2 md:col-span-2 2xl:col-span-3">
-            {{ $posts->links() }}
-        </x-parts.card>
     </div>
 
 

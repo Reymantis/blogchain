@@ -1,4 +1,5 @@
 @if ($paginator->hasPages())
+    <x-parts.card class="col-span-2 md:col-span-2 2xl:col-span-3">
     <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex w-full  items-center justify-between">
         <div class="flex justify-between flex-1 sm:hidden">
             @if ($paginator->onFirstPage())
@@ -142,4 +143,5 @@
             </div>
         </div>
     </nav>
+    </x-parts.card>
 @endif

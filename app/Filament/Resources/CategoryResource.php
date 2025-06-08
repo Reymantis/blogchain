@@ -53,6 +53,9 @@ class CategoryResource extends Resource
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
 
+                Forms\Components\MarkdownEditor::make('disclaimer')
+                    ->columnSpanFull(),
+
                 Forms\Components\ColorPicker::make('color')
                     ->columnSpanFull(),
 

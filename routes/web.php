@@ -4,6 +4,7 @@ use App\Http\Controllers\Categories\CategoriesShowController;
 use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\Posts\PostsIndexController;
 use App\Http\Controllers\Posts\PostsShowController;
+use App\Http\Controllers\Tags\TagsShowController;
 use App\Http\Controllers\Users\UsersIndexController;
 use App\Http\Controllers\Users\UsersShowController;
 use Illuminate\Support\Facades\Route;
@@ -21,3 +22,4 @@ Route::get('/contributors/{user}', UsersShowController::class)->name('users.show
 Route::get('/categories/{category:slug}', CategoriesShowController::class)->name('categories.show');
 Route::get('/articles/{category:slug}', PostsIndexController::class)->name('posts.index');
 Route::get('/article/{category:slug}/{post:slug}', PostsShowController::class)->name('posts.show');
+Route::get('/tags/{tag}', TagsShowController::class)->name('tags.show');

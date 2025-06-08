@@ -1,0 +1,19 @@
+<div class="sticky top-0 pb-12">
+
+<p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
+    <x-heroicon-m-tag class="size-5"/>
+    <span>Most Popular Tags</span>
+</p>
+<div class=" flex-wrap flex gap-2">
+    @foreach($tags as $tag)
+        <a wire:navigate
+           href="{{ route('tags.show', $tag) }}"
+           class="text-xs font-light px-2 break-keep py-0.5 rounded-md mr-1 text-gray-400 border-gray-400 hover:text-primary-500
+                hover:dark:text-primary-500 dark:bg-white/5 border
+                dark:border-white/5
+                dark:text-white/50">
+            {{ $tag->name }}
+        </a>
+    @endforeach
+</div>
+</div>

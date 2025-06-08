@@ -22,7 +22,7 @@
             @if(trim($slot))
                 {{ $slot }}
             @else
-                <x-sidebar.categories/>
+                <x-sidebar.tags/>
             @endif
         </div>
     </x-parts.card>

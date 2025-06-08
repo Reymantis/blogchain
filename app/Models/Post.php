@@ -35,6 +35,7 @@ class Post extends Model implements HasMedia
         'slug',
         'content',
         'description',
+        'disclaimer',
         'live',
         'category_id',
         'user_id',
