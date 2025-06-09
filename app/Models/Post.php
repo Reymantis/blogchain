@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Traits\Likeable;
 use App\Traits\Live;
 use App\Traits\LogsViews;
 use Database\Factories\PostFactory;
@@ -24,6 +25,7 @@ class Post extends Model implements HasMedia
     use SoftDeletes;
     use HasTags;
     use InteractsWithMedia;
+    use Likeable;
     use LogsViews;
     use Live;
 
