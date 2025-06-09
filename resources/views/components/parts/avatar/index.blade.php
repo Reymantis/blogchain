@@ -10,11 +10,11 @@
         '2xl' => 'size-20',
     ];
 
-        $classes = ' rounded-full bg-gray-200 dark:bg-white/5 overflow-clip  ';
+        $classes = ' rounded-md bg-gray-200 dark:bg-white/5 overflow-clip  ';
         $classes .= $sizes[$size]
 @endphp
 
 
 <div {{ $attributes->merge(['class' => $classes]) }}>
-    <img src="{{ $user->avatarUrl }}" alt="{{ $user->name }}" class="w-full h-full object-cover rounded-full">
+    <img src="{{ $user->avatarUrl }}" alt="{{ $user->name }}" class="size-full object-cover rounded-md">
 </div>
