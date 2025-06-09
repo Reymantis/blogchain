@@ -1,8 +1,26 @@
-<button class=" flex items-center space-x-2" @click="$wire.likeModel({{ $model->id }})">
-    @if(auth()->check() && $model->likedBy(auth()->user()))
-        <x-heroicon-s-heart class="size-6 text-red-500"/>
-    @else
-        <x-heroicon-o-heart class="size-6 text-red-500"/>
-    @endif
-    <span class="text-sm">{{ $model->getLikeCount() }}</span>
-</button>
+<div class="inline-flex items-center">
+    <button
+        wire:click="likeModel"
+        class="flex items-center space-x-2 transition-all duration-200  {{ $this->hoverEffects }} {{ $buttonClass }}"
+        title="{{ $this->isLiked ? 'Unlike' : 'Like' }} this {{ class_basename($model) }}"
+        wire:loading.attr="disabled"
+        wire:target="likeModel"
+    >
+        <div
+            class="flex items-center space-x-2"
+            wire:loading.class="animate-pulse"
+            wire:target="likeModel"
+        >
+            <x-dynamic-component
+                :component="'heroicon-' . ($this->isLiked ? 's' : 'o') . '-' . str_replace(['heroicon-s-', 'heroicon-o-'], '', $this->icon)"
+                :class="$size . ' ' . $this->colorClass"
+            />
+
+            @if($showCount)
+                <span class="text-md font-medium transition-colors duration-200 {{ $this->isLiked ? $this->colorClass : 'text-gray-500' }}">
+                    {{ $this->likeCount }}
+                </span>
+            @endif
+        </div>
+    </button>
+</div>

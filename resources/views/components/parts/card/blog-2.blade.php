@@ -105,6 +105,7 @@
                         <x-parts.tooltip text="Like post" position="top">
                             <livewire:parts.like :model="$post"/>
                         </x-parts.tooltip>
+                        
                     @endif
                 </div>
 
