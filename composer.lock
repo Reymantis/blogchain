@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adcf6cb6167c23bcf811c97291a9d863",
+    "content-hash": "357edc42dd23a9363f2ad24bce50676c",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",
@@ -249,16 +249,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.344.2",
+            "version": "3.344.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "3a6aaaea75f4605f89aa57ad63b9a077bf01e1e5"
+                "reference": "0cf789243c7de82be7d3f7641cab37b5bb5d937d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3a6aaaea75f4605f89aa57ad63b9a077bf01e1e5",
-                "reference": "3a6aaaea75f4605f89aa57ad63b9a077bf01e1e5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0cf789243c7de82be7d3f7641cab37b5bb5d937d",
+                "reference": "0cf789243c7de82be7d3f7641cab37b5bb5d937d",
                 "shasum": ""
             },
             "require": {
@@ -340,9 +340,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.344.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.344.3"
             },
-            "time": "2025-06-06T18:14:42+00:00"
+            "time": "2025-06-09T18:04:12+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -750,16 +750,16 @@
         },
         {
             "name": "codewithdennis/filament-select-tree",
-            "version": "v3.1.56",
+            "version": "v3.1.57",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CodeWithDennis/filament-select-tree.git",
-                "reference": "fdb9dcccc9e800a741d663e3d3dc89d111db5ee0"
+                "reference": "86a0762a7da77cf39b7ac41c2b448702a3d4b4db"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CodeWithDennis/filament-select-tree/zipball/fdb9dcccc9e800a741d663e3d3dc89d111db5ee0",
-                "reference": "fdb9dcccc9e800a741d663e3d3dc89d111db5ee0",
+                "url": "https://api.github.com/repos/CodeWithDennis/filament-select-tree/zipball/86a0762a7da77cf39b7ac41c2b448702a3d4b4db",
+                "reference": "86a0762a7da77cf39b7ac41c2b448702a3d4b4db",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +817,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T16:34:31+00:00"
+            "time": "2025-06-09T08:23:31+00:00"
         },
         {
             "name": "composer/semver",
@@ -5154,69 +5154,6 @@
                 }
             ],
             "time": "2024-07-20T21:41:07+00:00"
-        },
-        {
-            "name": "predis/predis",
-            "version": "v3.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/predis/predis.git",
-                "reference": "34fb0a7da0330df1bab4280fcac4afdeeccc3edf"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/predis/predis/zipball/34fb0a7da0330df1bab4280fcac4afdeeccc3edf",
-                "reference": "34fb0a7da0330df1bab4280fcac4afdeeccc3edf",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.2 || ^8.0",
-                "psr/http-message": "^1.0|^2.0"
-            },
-            "require-dev": {
-                "friendsofphp/php-cs-fixer": "^3.3",
-                "phpstan/phpstan": "^1.9",
-                "phpunit/phpcov": "^6.0 || ^8.0",
-                "phpunit/phpunit": "^8.0 || ~9.4.4"
-            },
-            "suggest": {
-                "ext-relay": "Faster connection with in-memory caching (>=0.6.2)"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Predis\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Till Krüss",
-                    "homepage": "https://till.im",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "A flexible and feature-complete Redis/Valkey client for PHP.",
-            "homepage": "http://github.com/predis/predis",
-            "keywords": [
-                "nosql",
-                "predis",
-                "redis"
-            ],
-            "support": {
-                "issues": "https://github.com/predis/predis/issues",
-                "source": "https://github.com/predis/predis/tree/v3.0.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/sponsors/tillkruss",
-                    "type": "github"
-                }
-            ],
-            "time": "2025-05-16T18:30:32+00:00"
         },
         {
             "name": "psr/cache",
