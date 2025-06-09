@@ -50,24 +50,24 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                 ->description('Update user name and email')
                 ->aside()
                 ->schema([
-                    Forms\Components\FileUpload::make('avatar')
-                        ->directory('avatars')
-                        ->disk('s3')
-                        ->visibility('public')
-                        ->openable() // Optional: allows viewing/downloading
-                        ->downloadable() // Optional: allows downloading
-                        ->preserveFilenames() // Optional: keeps original filenames
-                        ->dehydrated()
-                        ->avatar()
-                        ->imageEditor()
-                        ->circleCropper()
-                        ->imageResizeMode('cover')
-                        ->imageCropAspectRatio('1:1')
-                        ->imageResizeTargetWidth('200')
-                        ->imageResizeTargetHeight('200')
-                        ->panelAspectRatio('3:1')
-                        ->uploadingMessage('Uploading avatar...')
-                        ->image(),
+//                    Forms\Components\FileUpload::make('avatar')
+//                        ->directory('avatars')
+//                        ->disk('s3')
+//                        ->visibility('public')
+//                        ->openable() // Optional: allows viewing/downloading
+//                        ->downloadable() // Optional: allows downloading
+//                        ->preserveFilenames() // Optional: keeps original filenames
+//                        ->dehydrated()
+//                        ->avatar()
+//                        ->imageEditor()
+//                        ->circleCropper()
+//                        ->imageResizeMode('cover')
+//                        ->imageCropAspectRatio('1:1')
+//                        ->imageResizeTargetWidth('200')
+//                        ->imageResizeTargetHeight('200')
+//                        ->panelAspectRatio('3:1')
+//                        ->uploadingMessage('Uploading avatar...')
+//                        ->image(),
 
 
                     Forms\Components\TextInput::make('name')
