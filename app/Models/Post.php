@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Helpers\MediaConversion;
-use App\Traits\Likable;
 use App\Traits\Live;
 use App\Traits\LogsViews;
 use Database\Factories\PostFactory;
@@ -26,7 +24,6 @@ class Post extends Model implements HasMedia
     use SoftDeletes;
     use HasTags;
     use InteractsWithMedia;
-    use Likable;
     use LogsViews;
     use Live;
 
@@ -50,9 +47,6 @@ class Post extends Model implements HasMedia
     ];
 
     protected $appends = [];
-
-
-
 
 
     /**
@@ -79,20 +73,19 @@ class Post extends Model implements HasMedia
             ->useFallbackUrl('https://placehold.co/1200x800', 'main')
             ->singleFile()
             ->registerMediaConversions(function (?Media $media) {
-               foreach (config('media-conversion.default') as $key => $image) {
-                   $this->addMediaConversion($key)
-                       ->format($image['format'])
-                       ->fit(Fit::Max, $image['width'], $image['height'])
+                foreach (config('media-conversion.default') as $key => $image) {
+                    $this->addMediaConversion($key)
+                        ->format($image['format'])
+                        ->fit(Fit::Max, $image['width'], $image['height'])
 //                       ->fit(Fit::Crop, $image['width'], $image['height'])
-                       ->nonQueued()
-                       ->crop($image['width'], $image['height'], CropPosition::Center)
-                       ->width($image['width'])
-                       ->height($image['height'])
-                       ->format($image['format']);
-               }
+                        ->nonQueued()
+                        ->crop($image['width'], $image['height'], CropPosition::Center)
+                        ->width($image['width'])
+                        ->height($image['height'])
+                        ->format($image['format']);
+                }
             });
     }
-
 
 
     /**
