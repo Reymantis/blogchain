@@ -26,7 +26,5 @@
                 <x-sidebar.categories/>
             @endif
         </div>
-
-
     </x-parts.card>
 </aside>

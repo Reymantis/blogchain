@@ -1,8 +1,8 @@
 <div class="sticky top-0 pb-12">
-    <p class="text-lg  text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
-        <x-heroicon-m-folder class="size-5"/>
-        <span>Categories Tree</span>
-    </p>
+
+    <x-text.heading as="h4"  icon="heroicon-o-folder-open">
+        Categories Tree
+    </x-text.heading>
     <ul class="marker:text-primary-500 text-sm">
         @foreach($categories->toTree() as $category)
             <li>

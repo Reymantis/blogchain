@@ -1,10 +1,9 @@
 <x-app-layout title="Contact Us">
     <div class="grid gap-4">
         <x-parts.card>
-            <h1 class="text-lg  text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold">
-                <x-heroicon-m-envelope class="size-5"/>
-                <span>Contact us</span>
-            </h1>
+            <x-text.heading as="h1" icon="heroicon-o-envelope" class="!mb-0">
+                Contact Us
+            </x-text.heading>
         </x-parts.card>
         <x-parts.card>
             <div class="max-w-2xl mx-auto">

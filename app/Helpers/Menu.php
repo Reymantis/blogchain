@@ -8,6 +8,9 @@ use Illuminate\Support\Collection;
 class Menu
 {
 
+    /**
+     * @return Collection
+     */
     public static function main(): Collection
     {
         $items = [
@@ -54,10 +57,49 @@ class Menu
             ],
         ];
 
+        return static::colletor($items);
+    }
+
+    /**
+     * @param $items
+     * @return Collection
+     */
+    protected static function colletor($items): Collection
+    {
         return collect($items)->map(function ($item) {
             return (object)$item;
         });
-
     }
 
+    public static function auth(): Collection
+    {
+        $items = [
+            [
+                'name' => 'Login',
+                'route' => 'admin.login',
+                'active' => 'admin.login',
+            ],
+            [
+                'name' => 'Register',
+                'route' => 'admin.register',
+                'active' => 'admin.register',
+            ]
+        ];
+
+        return static::colletor($items);
+    }
+
+    public static function sub(): Collection
+    {
+        $items = [
+            [
+                'name' => 'Write a Article',
+                'route' => 'admin.dashboard',
+                'active' => 'admin.dashboard',
+            ],
+        ];
+
+     
+        return static::colletor($items);
+    }
 }

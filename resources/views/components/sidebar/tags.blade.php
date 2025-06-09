@@ -2,10 +2,11 @@
 
 <div class="sticky top-0 pb-12">
 
-<p class="text-lg text-gray-500 flex items-center space-x-2 dark:text-gray-400 font-semibold mb-3">
-    <x-heroicon-m-tag class="size-5"/>
-    <span>Most Popular Tags</span>
-</p>
+
+    <x-text.heading as="h4"  icon="heroicon-o-tag" class="mb-3">
+        Most Popular Tags
+    </x-text.heading>
+
 <div class=" flex-wrap flex gap-2">
     @foreach($tags->take($take) as $tag)
         <a wire:navigate

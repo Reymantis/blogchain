@@ -5,17 +5,16 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
+use Closure;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
 use Filament\Forms;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
 class PostResource extends Resource
 {
@@ -52,7 +51,7 @@ class PostResource extends Resource
                                     ->nullable()
                                     ->rules([
                                         function () {
-                                            return function (string $attribute, $value, \Closure $fail) {
+                                            return function (string $attribute, $value, Closure $fail) {
                                                 // Comprehensive YouTube URL patterns
                                                 $patterns = [
                                                     '/youtube\.com\/watch\?v=([a-zA-Z0-9_-]{11})/',
@@ -108,6 +107,7 @@ class PostResource extends Resource
                                     ->columnSpanFull()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(191),
+                   
 
                                 SelectTree::make('category_id')
                                     ->label('Category')
@@ -138,8 +138,6 @@ class PostResource extends Resource
                             ]),
 
                     ])->columnSpanFull(),
-
-
 
 
             ]);

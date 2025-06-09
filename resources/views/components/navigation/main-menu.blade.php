@@ -1,15 +1,15 @@
 @props(['menu'])
 
-<div {{ $attributes->merge(['class' => 'lg:flex space-x-2 px-3 hidden text-sm']) }}>
+<div {{ $attributes->merge(['class' => 'lg:flex space-x-0.5 px-3 hidden text-sm']) }}>
     @foreach($menu as $item)
         @if(!$item->children)
-            <a class="px-2 py-1 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
+            <a class="px-4 py-2 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
                 {{ $item->name }}
             </a>
         @else
             <x-filament::dropdown placement="bottom-start" max-height="400px">
                 <x-slot name="trigger">
-                    <button class="px-2 py-1 inline-flex items-center space-x-1  hover:bg-gray-500/15 rounded-md">
+                    <button class="px-4 py-2 inline-flex items-center space-x-1  hover:bg-gray-500/15 rounded-md">
                         <span>{{ $item->name }}</span>
                         <x-heroicon-s-chevron-up-down class="size-4"/>
                     </button>

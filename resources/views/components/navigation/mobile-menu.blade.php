@@ -1,9 +1,14 @@
 @props(['menu'])
 
-<div {{ $attributes->merge(['class' => 'lg:hidden py-3 flex flex-col']) }}>
+<div {{ $attributes->merge(['class' => 'lg:hidden py-3 flex flex-col space-y-2']) }}>
+    <a wire:navigate class="px-4 py-2 flex flex-1 items-center text-sm  text-white bg-primary-500 rounded-md"
+       href="{{ route('filament.admin.resources.posts.create') }}">
+        <x-heroicon-o-plus class="inline size-5 mr-1"/>
+        <span>Write Article</span>
+    </a>
     @foreach($menu as $item)
         @if(!$item->children)
-            <a class="px-2 py-1 flex flex-1 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
+            <a wire:navigate class="px-2 py-1 flex flex-1 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
                 {{ $item->name }}
             </a>
         @else
@@ -17,7 +22,7 @@
                         <a
                             href="{{ route($child['route'], $child['slug']) }}"
                             class="px-2 py-1 hover:bg-gray-500/15 rounded-md"
-                            wire:navigate="true"
+                            wire:navigate
                         >
                             {{ $child['name'] }}
                         </a>

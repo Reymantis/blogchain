@@ -8,5 +8,4 @@
         </x-parts.card>
     </div>
     <livewire:user-stats :user="$user" class="mb-4"/>
-
 </x-app-layout>

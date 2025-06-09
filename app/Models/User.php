@@ -39,7 +39,6 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         'social_github',
         'social_x',
         'website'
-
     ];
 
     /** @use HasFactory<UserFactory> */
@@ -84,6 +83,11 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
             $name = urlencode($this->name ?? $this->email ?? 'User');
             return "https://ui-avatars.com/api/?name={$name}&color=7F9CF5&background=EBF4FF";
         });
+    }
+
+    public function username(): string
+    {
+        return '@' . $this->username;
     }
 
     public function getAvatar(): ?string

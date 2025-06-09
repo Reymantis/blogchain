@@ -10,17 +10,38 @@ class UserObserver
     /**
      * Handle the User "created" event.
      */
-    public function created(User $user): void
+    public function creating(User $user): void
     {
-            $user->assignRole('Blogger');
+        // Assign default role if not already assigned
+        $user->assignRole('Blogger');
+
+        // Generate base username from name
+        $baseUsername = strtolower(str_replace([' ', '.'], '', $user->name));
+
+        // Check if username exists and generate unique one
+        $username = $baseUsername;
+        $counter = 1;
+
+        while (User::where('username', $username)->exists()) {
+            $username = $baseUsername . rand(10, 99); // 2-digit random number
+            $counter++;
+
+            // Fallback: if we've tried too many times, use timestamp
+            if ($counter > 10) {
+                $username = $baseUsername . time();
+                break;
+            }
+        }
+
+        $user->username = $username;
     }
 
     /**
      * Handle the User "updated" event.
      */
-    public function updated(User $user): void
+    public function updating(User $user): void
     {
-
+        $user->username = strtolower(str_replace([' ', '.'],'', $user->username));
     }
 
     /**

@@ -35,13 +35,6 @@ class CategorySeeder extends Seeder
                         'color' => '#f39c12',
                         'live' => true,
                     ],
-                    [
-                        'name' => 'Ai',
-                        'slug' => 'relationships',
-                        'description' => 'Advice and insights on building healthy relationships.',
-                        'color' => '#9b59b6',
-                        'live' => true,
-                    ],
 
                 ]
             ],
@@ -66,12 +59,20 @@ class CategorySeeder extends Seeder
                         'color' => '#16a085',
                         'live' => true,
                     ],
+                    [
+                        'name' => 'Other Cities',
+                        'slug' => 'Cities',
+                        'description' => 'all local news from other cities',
+                        'color' => '#16a085',
+                        'live' => true,
+                    ],
+
 
                 ]
             ],
             [
-                'name' => 'Decentralized Web',
-                'slug' => 'decentralized-web',
+                'name' => 'DeFi',
+                'slug' => 'decentralized-finance',
                 'description' => 'Exploring the decentralized web and its technologies.',
                 'color' => '#e74c3c',
                 'live' => true,
@@ -83,13 +84,7 @@ class CategorySeeder extends Seeder
                         'color' => '#f1c40f',
                         'live' => true,
                     ],
-                    [
-                        'name' => 'Web3',
-                        'slug' => 'web3',
-                        'description' => 'Latest updates and trends in Web3 technologies.',
-                        'color' => '#f1c40f',
-                        'live' => true,
-                    ],
+
                     [
                         'name' => 'Blockchain',
                         'slug' => 'blockchain',
@@ -104,13 +99,7 @@ class CategorySeeder extends Seeder
                         'color' => '#8e44ad',
                         'live' => true,
                     ],
-                    [
-                        'name' => 'Decentralized Finance (DeFi)',
-                        'slug' => 'defi',
-                        'description' => 'Insights into the world of decentralized finance.',
-                        'color' => '#c0392b',
-                        'live' => true,
-                    ],
+
                     [
                         'name' => 'NFTs',
                         'slug' => 'nfts',
@@ -138,9 +127,54 @@ class CategorySeeder extends Seeder
                 ]
             ],
             [
-                'name' => 'Art & Media',
-                'slug' => 'art and Entertainment',
-                'description' => 'Travel guides and tips for adventurers.',
+                'name' => 'Web & Tech',
+                'slug' => 'web and tech',
+                'description' => 'Web development and Design.',
+                'color' => '#e74c3c',
+                'live' => true,
+                'children' => [
+                    [
+                        'name' => 'Development',
+                        'slug' => 'web development',
+                        'description' => 'Latest news and trends in the cryptocurrency market.',
+                        'color' => '#f1c40f',
+                        'live' => true,
+                    ],
+                    [
+                        'name' => 'Design',
+                        'slug' => 'web development',
+                        'description' => 'Latest news and trends in the cryptocurrency market.',
+                        'color' => '#f1c40f',
+                        'live' => true,
+                    ],
+                    [
+                        'name' => 'Programming Languages',
+                        'slug' => 'programming-languages',
+                        'description' => 'Exploring various programming languages and their applications.',
+                        'color' => '#2c3e50',
+                        'live' => true,
+                    ],
+                    [
+                        'name' => 'Software Development',
+                        'slug' => 'software-development',
+                        'description' => 'Latest trends and updates in software development.',
+                        'color' => '#8e44ad',
+                        'live' => true,
+                    ],
+                    [
+                        'name' => 'Artificial Intelligence',
+                        'slug' => 'artificial-intelligence',
+                        'description' => 'Exploring AI technologies and their impact on society.',
+                        'color' => '#d35400',
+                        'live' => true,
+                    ],
+
+                ]
+            ],
+            [
+                'name' => 'Arts & Media',
+                'slug' => 'Art and Entertainment',
+                'description' => 'Exploring the world of arts and entertainment.',
                 'color' => '#f1c40f',
                 'live' => true,
                 'children' => [
@@ -176,19 +210,27 @@ class CategorySeeder extends Seeder
                 ]
             ],
             [
-                'name' => 'Other Topics',
-                'slug' => 'other-topics',
-                'description' => 'A collection of various topics and interests.',
+                'name' => 'User Generated Content',
+                'slug' => 'user-generated-content',
+                'description' => 'Content created by users and community members.',
                 'color' => '#9b59b6',
                 'live' => true,
                 'children' => [
                     [
-                        'name' => 'Uncategorized',
-                        'slug' => 'uncategorized',
+                        'name' => 'Pending Categorization',
+                        'slug' => 'pending-categorization',
                         'description' => 'Posts that do not fit into any specific category.',
                         'color' => '#8e44ad',
                         'live' => true,
                     ],
+                    [
+                        'name' => 'Uncategorized',
+                        'slug' => 'uncategorized',
+                        'description' => 'Posts that do not fit into any specific category.',
+                        'color' => '#7f8c8d',
+                        'live' => true,
+                    ],
+
 
                 ]
             ]];

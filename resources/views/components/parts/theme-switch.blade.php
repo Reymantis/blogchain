@@ -43,7 +43,7 @@
 
     <!-- Button trigger -->
     <button @click="open = !open"
-            class="inline-flex items-center justify-center p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            class="inline-flex items-center justify-center size-8 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             aria-label="Theme selector">
         <!-- Dynamic icon based on current theme -->
         <template x-if="theme === 'light'">

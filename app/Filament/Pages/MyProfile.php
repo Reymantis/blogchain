@@ -75,6 +75,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->maxLength(255),
 
                     Forms\Components\TextInput::make('username')
+                        ->prefixIcon('heroicon-o-at-symbol')
                         ->rules([
                             'string',
                             'max:25',
