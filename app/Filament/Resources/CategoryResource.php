@@ -30,6 +30,13 @@ class CategoryResource extends Resource
                     ->image()
                     ->imageEditor()
                     ->collection('categories')
+                    ->acceptedFileTypes([
+                        'image/jpeg',
+                        'image/jpg',
+                        'image/png',
+                        'image/gif',
+                        'image/webp',
+                    ])
                     ->columnSpanFull(),
 
                 Forms\Components\TextInput::make('name')

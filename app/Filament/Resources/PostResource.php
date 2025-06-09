@@ -35,6 +35,13 @@ class PostResource extends Resource
                             ->schema([
                                 Forms\Components\SpatieMediaLibraryFileUpload::make('image')
                                     ->image()
+                                    ->acceptedFileTypes([
+                                        'image/jpeg',
+                                        'image/jpg',
+                                        'image/png',
+                                        'image/gif',
+                                        'image/webp',
+                                    ])
                                     ->visibility('public')
                                     ->collection('posts')
                                     ->columnSpanFull(),
@@ -107,7 +114,7 @@ class PostResource extends Resource
                                     ->columnSpanFull()
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(191),
-                   
+
 
                                 SelectTree::make('category_id')
                                     ->label('Category')
