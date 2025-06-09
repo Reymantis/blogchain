@@ -19,14 +19,14 @@
     teleport
     :attributes="
         prepare_inherited_attributes($attributes)
-            ->class(['fi-user-menu'])
+            ->class(['fi-user-menu rounded-md'])
     "
 >
     <x-slot name="trigger">
         <button
             aria-label="{{ __('filament-panels::layout.actions.open_user_menu.label') }}"
             type="button"
-            class="shrink-0"
+            class="shrink-0 rounded-md"
         >
             <x-filament-panels::avatar.user :user="$user"/>
         </button>
