@@ -3,7 +3,11 @@
 <div {{ $attributes->merge(['class' => 'lg:flex space-x-0.5 px-3 hidden text-sm']) }}>
     @foreach($menu as $item)
         @if(!$item->children)
-            <a class="px-4 py-2 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
+            <a @class([
+                'px-4 py-2 hover:bg-gray-500/15 rounded-md',
+                'bg-primary-500 text-white' => request()->routeIs($item->route),
+        ])
+               wire:navigate href="{{ route($item->route) }}">
                 {{ $item->name }}
             </a>
         @else

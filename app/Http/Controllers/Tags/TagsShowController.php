@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Tags;
 
 use App\Http\Controllers\Controller;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Illuminate\View\View;
 use Spatie\Tags\Tag;
 
 class TagsShowController extends Controller
@@ -16,7 +14,7 @@ class TagsShowController extends Controller
     public function __invoke(Tag $tag)
     {
 
-        $posts = Post::with('category', 'media', 'user')->withAnyTags([$tag], 'posts')->latest()->paginate(16);
+        $posts = Post::with('category', 'media', 'user')->withAnyTags([$tag], 'posts')->latest()->paginate(config('blogchain.pagination.per_page'));
 
         return view('pages.tags.show', [
             'tag' => $tag,

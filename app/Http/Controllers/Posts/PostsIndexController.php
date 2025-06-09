@@ -17,7 +17,7 @@ class PostsIndexController extends Controller
 
         $posts = $category->posts()
             ->with(['category', 'media', 'user'])
-            ->paginate(12); // 10 posts per page
+            ->paginate(config('blogchain.pagination.per_page')); // 10 posts per page
 
 
         return view('pages.posts.index', [

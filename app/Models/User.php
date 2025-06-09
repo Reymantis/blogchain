@@ -50,7 +50,6 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
     use InteractsWithMedia;
 
 
-
     protected $appends = ['avatar_url'];
     /**
      * The attributes that should be hidden for serialization.
@@ -99,7 +98,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
         // Fallback to UI-Avatars with user's name or email
         $name = urlencode($this->name ?? $this->email ?? 'User');
-        return "https://ui-avatars.com/api/?name={$name}&color=7F9CF5&background=EBF4FF";
+        return "https://ui-avatars.com/api/?name={$name}&color=7F9CF5&background=random";
     }
 
     /**
