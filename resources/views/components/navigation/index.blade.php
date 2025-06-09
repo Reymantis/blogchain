@@ -15,7 +15,7 @@
 
             <div class="flex space-x-3 items-center">
                 <x-parts.tooltip position="bottom" text="Write a new article" arrow>
-                    <a wire:navigate class="px-4 py-2 flex items-center text-sm font-semibold text-shadow-sm text-shadow-black/10  text-white bg-primary-500
+                    <a class="px-4 py-2 flex items-center text-sm font-semibold text-shadow-sm text-shadow-black/10  text-white bg-primary-500
                 hover:bg-primary-400
                 rounded-md"
                        href="{{ route('filament.admin.resources.posts.create') }}">

@@ -13,7 +13,7 @@
             Do you want to contribute to this category?
         </p>
         <div>
-            <a wire:navigate class="px-4 py-2 inline-flex flex-nowrap flex-shrink items-center text-sm font-semibold text-shadow-sm
+            <a class="px-4 py-2 inline-flex flex-nowrap flex-shrink items-center text-sm font-semibold text-shadow-sm
                         text-shadow-black/10
                         text-white
                         bg-primary-500

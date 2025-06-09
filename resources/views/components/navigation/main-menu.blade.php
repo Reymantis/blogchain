@@ -25,7 +25,6 @@
                             tag="a" wire:navigate="true"
                             @class([
                             "flex items-center !justify-between",
-
                             ])
                         >
                             <span>{{ $child['name'] }}</span>
