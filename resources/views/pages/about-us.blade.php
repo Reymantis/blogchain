@@ -1,9 +1,10 @@
 <x-app-layout title="About Us">
     <div class="grid gap-4">
-        <x-parts.card>
+        <x-parts.card class="flex justify-between">
             <x-text.heading as="h1" icon="heroicon-o-information-circle" class="!mb-0">
                 About Us
             </x-text.heading>
+            <x-button.back/>
         </x-parts.card>
         <x-parts.card>
             <section class="mx-auto prose lg:prose-lg dark:prose-invert">

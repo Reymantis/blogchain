@@ -5,7 +5,7 @@
         @if(!$item->children)
             <a @class([
                 'px-4 py-2 hover:bg-gray-500/15 rounded-md',
-                'bg-primary-500 text-white' => request()->routeIs($item->route),
+                'bg-gray-500/15 text-white' => request()->routeIs($item->route),
         ])
                wire:navigate href="{{ route($item->route) }}">
                 {{ $item->name }}
@@ -13,7 +13,9 @@
         @else
             <x-filament::dropdown placement="bottom-start" max-height="400px">
                 <x-slot name="trigger">
-                    <button class="px-4 py-2 inline-flex items-center space-x-1  hover:bg-gray-500/15 rounded-md">
+                    <button @class(["px-4 py-2 inline-flex items-center space-x-1  hover:bg-gray-500/15 rounded-md",
+                        'bg-gray-500/15 text-white' => request()->routeIs($item->route),
+                        ])>
                         <span>{{ $item->name }}</span>
                         <x-heroicon-s-chevron-up-down class="size-4"/>
                     </button>

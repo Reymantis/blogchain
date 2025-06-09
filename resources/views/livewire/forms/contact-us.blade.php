@@ -4,6 +4,7 @@
         <x-filament::button
             wire:loading.attr="disabled"
             wire:target="sendEmail"
+            color="danger"
             type="submit"
             icon="heroicon-m-paper-airplane">
             Submit

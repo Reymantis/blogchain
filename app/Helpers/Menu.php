@@ -23,7 +23,7 @@ class Menu
             [
                 'name' => 'Categories',
                 'route' => 'categories.index',
-                'active' => 'categories.index',
+                'active' => 'categories/*',
                 'children' => CategoriesComposer::getCategories()
                     ->whereNull('parent_id') // Assuming root categories
                     ->map(function ($category) {
@@ -99,7 +99,7 @@ class Menu
             ],
         ];
 
-     
+
         return static::colletor($items);
     }
 }

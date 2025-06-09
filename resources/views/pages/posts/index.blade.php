@@ -1,11 +1,12 @@
 <x-app-layout :title="$category->name">
 
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
-        <x-parts.card class="col-span-full">
-            <x-text.heading as="h1" icon="heroicon-o-folder">
-                {{ $category->name }}
-            </x-text.heading>
-            <span class="flex space-x-2 items-center px-1.5 text-black/25 dark:text-white/25">
+        <x-parts.card class="col-span-full justify-between flex">
+            <div>
+                <x-text.heading as="h1" icon="heroicon-o-folder" class="!mb-0">
+                    {{ $category->name }}
+                </x-text.heading>
+                <span class="flex space-x-2 items-center px-1.5 text-black/25 dark:text-white/25">
                 <x-heroicon-m-arrow-turn-left-up class="size-3"/>
                 <small class="text-xs ">Listed in
                     <a wire:navigate
@@ -14,6 +15,8 @@
                     {{  $category->ancestors[0]->name }}</a>
                 </small>
             </span>
+            </div>
+            <x-button.back/>
         </x-parts.card>
         @if($posts->count())
             @foreach($posts as $post)

@@ -1,9 +1,11 @@
 <x-app-layout title="Contact Us">
     <div class="grid gap-4">
-        <x-parts.card>
+        <x-parts.card class="flex justify-between">
             <x-text.heading as="h1" icon="heroicon-o-envelope" class="!mb-0">
                 Contact Us
             </x-text.heading>
+
+            <x-button.back/>
         </x-parts.card>
         <x-parts.card>
             <div class="max-w-2xl mx-auto">
