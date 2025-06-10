@@ -4,6 +4,7 @@ namespace App\Livewire\Parts;
 
 use Exception;
 use Filament\Notifications\Notification;
+use Illuminate\Database\Eloquent\Model;
 use Livewire\Component;
 
 class LikeReactions extends Component
@@ -41,9 +42,7 @@ class LikeReactions extends Component
     public function toggleReaction(string $type): void
     {
         // Check if reactions are enabled
-        if (!config('blogchain.enable_likes', true)) {
-            return;
-        }
+
 
         // Check authentication
         if (!auth()->check()) {

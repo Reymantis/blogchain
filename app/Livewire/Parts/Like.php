@@ -39,10 +39,7 @@ class Like extends Component
 
     public function likeModel(): void
     {
-        // Check if likes are enabled
-        if (!config('blogchain.enable_likes', true)) {
-            return;
-        }
+
 
         // Check authentication
         if (!auth()->check()) {
