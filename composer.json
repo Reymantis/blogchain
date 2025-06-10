@@ -13,6 +13,7 @@
         "althinect/filament-spatie-roles-permissions": "^2.3",
         "andreiio/blade-remix-icon": "^3.6",
         "codeat3/blade-codicons": "^1.34",
+        "coderflexx/laravisit": "^2.1",
         "codewithdennis/filament-select-tree": "^3.1",
         "filament/filament": "^3.3",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
@@ -26,6 +27,7 @@
         "league/flysystem-aws-s3-v3": "^3.0",
         "mavinoo/laravel-batch": "*",
         "mohammadhprp/filament-ip-to-country-flag-column": "^1.0",
+        "opcodesio/log-viewer": "^3.17",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "shuvroroy/filament-spatie-laravel-health": "^2.3",
         "tangodev-it/filament-emoji-picker": "^1.0"

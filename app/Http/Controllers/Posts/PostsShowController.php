@@ -14,9 +14,7 @@ class PostsShowController extends Controller
      */
     public function __invoke(Category $category, Post $post): View
     {
-        if (config('blogchain.enable_page_views')) {
-            $post->logView();
-        }
+        $post->visit();
         $post->load('user', 'media', 'tags');
         return view('pages.posts.show', compact('category', 'post'));
     }

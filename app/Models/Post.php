@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Traits\Likeable;
 use App\Traits\Live;
 use App\Traits\LogsViews;
+use Coderflex\Laravisit\Concerns\CanVisit;
+use Coderflex\Laravisit\Concerns\HasVisits;
 use Database\Factories\PostFactory;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +20,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
 
-class Post extends Model implements HasMedia
+class Post extends Model implements HasMedia, CanVisit
 {
     /** @use HasFactory<PostFactory> */
     use HasFactory;
@@ -28,6 +30,7 @@ class Post extends Model implements HasMedia
     use Likeable;
     use LogsViews;
     use Live;
+    use HasVisits;
 
     protected $fillable = [
         'title',

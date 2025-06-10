@@ -90,23 +90,21 @@
                     </div>
                 </x-parts.tooltip>
                 <div class="flex space-x-3">
-                    @if(config('blogchain.enable_likes'))
-                        <x-parts.tooltip text="Post unique views" position="top">
-                            <div class="flex space-x-2 items-center">
-                                <x-heroicon-s-eye class="size-6 text-gray-500"/>
-                                <span>
-                    {{ $post->getViewCount() }}
-                </span>
-                            </div>
-                        </x-parts.tooltip>
-                    @endif
 
-                    @if(config('blogchain.enable_page_views'))
-                        <x-parts.tooltip text="Like post" position="top">
-                            <livewire:parts.like :model="$post"/>
-                        </x-parts.tooltip>
-                        
-                    @endif
+                    <x-parts.tooltip text="Post unique views" position="top">
+                        <div class="flex space-x-2 items-center">
+                            <x-heroicon-s-eye class="size-6 text-gray-500"/>
+                            <span>
+                                 {{ $post->visits->count() }}
+                            </span>
+                        </div>
+                    </x-parts.tooltip>
+
+
+                    <x-parts.tooltip text="Like post" position="top">
+                        <livewire:parts.like :model="$post"/>
+                    </x-parts.tooltip>
+
                 </div>
 
             </div>
