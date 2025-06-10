@@ -5,6 +5,7 @@ namespace App\Livewire\Parts;
 use Exception;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
 use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
@@ -39,7 +40,6 @@ class Like extends Component
 
     public function likeModel(): void
     {
-
 
         // Check authentication
         if (!auth()->check()) {
@@ -172,7 +172,7 @@ class Like extends Component
     }
 
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.parts.like');
     }
