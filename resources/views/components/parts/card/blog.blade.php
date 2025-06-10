@@ -3,7 +3,6 @@
     'loop' => null
 ])
 
-
 <x-parts.card
     no-padding
     @class([
@@ -17,27 +16,22 @@
             alt="Image for {{ $post->title }} blog post"
             class="w-full aspect-video object-cover transition-transform duration-300 "
         />
-
         @if($loop->first)
             <div class="absolute top-4 left-4">
                 <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>
             </div>
         @endif
     </div>
-
     <div class="p-6 flex-1 flex flex-col">
-
         <a wire:navigate href="{{ route('post.show', [$post->category, $post]) }}" class="group-link">
             <h3 class="font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-md
             2xl:text-xl line-clamp-2">
                 {{ $post->title }}
             </h3>
         </a>
-
         <p class="text-gray-600 dark:text-gray-300 mb-4 flex-1 2xl:text-base line-clamp-2 text-sm">
             {{ $post->description }}
         </p>
-
         <div class="flex items-center justify-between mb-0">
             <div class="flex items-center space-x-2">
                 <img
@@ -58,8 +52,5 @@
                 <livewire:parts.like :model="$post"/>
             @endif
         </div>
-
-
     </div>
-
 </x-parts.card>
