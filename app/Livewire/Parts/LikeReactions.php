@@ -3,12 +3,22 @@
 namespace App\Livewire\Parts;
 
 use Exception;
+use Filament\Actions\Action;
+use Filament\Actions\Concerns\InteractsWithActions;
+use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Notification;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\View\View;
+use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
-class LikeReactions extends Component
+class LikeReactions extends Component implements HasForms, HasActions
 {
+    use InteractsWithForms;
+    use InteractsWithActions;
+
     #[Reactive]
     public Model $model;
 
@@ -26,32 +36,33 @@ class LikeReactions extends Component
     ): void
     {
         $this->model = $model;
+
+        // Fix: Use string values directly instead of undefined constants
         $this->availableTypes = $types ?? [
-            Like::TYPE_LIKE,
-            Like::TYPE_LOVE,
-            Like::TYPE_LAUGH,
-            Like::TYPE_WOW,
-            Like::TYPE_SAD,
-            Like::TYPE_ANGRY
+            'like',
+            'love',
+            'laugh',
+            'wow',
+            'sad',
+            'angry'
         ];
+
         $this->showCounts = $showCounts;
         $this->layout = $layout;
         $this->allowMultiple = $allowMultiple;
     }
 
-    public function toggleReaction(string $type): void
+    public function toggleReaction(string $type): array
     {
         // Check if reactions are enabled
-
+        if (!config('blogchain.enable_likes', true)) {
+            return ['success' => false, 'message' => 'Reactions are disabled'];
+        }
 
         // Check authentication
         if (!auth()->check()) {
-            Notification::make()
-                ->danger()
-                ->title('Authentication Required')
-                ->body('You need to log in to react to this content.')
-                ->send();
-            return;
+            $this->mountAction('loginRequired');
+            return ['success' => false, 'message' => 'Authentication required'];
         }
 
         $user = auth()->user();
@@ -69,77 +80,38 @@ class LikeReactions extends Component
             // Toggle the clicked reaction
             $result = $this->model->toggleLike($user, $type);
 
-            // Refresh the model
+            // Refresh the model to get updated counts
             $this->model->refresh();
 
-            // Show notification
-            $this->showReactionNotification($type, $result);
+            return [
+                'success' => true,
+                'action' => $result,
+                'counts' => $this->getReactionCountsProperty(),
+                'userReactions' => $this->getUserReactionsProperty()
+            ];
 
         } catch (Exception $e) {
-            Notification::make()
-                ->danger()
-                ->title('Error')
-                ->body('Something went wrong. Please try again later.')
-                ->send();
-
             logger()->error('Reaction error: ' . $e->getMessage(), [
                 'user_id' => auth()->id(),
                 'model_type' => get_class($this->model),
                 'model_id' => $this->model->id,
                 'reaction_type' => $type
             ]);
+
+            return ['success' => false, 'message' => 'Something went wrong. Please try again.'];
         }
     }
 
     /**
-     * Show reaction notification
+     * Get reaction counts for all types
      */
-    private function showReactionNotification(string $type, string $result): void
+    public function getReactionCountsProperty(): array
     {
-        $emoji = $this->getReactionEmoji($type);
-        $action = $result === 'liked' ? 'added' : 'removed';
-
-        Notification::make()
-            ->success()
-            ->title("Reaction {$action}")
-            ->body("You {$action} your {$emoji} reaction.")
-            ->duration(1500)
-            ->send();
-    }
-
-    /**
-     * Get reaction emoji
-     */
-    public function getReactionEmoji(string $type): string
-    {
-        return match ($type) {
-            'like' => '👍',
-            'love' => '❤️',
-            'laugh' => '😂',
-            'wow' => '😮',
-            'sad' => '😢',
-            'angry' => '😠',
-            'dislike' => '👎',
-            default => '👍',
-        };
-    }
-
-    /**
-     * Get user's current reaction
-     */
-    public function getUserReactionProperty(): ?string
-    {
-        if (!auth()->check()) {
-            return null;
-        }
-
+        $counts = [];
         foreach ($this->availableTypes as $type) {
-            if ($this->model->likedBy(auth()->user(), $type)) {
-                return $type;
-            }
+            $counts[$type] = $this->model->getLikeCount($type);
         }
-
-        return null;
+        return $counts;
     }
 
     /**
@@ -162,15 +134,21 @@ class LikeReactions extends Component
     }
 
     /**
-     * Get reaction counts for all types
+     * Get user's current reaction
      */
-    public function getReactionCountsProperty(): array
+    public function getUserReactionProperty(): ?string
     {
-        $counts = [];
-        foreach ($this->availableTypes as $type) {
-            $counts[$type] = $this->model->getLikeCount($type);
+        if (!auth()->check()) {
+            return null;
         }
-        return $counts;
+
+        foreach ($this->availableTypes as $type) {
+            if ($this->model->likedBy(auth()->user(), $type)) {
+                return $type;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -228,6 +206,38 @@ class LikeReactions extends Component
     }
 
     /**
+     * Login required modal action
+     */
+    public function loginRequiredAction(): Action
+    {
+        return Action::make('loginRequired')
+            ->label('Login Required')
+            ->modalHeading('Authentication Required')
+            ->modalDescription('You need to log in to react to this content. Please sign in to continue.')
+            ->modalSubmitAction(false)
+            ->modalCancelAction(
+                Action::make('cancel')
+                    ->label('Cancel')
+                    ->color('gray')
+            )
+            ->extraModalFooterActions([
+                Action::make('login')
+                    ->label('Go to Login')
+                    ->color('primary')
+                    ->url(route('filament.admin.auth.login'))
+                    ->icon('heroicon-o-arrow-right-on-rectangle'),
+
+                Action::make('register')
+                    ->label('Create Account')
+                    ->color('success')
+                    ->url(route('filament.admin.auth.register'))
+                    ->icon('heroicon-o-user-plus')
+                    ->outlined(),
+            ])
+            ->closeModalByClickingAway(true);
+    }
+
+    /**
      * Get most popular reactions (top 3)
      */
     public function getTopReactionsProperty(): array
@@ -238,8 +248,41 @@ class LikeReactions extends Component
         return array_slice($counts, 0, 3, true);
     }
 
-    public function render()
+    public function render(): View
     {
         return view('livewire.parts.like-reactions');
+    }
+
+    /**
+     * Show reaction notification
+     */
+    private function showReactionNotification(string $type, string $result): void
+    {
+        $emoji = $this->getReactionEmoji($type);
+        $action = $result === 'liked' ? 'added' : 'removed';
+
+        Notification::make()
+            ->success()
+            ->title("Reaction {$action}")
+            ->body("You {$action} your {$emoji} reaction.")
+            ->duration(1500)
+            ->send();
+    }
+
+    /**
+     * Get reaction emoji
+     */
+    public function getReactionEmoji(string $type): string
+    {
+        return match ($type) {
+            'like' => '👍',
+            'love' => '❤️',
+            'laugh' => '😂',
+            'wow' => '😮',
+            'sad' => '😢',
+            'angry' => '😠',
+            'dislike' => '👎',
+            default => '👍',
+        };
     }
 }

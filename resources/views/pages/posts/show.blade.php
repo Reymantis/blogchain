@@ -1,4 +1,6 @@
 <x-app-layout :title="$post->title">
+
+   
     <x-parts.card>
         <div class="prose dark:prose-invert md:prose-xl mx-auto">
             <img src="{{ $post->getFirstMediaUrl('posts') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">
