@@ -11,8 +11,26 @@ class AppLayout extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public ?string $title = null)
+    public function __construct(
+        public ?string           $title = null,
+        public ?string           $description = null,
+        public array|string|null $keywords = null,
+    )
     {
+        $this->explodeKeywords($this->keywords);
+    }
+
+    protected function explodeKeywords($keywords): array
+    {
+        if (is_string($keywords)) {
+            return array_map('trim', explode(',', $keywords));
+        }
+
+        if (is_array($keywords)) {
+            return array_map('trim', $keywords);
+        }
+
+        return [];
     }
 
     /**

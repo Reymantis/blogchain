@@ -1,4 +1,4 @@
-<x-app-layout title="Home">
+<x-app-layout title="Home" description="Welcome to our platform, where innovation meets collaboration." keywords="home, platform, innovation, collaboration">
 
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
         <x-hero class="col-span-full"/>
@@ -13,7 +13,7 @@
 
         @endif
         <x-parts.card class="col-span-full space-y-3">
-            <x-text.heading as="h4"  class="mb-3">
+            <x-text.heading as="h4" class="mb-3">
                 About Our Platform
             </x-text.heading>
 
@@ -30,8 +30,8 @@
     </div>
 
 
-{{--    <x-slot name="rightSidebar">--}}
+    {{--    <x-slot name="rightSidebar">--}}
 
-{{--    </x-slot>--}}
+    {{--    </x-slot>--}}
 
 </x-app-layout>
