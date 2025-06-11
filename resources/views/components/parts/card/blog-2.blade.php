@@ -1,6 +1,7 @@
 @props([
     'post',
-    'loop' => null
+    'loop' => null,
+    'featurded' => false,
 ])
 @php
     //    dd($post);
@@ -11,7 +12,7 @@
         no-padding
         @class([
         'bg-white dark:bg-gray-800 rounded-lg  hover:shadow-lg h-full flex flex-col group',
-//        'col-span-2 row-span-2' => (boolean) $loop->first
+        'col-span-2 row-span-2' => (boolean) $loop->first
         ])
     >
         <div class="relative  ">
@@ -39,7 +40,7 @@
                         </button>
                     </x-parts.tooltip>
 
-                    <x-parts.tooltip text="Page views" position="left">
+                    <x-parts.tooltip text="{{ $post->visits->count() }} Page Views" position="left">
                         <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
                             <x-heroicon-s-eye class="size-4 "/>
                         </button>
