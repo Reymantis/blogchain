@@ -1,4 +1,4 @@
-<x-app-layout title="Tags">
+<x-app-layout title="Tags" description="Explore posts by tags.">
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
         <x-parts.card class="col-span-full flex justify-between">
             <x-text.heading as="h1" icon="heroicon-o-tag" class="!mb-0">

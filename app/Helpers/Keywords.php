@@ -2,21 +2,21 @@
 
 namespace App\Helpers;
 
-class ExplodeKeywords
+class Keywords
 {
     /**
-     * Explode and then implode keywords into a comma-separated string.
+     * Convert keywords to a comma-separated string.
      *
      * @param array|string|null $keywords
      * @return string
      */
     public static function toString(array|string|null $keywords): string
     {
-        return implode(', ', self::explode($keywords));
+        return implode(', ', self::toArray($keywords));
     }
 
     /**
-     * Explode keywords from a string or array.
+     * Convert keywords to an array, trimming each entry.
      *
      * @param array|string|null $keywords
      * @return array

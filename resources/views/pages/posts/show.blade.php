@@ -1,6 +1,9 @@
-<x-app-layout :title="$post->title">
+<x-app-layout :title="$post->title" :description="$post->description" :keywords="$post->tags">
+    <x-parts.card class="flex justify-between mb-3">
+        <div></div>
+        <x-button.back/>
+    </x-parts.card>
 
-   
     <x-parts.card>
         <div class="prose dark:prose-invert md:prose-xl mx-auto">
             <img src="{{ $post->getFirstMediaUrl('posts') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">

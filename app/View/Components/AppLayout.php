@@ -17,20 +17,6 @@ class AppLayout extends Component
         public array|string|null $keywords = null,
     )
     {
-        $this->explodeKeywords($this->keywords);
-    }
-
-    protected function explodeKeywords($keywords): array
-    {
-        if (is_string($keywords)) {
-            return array_map('trim', explode(',', $keywords));
-        }
-
-        if (is_array($keywords)) {
-            return array_map('trim', $keywords);
-        }
-
-        return [];
     }
 
     /**

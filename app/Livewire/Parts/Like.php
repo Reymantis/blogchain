@@ -20,6 +20,7 @@ class Like extends Component
     public string $size = 'size-6';
     public string $color = 'text-red-500';
     public string $buttonClass = '';
+    public bool $showConfetti = true; // New property to control confetti
 
     public function mount(
         Model  $model,
@@ -27,7 +28,8 @@ class Like extends Component
         bool   $showCount = true,
         string $size = 'size-6',
         string $color = 'text-red-500',
-        string $buttonClass = ''
+        string $buttonClass = '',
+        bool   $showConfetti = true
     ): void
     {
         $this->model = $model;
@@ -36,6 +38,7 @@ class Like extends Component
         $this->size = $size;
         $this->color = $color;
         $this->buttonClass = $buttonClass;
+        $this->showConfetti = $showConfetti;
     }
 
     public function likeModel(): void
@@ -54,18 +57,25 @@ class Like extends Component
         }
 
         $user = auth()->user();
+        $wasLiked = $this->model->likedBy($user, $this->likeType);
 
         try {
-            if ($this->model->likedBy($user, $this->likeType)) {
+            if ($wasLiked) {
                 // Unlike
                 $this->model->removeLike($user, $this->likeType);
-
                 $this->showSuccessNotification('Unliked', 'You have removed your like.');
             } else {
                 // Like
                 $this->model->addLike($user, $this->likeType);
-
                 $this->showSuccessNotification('Liked', 'Thank you for your reaction!');
+
+                // Trigger confetti effect only when liking (not unliking)
+                if ($this->showConfetti) {
+                    $this->dispatch('trigger-confetti', [
+                        'type' => $this->likeType,
+                        'buttonId' => 'like-button-' . $this->model->id . '-' . $this->likeType
+                    ]);
+                }
             }
 
             // Refresh the model to get updated counts
@@ -115,6 +125,14 @@ class Like extends Component
     public function getLikeCountProperty(): int
     {
         return $this->model->getLikeCount($this->likeType);
+    }
+
+    /**
+     * Get unique button ID for confetti targeting
+     */
+    public function getButtonIdProperty(): string
+    {
+        return 'like-button-' . $this->model->id . '-' . $this->likeType;
     }
 
     /**
@@ -170,7 +188,6 @@ class Like extends Component
             default => 'hover:text-red-600 hover:scale-105',
         };
     }
-
 
     public function render(): View
     {

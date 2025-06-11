@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use App\Helpers\Keywords; @endphp
+    <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
       x-data="{ rightSidebarOpen: false, leftSidebarOpen: false,  }" x-resize="rightSidebarOpen = true; leftSidebarOpen = true "
       class="min-h-screen scroll-smooth "
@@ -10,26 +11,26 @@
 
     <title>{{ isset($title) ? $title .' | '. config('app.name') : config('app.name')  }}</title>
     <meta name="title" content="{{  isset($title) ? $title .' | '. config('app.name') : config('app.name') }}">
-    <meta name="description" content="{{ isset($description) ? $description : 'Welcome to our platform, where innovation meets collaboration.' }}">
-    <meta name="keywords" content="{{ isset($keywords) ? $keywords : 'home, platform, innovation, collaboration' }}">
+    <meta name="description" content="{{ isset($description) ? $description : config('blogchain.description') }}">
+    <meta name="keywords" content="{{ isset($keywords) ? Keywords::toString($keywords) : config('blogchain.keywords') }}">
     <meta name="author" content="{{ config('app.name') }}">
     <meta name="robots" content="index, follow">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ Url::current() }}">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta name="title" content="{{  isset($title) ? $title .' | '. config('app.name') : config('app.name') }}">
     <meta property="og:title" content="{{  isset($title) ? $title .' | '. config('app.name') : config('app.name') }}">
-    <meta property="og:description" content="{{ isset($description) ? $description : 'Welcome to our platform, where innovation meets collaboration.' }}">
-    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg">
+    <meta property="og:description" content="{{ isset($description) ? $description : config('blogchain.description') }}">
+    <meta property="og:image" content="{{ config('blogchain.og-image') }}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="{{ Url::current() }}">
+    <meta name="twitter:url" content="{{ url()->current() }}">
     <meta name="title" content="{{  isset($title) ? $title .' | '. config('app.name') : config('app.name') }}">
     <meta name="twitter:title" content="{{  isset($title) ? $title .' | '. config('app.name') : config('app.name') }}">
-    <meta name="twitter:description" content="{{ isset($description) ? $description : 'Welcome to our platform, where innovation meets collaboration.' }}">
-    <meta name="twitter:image" content="https://www.yourwebsite.com/images/og-image.jpg">
+    <meta name="twitter:description" content="{{ isset($description) ? $description : config('blogchain.description') }}">
+    <meta name="twitter:image" content="{{ config('blogchain.og-image') }}">
 
     <!-- Canonical URL -->
     <link rel="canonical" href="{{ config('app.url') }}">

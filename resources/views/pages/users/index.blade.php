@@ -1,4 +1,5 @@
-<x-app-layout title="Contributors">
+<x-app-layout title="Contributors" description="Meet the contributors of our project.">
+
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 mb-4">
         <x-parts.card class="col-span-full flex justify-between">
             <x-text.heading as="h1" icon="heroicon-o-users" class="!mb-0">
