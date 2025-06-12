@@ -11,7 +11,7 @@
     <x-parts.card
         no-padding
         @class([
-        'bg-white dark:bg-gray-800 rounded-lg  hover:shadow-lg h-full flex flex-col group',
+        'rounded-lg  hover:shadow-lg h-full flex flex-col group',
         'col-span-2 row-span-2' => (boolean) $loop->first
         ])
     >
