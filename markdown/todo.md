@@ -1,14 +1,25 @@
 # TODO
 
 1. [ ] [Maak brand logo](#maak-logo)
-2. [ ] [Maak FAVICON](#maak-favicon)
-3. [ ] [Maak SEO meta tags](#seo-meta-tags)
-4. [ ] [Maak social media accounts](#maak-social-media-accounts)
+2. [ ] [Titles en Descriptions](#titles-en-descriptions)
+3. [ ] [Maak FAVICON](#maak-favicon)
+4. [ ] [Maak SEO meta tags](#seo-meta-tags)
+5. [ ] [Maak social media accounts](#maak-social-media-accounts)
+6. [ ] [Maak images vir default images](#maak-images-vir-default-images)
 
-# Maak Logo
+## Maak Logo
+
+Write Title end description vir page wat jy wil het moet in Google se search results wys.
+
+- Home page
+- About page
+- Contact Us page
+- Contributors page
 
 - create die logo in illustrator.
 - Stuur die logo in `.ai` formaat vir my.
+
+## Titles en Descriptions
 
 ## Maak Favicon
 
@@ -63,3 +74,11 @@ Hierdie tag word gebruik deur Open Graph platforms soos Facebook, LinkedIn, end 
 - Maak 'n LinkedIn page vir die blogchain. (Opsioneel)
 
 As jy klaar die social media accounts gemaak het, stuur die links vir my.
+
+## Maak images vir default images
+
+- Default image vir Open Graph.
+- Maak image vir default post image if null.
+- Maak default image vir default category image if null.
+
+> Al images moet 1200 x 800 pixels wees.
