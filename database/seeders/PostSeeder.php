@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Post;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class PostSeeder extends Seeder
@@ -12,6 +13,8 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory()->count(400)->create();
+        Post::factory()->times(400)
+            ->state(new Sequence(fn($sequence) => ['created_at' => now()->addDays($sequence->index)]))
+            ->create();
     }
 }

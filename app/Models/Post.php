@@ -42,7 +42,8 @@ class Post extends Model implements HasMedia, CanVisit
         'category_id',
         'user_id',
         'view_count',
-        'approved_at'
+        'approved_at',
+        'created_at'
     ];
 
     protected $casts = [

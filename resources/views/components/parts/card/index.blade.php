@@ -3,7 +3,7 @@
     'as' => 'div'
 ])
 @php
-    $classes = ' bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm shadow-black/10 ';
+    $classes = ' bg-white/85 dark:bg-gray-900/85 backdrop-blur-sm border border-gray-200 dark:border-gray-800 rounded-lg shadow-sm shadow-black/10 ';
     $classes .= $noPadding ? '' : ' p-6';
 @endphp
 

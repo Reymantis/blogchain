@@ -91,7 +91,7 @@
 
 </head>
 <body class="min-h-screen pt-20 bg-gray-50 max-w-full flex flex-col p-2 text-gray-800 gap-4 dark:text-gray-200
-dark:bg-gray-950 overflow-x-clip
+dark:bg-gray-950 overflow-x-clip bg-gradient-to-r from-white to-primary-100 dark:from-gray-900 dark:to-gray-950
 selection:bg-primary-400/50
 selection:text-primary-50">
 <x-navigation/>
