@@ -1,6 +1,6 @@
 <aside id="right-sidebar"
-       {{ $attributes->merge(['class' => 'w-[270px]  fixed z-40 lg:z-20  shrink-0 flex lg:relative transition-transform duration-300 ease-in-out
-              inset-y-0 -right-[280px]
+       {{ $attributes->merge(['class' => 'w-[240px]  fixed z-40 lg:z-20  shrink-0 flex lg:relative transition-transform duration-300 ease-in-out
+              inset-y-0 -right-[250px]
                lg:right-0']) }}
        :class="{'-translate-x-full shadow-2xl shadow-black': !rightSidebarOpen}"
        @click.away="rightSidebarOpen = true"
