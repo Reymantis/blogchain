@@ -42,6 +42,7 @@ class Post extends Model implements HasMedia, CanVisit
         'category_id',
         'user_id',
         'view_count',
+        'youtube_url',
         'approved_at',
         'created_at'
     ];

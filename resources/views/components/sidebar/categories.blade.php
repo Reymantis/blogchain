@@ -1,10 +1,9 @@
 <div class="sticky top-0 pb-12">
-
     <x-text.heading as="h4" icon="heroicon-o-folder-open">
         Categories Tree
     </x-text.heading>
     <ul class="marker:text-primary-500 text-sm">
-        @foreach($categories->sortBy('name')->toTree() as $category)
+        @foreach($categories->toTree() as $category)
             <li>
                 <a href="{{ route('categories.show', $category->slug) }}"
                     @class([

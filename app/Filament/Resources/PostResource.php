@@ -49,7 +49,7 @@ class PostResource extends Resource
                         Tabs\Tab::make('Featured Video')
                             ->icon('heroicon-o-film')
                             ->schema([
-                                Forms\Components\TextInput::make('Youtube URL')
+                                Forms\Components\TextInput::make('youtube_url')
                                     ->label('Youtube Video URL')
                                     ->required()
                                     ->columnSpanFull()
@@ -66,7 +66,6 @@ class PostResource extends Resource
                                                     '/youtube\.com\/v\/([a-zA-Z0-9_-]{11})/',
                                                     '/youtu\.be\/([a-zA-Z0-9_-]{11})/',
                                                 ];
-
                                                 $isValid = false;
                                                 foreach ($patterns as $pattern) {
                                                     if (preg_match($pattern, $value, $matches)) {
@@ -130,6 +129,7 @@ class PostResource extends Resource
                                     ->columnSpanFull(),
 
                                 Forms\Components\Toggle::make('live')
+                                    ->default(true)
                                     ->required(),
                             ]),
                         Tabs\Tab::make('SEO')
