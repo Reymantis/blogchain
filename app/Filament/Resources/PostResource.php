@@ -120,7 +120,9 @@ class PostResource extends Resource
                                     ->expandSelected(true)
                                     ->enableBranchNode(false)
                                     ->defaultOpenLevel(2)
-                                    ->relationship('category', 'name', 'parent_id')
+                                    ->relationship('category', 'name', 'parent_id', function ($query) {
+                                        return $query->where('live', true);
+                                    })
                                     ->required()
                                     ->searchable()
                                     ->columnSpanFull(),
