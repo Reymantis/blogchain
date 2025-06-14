@@ -4,11 +4,14 @@
         <x-button.back/>
     </x-parts.card>
 
-    <x-parts.card>
-        <div class="prose dark:prose-invert md:prose-xl mx-auto">
-            @if($post->hasMedia('posts'))
-                <img src="{{ $post->getFirstMediaUrl('posts') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">
+    <x-parts.card class="py-6">
+        <div class="prose dark:prose-invert md:prose-xl mx-auto prose-img:rounded-lg prose-img:shadow-md ">
+            @if($post->youtube_url)
+                <x-video.youtube :youtube_url="$post->youtube_url"/>
+            @elseif($post->hasMedia('posts'))
+                <img src="{{ $post->getFirstMediaUrl('posts', 'screen') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">
             @endif
+
             <h1 class="text-2xl font-bold">{{ $post->title }}</h1>
             <p class="text-sm text-gray-500">Published on {{ $post->created_at->format('F j, Y') }}</p>
             <div class="mt-4">

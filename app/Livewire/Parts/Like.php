@@ -17,7 +17,7 @@ class Like extends Component
 
     public string $likeType = 'like';
     public bool $showCount = true;
-    public string $size = 'size-6';
+    public string $size = 'size-3';
     public string $color = 'text-red-500';
     public string $buttonClass = '';
     public bool $showConfetti = true; // New property to control confetti
@@ -26,7 +26,7 @@ class Like extends Component
         Model  $model,
         string $likeType = 'like',
         bool   $showCount = true,
-        string $size = 'size-6',
+        string $size = 'size-5',
         string $color = 'text-red-500',
         string $buttonClass = '',
         bool   $showConfetti = true
