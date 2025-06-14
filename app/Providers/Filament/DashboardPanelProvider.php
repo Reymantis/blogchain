@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use Althinect\FilamentSpatieRolesPermissions\FilamentSpatieRolesPermissionsPlugin;
+use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -11,7 +12,6 @@ use Filament\Pages;
 use Filament\Pages\Auth\Register;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use GeoSot\FilamentEnvEditor\FilamentEnvEditorPlugin;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -32,16 +32,15 @@ class DashboardPanelProvider extends PanelProvider
             ->spa()
             ->id('admin')
             ->path('admin')
+//            ->brandName('test')
+            ->homeUrl('/')
+            ->defaultThemeMode(ThemeMode::Dark)
             ->login()
             ->registration(config('filament.registration_enabled') ? Register::class : null)
             ->passwordReset()
             ->emailVerification()
 //            ->profile()
             ->topbar(true)
-            ->colors([
-                'primary' => Color::Red,
-                'gray' => Color::Neutral,
-            ])
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->sidebarCollapsibleOnDesktop(false)

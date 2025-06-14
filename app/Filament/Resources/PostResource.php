@@ -24,6 +24,17 @@ class PostResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+
+    public static function getEloquentQuery(): Builder
+    {
+        return parent::getEloquentQuery()
+            ->where('user_id', auth()->id())
+            ->withoutGlobalScopes([
+                SoftDeletingScope::class,
+            ]);
+
+    }
+
     public static function form(Form $form): Form
     {
         return $form
@@ -121,7 +132,10 @@ class PostResource extends Resource
                                     ->enableBranchNode(false)
                                     ->defaultOpenLevel(2)
                                     ->relationship('category', 'name', 'parent_id', function ($query) {
-                                        return $query->where('live', true);
+                                        return $query->whereNotNull('live')
+                                            ->where('live', '<=', now())
+                                            ->withoutGlobalScopes()
+                                            ->orderBy('name');
                                     })
                                     ->required()
                                     ->searchable()
@@ -225,14 +239,5 @@ class PostResource extends Resource
 //            'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
-    }
-
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()
-            ->where('user_id', auth()->id())
-            ->withoutGlobalScopes([
-                SoftDeletingScope::class,
-            ]);
     }
 }

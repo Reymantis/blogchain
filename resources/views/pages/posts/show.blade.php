@@ -19,4 +19,8 @@
             </div>
         </div>
     </x-parts.card>
+
+    <x-slot name="rightSidebar">
+        <x-parts.card.user :user="$post->user" class="mb-3"/>
+    </x-slot>
 </x-app-layout>

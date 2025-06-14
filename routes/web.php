@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', HomePageController::class)->name('home');
-//Route::view('/', 'test-layout')->name('test-layout');
+
 
 Route::view('/about-us', 'pages.about-us')->name('about-us');
 Route::view('/contact-us', 'pages.contact-us')->name('contact-us');

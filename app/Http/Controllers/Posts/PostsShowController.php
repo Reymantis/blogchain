@@ -15,7 +15,14 @@ class PostsShowController extends Controller
     public function __invoke(Category $category, Post $post): View
     {
         $post->visit();
-        $post->load('user', 'media', 'tags');
+        // Load user with posts count
+        $post->load([
+            'user' => function ($query) {
+                $query->withCount('posts');
+            },
+            'media',
+            'tags'
+        ]);
         return view('pages.posts.show', compact('category', 'post'));
     }
 }

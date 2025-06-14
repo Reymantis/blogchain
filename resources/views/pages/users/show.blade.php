@@ -11,6 +11,6 @@
         {{--        <livewire:blog-posts-chart class="mb-4 "/>--}}
         {{--        <livewire:blog-posts-chart class="mb-4 "/>--}}
     </div>
-    {{--    <livewire:user-stats :user="$user" class="mb-4"/>--}}
+    <livewire:user-stats :user="$user" class="mb-4"/>
 
 </x-app-layout>

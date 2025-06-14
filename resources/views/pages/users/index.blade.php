@@ -10,10 +10,14 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 ">
         @foreach($users as $user)
-            <a wire:navigate href="{{ route('users.show', $user) }}" class="hover:scale-105 rounded-md shadow hover:shadow-lg hover:shadow-primary-500/25
+            <x-parts.card>
+
+                <a wire:navigate href="{{ route('users.show', $user) }}" class="hover:scale-105 rounded-md shadow hover:shadow-lg hover:shadow-primary-500/25
             transition-all">
-                <x-parts.card.user :user="$user"/>
-            </a>
+                    <x-parts.card.user :user="$user"/>
+                </a>
+            </x-parts.card>
+
         @endforeach
         {{ $users->links() }}
     </div>
