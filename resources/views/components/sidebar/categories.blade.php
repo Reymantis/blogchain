@@ -14,7 +14,7 @@
                           request()->routeIs('categories.show') && request()->route('category')->is($category),
                       ])>
                     <span>{{ $category->name }}</span>
-                    {{--                    <small class="text-xs  text-black/25 dark:text-white/25">({{ $category->children_count }})</small>--}}
+
                 </a>
                 @if($category->children)
                     <ul class="list-outside list-circle pl-2">
@@ -32,9 +32,9 @@
                                     <span>
                                     {{ $child->name }}
                                     </span>
-                                    <x-parts.tooltip text="Articles Count" arrow position="left">
-                                        <small class="text-xs  text-black/25 dark:text-white/25">({{ $child->posts_count }})</small>
-                                    </x-parts.tooltip>
+                                    {{--                                    <x-parts.tooltip text="Articles Count" arrow position="left">--}}
+                                    {{--                                        <small class="text-xs  text-black/25 dark:text-white/25">({{ $child->posts_count }})</small>--}}
+                                    {{--                                    </x-parts.tooltip>--}}
                                 </a>
                             </li>
                         @endforeach

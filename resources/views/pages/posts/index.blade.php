@@ -1,6 +1,6 @@
 <x-app-layout :title="$category->name">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
         <x-parts.card class="col-span-full justify-between flex">
             <div>
                 <x-text.heading as="h1" icon="heroicon-o-folder" class="!mb-0">

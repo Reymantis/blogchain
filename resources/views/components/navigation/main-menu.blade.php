@@ -4,7 +4,7 @@
     @foreach($menu as $item)
         @if(!$item->children)
             <a @class([
-                'px-4 py-2 hover:bg-gray-500/15 rounded-md',
+                'px-4 py-2 hover:bg-gray-500/15 rounded-md whitespace-nowrap',
                 'bg-gray-500/15 text-primary-500 dark:text-white' => request()->routeIs($item->route),
         ])
                wire:navigate href="{{ route($item->route) }}">

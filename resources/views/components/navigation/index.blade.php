@@ -4,7 +4,7 @@
     <x-parts.card class="py-3" x-data="{menuOpen: false}">
         <div class="flex justify-between items-center">
             <div class="flex items-center">
-                <div class="h-6 relative lg:w-[275px]">
+                <div class="h-6 relative mr-5">
                     <a wire:navigate class="flex text-xl font-bold leading-5 align-bottom tracking-tight text-gray-950 dark:text-white"
                        href="{{ route('home') }}">
                         {{ config('app.name') }}

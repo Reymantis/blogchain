@@ -1,6 +1,6 @@
 <x-app-layout title="Home">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-3 gap-4 ">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 ">
         <x-hero class="col-span-full"/>
         @if($posts)
             @foreach($posts as $post)
@@ -10,7 +10,6 @@
                     <x-parts.card class="col-span-1 md:col-span-2 2xl:col-span-3">Ads</x-parts.card>
                 @endif
             @endforeach
-
         @endif
         <x-parts.card class="col-span-full space-y-3">
             <x-text.heading as="h4" class="mb-3">

@@ -17,49 +17,52 @@
     >
         <div class="relative  ">
             <div class="flex p-2 gap-2">
-                <div class="aspect-video flex-1">
-                    <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}">
+                @if($post->hasMedia('posts'))
+                    <div class="aspect-video flex-1">
+
                         <img
-                            src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
+                            src="{{ $post->getFirstMediaUrl('posts', 'card') }}"
                             alt="Image for {{ $post->title }} blog post"
                             class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
                         />
-                    </a>
-                </div>
-                <div class="w-12 rounded-lg bg-gray-50 dark:bg-gray-800/50 p-2 border border-gray-200 dark:border-gray-800">
+                        <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}">
+                            <img
+                                src="{{ $post->getFirstMediaUrl('posts', 'card') }}"
+                                alt="Image for {{ $post->title }} blog post"
+                                class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
+                            />
+                        </a>
+                    </div>
+                    <div class="w-12 rounded-lg bg-gray-50 dark:bg-gray-800/50 p-2 border border-gray-200 dark:border-gray-800">
 
-                    <x-parts.tooltip text="Bookmark" position="left">
-                        <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
-                            <x-heroicon-s-bookmark-slash class="size-4"/>
-                        </button>
-                    </x-parts.tooltip>
+                        <x-parts.tooltip text="Bookmark" position="left">
+                            <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
+                                <x-heroicon-s-bookmark-slash class="size-4"/>
+                            </button>
+                        </x-parts.tooltip>
 
-                    <x-parts.tooltip text="Share" position="left">
-                        <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
-                            <x-heroicon-s-share class="size-4 "/>
-                        </button>
-                    </x-parts.tooltip>
+                        <x-parts.tooltip text="Share" position="left">
+                            <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
+                                <x-heroicon-s-share class="size-4 "/>
+                            </button>
+                        </x-parts.tooltip>
 
-                    <x-parts.tooltip text="{{ $post->visits->count() }} Page Views" position="left">
-                        <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
-                            <x-heroicon-s-eye class="size-4 "/>
-                        </button>
-                    </x-parts.tooltip>
+                        <x-parts.tooltip text="{{ $post->visits->count() }} Page Views" position="left">
+                            <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
+                                <x-heroicon-s-eye class="size-4 "/>
+                            </button>
+                        </x-parts.tooltip>
 
-                    <x-parts.tooltip :text="'Reading time ' . $post->estimatedReadTime . ' ' . Str::plural('minute', $post->estimatedReadTime)" position="left">
-                        <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
-                            <x-heroicon-o-clock class="size-4 "/>
-                        </button>
-                    </x-parts.tooltip>
+                        <x-parts.tooltip :text="'Reading time ' . $post->estimatedReadTime . ' ' . Str::plural('minute', $post->estimatedReadTime)"
+                                         position="left">
+                            <button class="aspect-square w-full hover:bg-gray-500/20 rounded-lg grid place-content-center text-gray-500">
+                                <x-heroicon-o-clock class="size-4 "/>
+                            </button>
+                        </x-parts.tooltip>
 
-                </div>
+                    </div>
+                @endif
             </div>
-
-            @if($loop->first)
-                {{--        <div class="absolute top-4 left-4">--}}
-                {{--            <span class="bg-yellow-500 text-black px-3 py-1 rounded-full text-sm font-bold">LATEST</span>--}}
-                {{--        </div>--}}
-            @endif
         </div>
 
         <div class="p-6 flex-1 flex flex-col">
@@ -90,11 +93,11 @@
             </span>
                     </div>
                 </x-parts.tooltip>
-                <div class="flex space-x-3">
+                <div class="flex space-x-3 text-xs">
 
                     <x-parts.tooltip text="Post unique views" position="top">
                         <div class="flex space-x-2 items-center">
-                            <x-heroicon-s-eye class="size-6 text-gray-500"/>
+                            <x-heroicon-s-eye class="size-5 text-gray-500"/>
                             <span>
                                  {{ $post->visits->count() }}
                             </span>
