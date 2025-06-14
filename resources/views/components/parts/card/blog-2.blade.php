@@ -19,15 +19,9 @@
             <div class="flex p-2 gap-2">
                 @if($post->hasMedia('posts'))
                     <div class="aspect-video flex-1">
-
-                        <img
-                            src="{{ $post->getFirstMediaUrl('posts', 'card') }}"
-                            alt="Image for {{ $post->title }} blog post"
-                            class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
-                        />
                         <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}">
                             <img
-                                src="{{ $post->getFirstMediaUrl('posts', 'card') }}"
+                                src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
                                 alt="Image for {{ $post->title }} blog post"
                                 class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
                             />
