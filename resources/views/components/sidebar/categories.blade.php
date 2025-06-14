@@ -4,7 +4,7 @@
         Categories Tree
     </x-text.heading>
     <ul class="marker:text-primary-500 text-sm">
-        @foreach($categories->toTree() as $category)
+        @foreach($categories->sortBy('name')->toTree() as $category)
             <li>
                 <a href="{{ route('categories.show', $category->slug) }}"
                     @class([
@@ -14,7 +14,6 @@
                           request()->routeIs('categories.show') && request()->route('category')->is($category),
                       ])>
                     <span>{{ $category->name }}</span>
-
                 </a>
                 @if($category->children)
                     <ul class="list-outside list-circle pl-2">

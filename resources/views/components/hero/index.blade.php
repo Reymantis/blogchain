@@ -2,6 +2,5 @@
  ']) }}>
     <div class="max-w-2xl space-y-4 mb-3">
         <h1 class="text-6xl font-bold text-shadow-sm text-shadow-black/25">{{ config('app.name') }}</h1>
-
     </div>
 </x-parts.card>

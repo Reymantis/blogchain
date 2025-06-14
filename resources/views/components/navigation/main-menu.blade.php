@@ -30,7 +30,7 @@
                             ])
                         >
                             <span>{{ $child['name'] }}</span>
-                            <small class="float-right text-xs text-black/25 dark:text-white/25">({{ $child['children_count'] }})</small>
+                            {{--                            <small class="float-right text-xs text-black/25 dark:text-white/25">({{ $child['children_count'] }})</small>--}}
                         </x-filament::dropdown.list.item>
                     @endforeach
                 </x-filament::dropdown.list>
