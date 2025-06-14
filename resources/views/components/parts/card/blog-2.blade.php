@@ -12,7 +12,7 @@
         no-padding
         @class([
         'rounded-lg  hover:shadow-lg h-full flex flex-col group',
-//        'col-span-2 row-span-2' => (boolean) $loop->first
+        'col-span-2 row-span-2' => (boolean) $loop->first
         ])
     >
         <div class="relative  ">
