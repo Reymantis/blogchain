@@ -5,7 +5,7 @@
 3. [ ] [Maak FAVICON](#maak-favicon)
 4. [ ] [Maak SEO meta tags](#seo-meta-tags)
 5. [ ] [Maak social media accounts](#maak-social-media-accounts)
-6. [ ] [Maak images vir default images](#maak-images-vir-default-images)
+6. [x] [Maak images vir default images](#maak-images-vir-default-images)
 
 ## Maak Logo
 
@@ -51,7 +51,7 @@ Hierdie tag word gebruik deur Open Graph platforms soos Facebook, LinkedIn, end 
 
 ### Grootte:
 
-- **1200 x 630 pixels** (width x heigt)
+- **1200 x 800 pixels** (width x heigt)
 - **Aspekverhouding**: 1.91:1
 - **Minimum grootte**: 600 x 315 pixels
 - **Maksimum lêergrootte**: 5MB
@@ -60,7 +60,7 @@ Hierdie tag word gebruik deur Open Graph platforms soos Facebook, LinkedIn, end 
 
 ### Best Practices
 
-- Gebruik 'n beeld van ten minste **1200 x 630 pixels** vir optimale vertoning op toestelle met hoë resolusie
+- Gebruik 'n beeld van ten minste **1200 x 800 pixels** vir optimale vertoning op toestelle met hoë resolusie
 - Maak seker die beeld lyk goed wanneer dit na verskillende aspekverhoudings gesny word (sommige platforms sny die beeld)
 - Gebruik 'n visueel aantreklike beeld met minimale teks  
   (teks kan gesny word of moeilik wees om te lees)
