@@ -8,7 +8,7 @@ export default {
     theme: {
         extend: {
             colors: {
-                primary: colors.red,
+                primary: colors.sky,
                 gray: colors.neutral
             },
             listStyleType: {
