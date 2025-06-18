@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5d88d113a270d89263e9595a30d09a14",
+    "content-hash": "7c3ee742f6ef3a3cb172a25a7084b8aa",
     "packages": [
         {
             "name": "althinect/filament-spatie-roles-permissions",

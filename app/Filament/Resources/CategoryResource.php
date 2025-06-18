@@ -73,6 +73,7 @@ class CategoryResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->reorderable('order_column')
             ->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('image')
                     ->collection('categories')
@@ -81,9 +82,17 @@ class CategoryResource extends Resource
                     ->size(42),
 
                 Tables\Columns\TextColumn::make('name')
+                    ->sortable()
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('slug')
+                    ->sortable()
+                    ->searchable(),
+
+                Tables\Columns\TextInputColumn::make('order_column')
+                    ->type('number')
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true)
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('parent.name')
