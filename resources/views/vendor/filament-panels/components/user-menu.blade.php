@@ -28,7 +28,7 @@
             type="button"
             class="shrink-0"
         >
-            
+
             <x-filament-panels::avatar.user :user="$user"/>
         </button>
     </x-slot>
@@ -65,7 +65,7 @@
             <x-filament::dropdown.list.item
                 icon="heroicon-s-home"
                 href="{{ route('home') }}"
-                tag="a" wire:navigate="true">
+                tag="a" wire:navigate="false">
                 Home
             </x-filament::dropdown.list.item>
         </x-filament::dropdown.list>
