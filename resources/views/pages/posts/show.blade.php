@@ -5,7 +5,7 @@
     </x-parts.card>
 
     <x-parts.card class="py-6">
-        <div class="prose dark:prose-invert md:prose-xl mx-auto prose-img:rounded-lg prose-img:shadow-md ">
+        <div class="prose dark:prose-invert  mx-auto prose-img:rounded-lg prose-img:shadow-md ">
             @if($post->youtube_url)
                 <x-video.youtube :youtube_url="$post->youtube_url"/>
             @elseif($post->hasMedia('posts'))
