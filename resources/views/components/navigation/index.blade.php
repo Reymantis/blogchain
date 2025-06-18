@@ -15,22 +15,22 @@
 
             <div class="flex space-x-3 items-center">
                 <x-parts.tooltip position="bottom" text="Write a new article" arrow>
-                    <a class="px-4 py-2 flex items-center text-sm font-semibold text-shadow-sm text-shadow-black/10  text-white bg-primary-500
+                    <a class="px-4 py-2 items-center hidden lg:flex text-sm font-semibold text-shadow-sm text-shadow-black/10  text-white bg-primary-500
                 hover:bg-primary-400
                 rounded-md"
                        href="{{ route('filament.admin.resources.posts.create') }}">
                         <x-heroicon-o-plus class="inline size-5 "/>
-                        <span class="hidden lg:inline-block">Write Article</span>
+                        <span>Write Article</span>
                     </a>
                 </x-parts.tooltip>
                 @if (filament()->auth()->check())
                     <x-filament-panels::user-menu/>
                 @else
-                    <a wire:navigate class="px-4 py-2 text-sm hover:bg-primary-500 hover:text-white rounded-md"
+                    <a wire:navigate class="px-4 hidden md:inline-block py-2 text-sm hover:bg-primary-500 hover:text-white rounded-md"
                        href="{{ route('filament.admin.auth.login') }}">
                         Sign In
                     </a>
-                    <a wire:navigate class="px-4 py-2 text-sm hover:bg-primary-500 hover:text-white rounded-md"
+                    <a wire:navigate class="px-4 hidden md:inline-block py-2 text-sm hover:bg-primary-500 hover:text-white rounded-md"
                        href="{{ route('filament.admin.auth.register')
                 }}">
                         Register
