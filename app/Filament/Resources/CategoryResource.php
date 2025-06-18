@@ -96,6 +96,7 @@ class CategoryResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('parent.name')
+                    ->sortable()
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('posts_count')
