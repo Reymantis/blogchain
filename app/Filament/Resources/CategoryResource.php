@@ -103,7 +103,7 @@ class CategoryResource extends Resource
                     ->alignCenter()
                     ->verticallyAlignCenter()
                     ->counts('posts')
-                    ->searchable(),
+                ,
 
                 Tables\Columns\ColorColumn::make('color')
                     ->searchable()
