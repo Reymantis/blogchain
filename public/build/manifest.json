@@ -1,11 +1,15 @@
 {
   "resources/css/app.css": {
+<<<<<<< HEAD
+    "file": "assets/app-BY6P8k-q.css",
+=======
     "file": "assets/app-CStit58c.css",
+>>>>>>> origin/main
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-BxgBVy_M.js",
+    "file": "assets/app-BXMEV1iY.js",
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

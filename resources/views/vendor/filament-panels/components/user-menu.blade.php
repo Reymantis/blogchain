@@ -77,7 +77,7 @@
             <x-filament::dropdown.list.item
                 icon="heroicon-s-square-3-stack-3d"
                 href="{{ route('filament.admin.pages.dashboard') }}"
-                tag="a" wire:navigate="true">
+                tag="a" wire:navigate="false">
                 Dashboard
             </x-filament::dropdown.list.item>
         </x-filament::dropdown.list>
