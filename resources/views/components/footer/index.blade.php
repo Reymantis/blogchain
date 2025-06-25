@@ -24,15 +24,9 @@
             <div>
                 <ul class="space-y-2">
                     <li>
-                        <a href="#">Customer Support Information</a>
-                        
-                    </li>
-                    <li>
-                        <a href="#">FAQs</a>
-                        
-                    </li>
+
                 </ul>
-                
+
             </div>
             <div>
                 <ul class="space-y-2">
@@ -53,7 +47,7 @@
                     </li>
                 </ul>
             </div>
-            
+
         </div>
     </x-parts.card>
 </footer>

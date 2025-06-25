@@ -14,12 +14,14 @@ use Filament\Tables\Table;
 class AdminPostResource extends Resource
 {
     protected static ?string $model = Post::class;
-
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
     protected static ?string $navigationGroup = 'Admin';
-
     protected static ?string $navigationLabel = 'Approve Posts';
+
+    public static function shouldRegisterNavigation(): bool
+    {
+        return auth()->user()->hasRole('Super Admin');
+    }
 
     public static function form(Form $form): Form
     {

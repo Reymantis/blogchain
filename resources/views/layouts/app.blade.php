@@ -49,7 +49,7 @@
     <!-- Styles / Scripts -->
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @livewireStyles
+    {{--    @livewireStyles--}}
 
     <style>
         [x-cloak] {
@@ -59,39 +59,44 @@
 
     @filamentStyles
     @include('cookie-consent::cookie-consent-head')
+    
+    <script>
+        const applyTheme = (theme) => {
+            if (theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark'); // Or 'system' if you want to persist that choice
+            } else {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light'); // Or 'system'
+            }
+        };
 
-
-    @if (! filament()->hasDarkMode())
-        <script>
-            localStorage.setItem('theme', 'light')
-        </script>
-    @elseif (filament()->hasDarkModeForced())
-        <script>
-            localStorage.setItem('theme', 'dark')
-        </script>
-    @else
-        <script>
-            const loadDarkMode = () => {
-                // Respect existing theme selection if it exists
-                window.theme = localStorage.getItem('theme') ?? @js(filament()->getDefaultThemeMode()->value)
-
-                    // Ensure the theme is always saved to localStorage
-                    localStorage.setItem('theme', window.theme)
-
-                if (
-                    window.theme === 'dark' ||
-                    (window.theme === 'system' &&
-                        window.matchMedia('(prefers-color-scheme: dark)').matches)
-                ) {
-                    document.documentElement.classList.add('dark')
+        const initializeTheme = () => {
+            let theme = localStorage.getItem('theme');
+            if (!theme) {
+                // If no theme in localStorage, check system preference
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    theme = 'dark';
                 } else {
-                    document.documentElement.classList.remove('dark')
+                    theme = 'light'; // Default to light if no system preference for dark
                 }
             }
-            loadDarkMode()
-            document.addEventListener('livewire:navigated', loadDarkMode)
-        </script>
-    @endif
+            // Set window.theme for any Alpine components that might use it directly,
+            // though it's better for them to react to the class on <html> or localStorage changes.
+            window.theme = theme;
+            applyTheme(theme);
+        };
+
+        initializeTheme();
+        document.addEventListener('livewire:navigated', initializeTheme);
+
+        // Optional: Listen for changes in system theme preference
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (localStorage.getItem('theme') === 'system' || !localStorage.getItem('theme')) { // Only if user hasn't set a firm preference
+                initializeTheme(); // Re-evaluate and apply
+            }
+        });
+    </script>
 
 
 </head>
@@ -114,8 +119,8 @@ selection:text-primary-50">
 <x-footer/>
 <x-navigation.mobile-native/>
 @livewire('notifications')
-@livewireScriptConfig
 @filamentScripts
+@livewireScriptConfig
 @include('cookie-consent::cookie-consent-body')
 </body>
 </html>

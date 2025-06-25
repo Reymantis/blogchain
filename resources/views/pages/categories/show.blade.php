@@ -19,7 +19,6 @@
             </div>
             <x-button.back/>
         </x-parts.card>
-
         @if($posts->count())
             @foreach($posts as $post)
                 <x-parts.card.blog-2 :$post :$loop/>
@@ -28,8 +27,5 @@
             <x-parts.categories.not-found :category="$category"/>
         @endif
         {{ $posts->links() }}
-
     </div>
-
-
 </x-app-layout>
