@@ -105,7 +105,7 @@ dark:bg-gray-950 overflow-x-clip dark:from-gray-900 dark:to-gray-950
 selection:bg-primary-400/50
 selection:text-primary-50">
 
-<div x-show="loading" class="grid fixed inset-0 z-[1000] bg-gray-50 dark:bg-gray-900  place-items-center overflow-clip ">
+<div x-data="loader()" x-show="isVisible" class="grid fixed inset-0 z-[1000] bg-gray-50 dark:bg-gray-900  place-items-center overflow-clip ">
     <svg class="w-16 h-16 animate-spin-fast text-gray-900/50 dark:text-primary-200" viewBox="0 0 64 64" fill="none"
          xmlns="http://www.w3.org/2000/svg" width="24" height="24">
         <path
@@ -139,17 +139,37 @@ selection:text-primary-50">
 
 
 <script>
-    document.addEventListener('livewire:init', function () {
-        let loading = false;
+    function loader() {
+        return {
+            isVisible: false,
+            minDelayTimer: null,
 
-        window.Livewire.on('start-loading', () => loading = true);
-        window.Livewire.on('stop-loading', () => loading = false);
+            showLoader() {
+                this.isVisible = true;
+            },
 
-        window.Alpine.data('loader', () => ({
-            get loading() {
-                return loading
+            hideLoader() {
+                // Clear previous timeout (if any)
+                if (this.minDelayTimer) clearTimeout(this.minDelayTimer);
+
+                // Set minimum delay of 2 seconds before hiding
+                this.minDelayTimer = setTimeout(() => {
+                    this.isVisible = false;
+                }, 2000);
             }
-        }));
+        };
+    }
+
+    document.addEventListener('livewire:init', () => {
+        const loaderInstance = loader();
+
+        window.Livewire.on('start-loading', () => {
+            loaderInstance.showLoader();
+        });
+
+        window.Livewire.on('stop-loading', () => {
+            loaderInstance.hideLoader();
+        });
     });
 </script>
 </body>
