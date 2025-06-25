@@ -15,8 +15,10 @@ export default {
                 square: 'square',
                 circle: 'circle',
                 roman: 'upper-roman',
+            },
+            animation: {
+                'spin-fast': 'spin 0.5s linear infinite',
             }
-
         },
     },
     content: [
