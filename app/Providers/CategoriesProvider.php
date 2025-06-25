@@ -22,7 +22,7 @@ class CategoriesProvider extends ServiceProvider
     {
         $this->app->singleton('categories', function () {
             return cache()->remember('categories.all', config('cache.time_to_live'), function () {
-                return Category::withCount(['posts', 'children'])->get();
+                return Category::withCount(['posts', 'children'])->orderBy('order_column', 'asc')->get();
             });
         });
 

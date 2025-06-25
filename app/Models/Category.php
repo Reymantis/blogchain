@@ -25,13 +25,19 @@ class Category extends Model implements HasMedia
     use Live;
     use NodeTrait;
 
+    public array $sortable = [
+        'order_column_name' => 'order_column',
+        'sort_when_creating' => true,
+    ];
+
     protected $fillable = [
         'name',
         'slug',
         'description',
         'color',
         'live',
-        'parent_id'
+        'parent_id',
+        'order_column'
     ];
 
     protected $casts = [

@@ -12,5 +12,6 @@
                 <livewire:forms.contact-us/>
             </div>
         </x-parts.card>
+        
     </div>
 </x-app-layout>

@@ -30,6 +30,7 @@
         "opcodesio/log-viewer": "^3.17",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "shuvroroy/filament-spatie-laravel-health": "^2.3",
+        "spatie/eloquent-sortable": "^4.5",
         "tangodev-it/filament-emoji-picker": "^1.0"
     },
     "require-dev": {
