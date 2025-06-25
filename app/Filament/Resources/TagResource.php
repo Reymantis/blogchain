@@ -19,6 +19,12 @@ class TagResource extends Resource
 
     protected static ?string $navigationGroup = 'Admin';
 
+    public static function canCreate(): bool
+    {
+        return false;
+    }
+    
+
     public static function shouldRegisterNavigation(): bool
     {
         return auth()->user()->hasRole('Super Admin');
@@ -35,6 +41,9 @@ class TagResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->headerActions([
+
+            ])
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->sortable()
@@ -56,9 +65,7 @@ class TagResource extends Resource
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                Tables\Actions\DeleteBulkAction::make(),
             ]);
     }
 
@@ -73,8 +80,6 @@ class TagResource extends Resource
     {
         return [
             'index' => Pages\ListTags::route('/'),
-//            'create' => Pages\CreateTag::route('/create'),
-//            'edit' => Pages\EditTag::route('/{record}/edit'),
         ];
     }
 }
