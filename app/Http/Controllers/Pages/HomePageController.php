@@ -16,9 +16,9 @@ class HomePageController extends Controller
     public function __invoke(): View
     {
         $posts = Cache::remember('front-page.posts', config('cache.time_to_live'), fn() => Post::with('user', 'media', 'category')
-//            ->orderBy('view_count','asc')
+        //    ->orderBy('view_count','asc')
             ->latest()
-            ->get()->take(6));
+            ->get()->take(9));
         return view('pages.home', compact('posts'));
     }
 }
