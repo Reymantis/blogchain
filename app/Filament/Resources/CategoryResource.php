@@ -74,6 +74,7 @@ class CategoryResource extends Resource
     {
         return $table
             ->reorderable('order_column')
+            ->defaultSort('order_column', 'asc')
             ->columns([
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('image')
                     ->collection('categories')
@@ -125,7 +126,7 @@ class CategoryResource extends Resource
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
-                
+
             ])
             ->actions([
 //                Tables\Actions\ViewAction::make(),

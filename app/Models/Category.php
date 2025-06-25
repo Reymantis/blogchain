@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Kalnoy\Nestedset\NodeTrait;
+use Spatie\EloquentSortable\SortableTrait;
 use Spatie\Image\Enums\CropPosition;
 use Spatie\Image\Enums\Fit;
 use Spatie\MediaLibrary\HasMedia;
@@ -24,6 +25,7 @@ class Category extends Model implements HasMedia
     use InteractsWithMedia;
     use Live;
     use NodeTrait;
+    use SortableTrait;
 
     public array $sortable = [
         'order_column_name' => 'order_column',
