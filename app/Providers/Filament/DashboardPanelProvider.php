@@ -29,7 +29,7 @@ class DashboardPanelProvider extends PanelProvider
     {
         return $panel
             ->default()
-            // ->spa()
+            ->spa()
             ->id('admin')
             ->path('admin')
 //            ->brandName('test')

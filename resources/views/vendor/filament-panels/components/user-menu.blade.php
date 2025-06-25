@@ -65,7 +65,8 @@
             <x-filament::dropdown.list.item
                 icon="heroicon-s-home"
                 href="{{ route('home') }}"
-                tag="a" wire:navigate="false">
+                wire.navigate.hover
+                tag="a">
                 Home
             </x-filament::dropdown.list.item>
         </x-filament::dropdown.list>
@@ -77,7 +78,8 @@
             <x-filament::dropdown.list.item
                 icon="heroicon-s-square-3-stack-3d"
                 href="{{ route('filament.admin.pages.dashboard') }}"
-                tag="a" wire:navigate="false">
+                wire.navigate.hover
+                tag="a">
                 Dashboard
             </x-filament::dropdown.list.item>
         </x-filament::dropdown.list>
