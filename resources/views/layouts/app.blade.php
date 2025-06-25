@@ -149,10 +149,10 @@ selection:text-primary-50">
             },
 
             hideLoader() {
-                // Clear previous timeout (if any)
+                // Clear any previous timeout
                 if (this.minDelayTimer) clearTimeout(this.minDelayTimer);
 
-                // Set minimum delay of 2 seconds before hiding
+                // Force minimum 2s display time
                 this.minDelayTimer = setTimeout(() => {
                     this.isVisible = false;
                 }, 2000);
@@ -163,11 +163,13 @@ selection:text-primary-50">
     document.addEventListener('livewire:init', () => {
         const loaderInstance = loader();
 
-        window.Livewire.on('start-loading', () => {
+        // Show loader when Livewire starts navigating
+        window.Livewire.on('navigate', () => {
             loaderInstance.showLoader();
         });
 
-        window.Livewire.on('stop-loading', () => {
+        // Hide loader after Livewire has rendered new page content
+        window.Livewire.on('navigated', () => {
             loaderInstance.hideLoader();
         });
     });
