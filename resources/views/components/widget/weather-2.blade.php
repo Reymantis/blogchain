@@ -14,7 +14,7 @@
         </div>
     </template>
 
-    <template x-if="weather && locationName">
+    <template x-if="true">
 
         <div class="flex items-center gap-2 mb-4">
             <x-heroicon-s-map-pin class="size-4 "/>
