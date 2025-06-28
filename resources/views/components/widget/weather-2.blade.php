@@ -11,12 +11,11 @@
                 <x-heroicon-o-map-pin class="size-4 "/>
                 <span class="text-sm font-medium" x-text="error"></span>
             </div>
-            {{--            <button class="px-4 py-2 bg-primary-500 rounded-md" @click="getLocation()">Try Again</button>--}}
         </div>
-
     </template>
 
     <template x-if="weather && locationName">
+
         <div class="flex items-center gap-2 mb-4">
             <x-heroicon-s-map-pin class="size-4 "/>
             <span class="text-sm font-medium text-white/90" x-text="locationName"></span>

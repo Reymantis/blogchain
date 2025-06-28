@@ -13,10 +13,8 @@ function weatherWidget() {
                 this.loading = false;
                 return;
             }
-
             this.loading = true;
             this.error = null;
-
             try {
                 const position = await new Promise((resolve, reject) => {
                     navigator.geolocation.getCurrentPosition(resolve, reject, {
@@ -41,13 +39,12 @@ function weatherWidget() {
 
         async getWeather(lat, lon) {
             const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
-
             try {
                 const res = await fetch(url);
                 const data = await res.json();
                 this.weather = data.current_weather;
                 this.setWeatherIcon(data.current_weather.weathercode);
-                console.log(data);
+                console.log(data, this.weatherCondition, this.weatherIcon);
             } catch (err) {
                 this.error = "Failed to load weather.";
             }
