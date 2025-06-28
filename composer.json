@@ -28,6 +28,7 @@
         "mavinoo/laravel-batch": "*",
         "mohammadhprp/filament-ip-to-country-flag-column": "^1.0",
         "opcodesio/log-viewer": "^3.17",
+        "owenvoke/blade-entypo": "^2.3",
         "shuvroroy/filament-spatie-laravel-backup": "^2.2",
         "shuvroroy/filament-spatie-laravel-health": "^2.3",
         "spatie/eloquent-sortable": "^4.5",
@@ -96,6 +97,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

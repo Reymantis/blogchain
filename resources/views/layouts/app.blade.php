@@ -130,7 +130,7 @@ selection:text-primary-50">
         {{ $rightSidebar ?? '' }}
     </x-parts.right-sidebar>
 </div>
-<x-footer/>
+<x-footer.2/>
 <x-navigation.mobile-native/>
 @livewire('notifications')
 @filamentScripts

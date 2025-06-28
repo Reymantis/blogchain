@@ -30,9 +30,6 @@
                                     <span>
                                     {{ $child->name }}
                                     </span>
-                                    {{--                                    <x-parts.tooltip text="Articles Count" arrow position="left">--}}
-                                    {{--                                        <small class="text-xs  text-black/25 dark:text-white/25">({{ $child->posts_count }})</small>--}}
-                                    {{--                                    </x-parts.tooltip>--}}
                                 </a>
                             </li>
                         @endforeach

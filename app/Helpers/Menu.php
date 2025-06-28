@@ -71,6 +71,68 @@ class Menu
         });
     }
 
+    public static function legal(): Collection
+    {
+        $items = [
+            [
+                'name' => 'Privacy Policy',
+                'slug' => 'privacy-policy',
+                'route' => 'home',
+            ],
+            [
+                'name' => 'Terms of Service',
+                'slug' => 'terms-of-service',
+                'route' => 'home',
+            ],
+            [
+                'name' => 'Cookie Policy',
+                'slug' => 'cookie-policy',
+                'route' => 'home',
+            ],
+            [
+                'name' => 'User Data',
+                'slug' => 'user-data',
+                'route' => 'home',
+            ],
+
+        ];
+        return static::colletor($items);
+    }
+
+    public static function social(): Collection
+    {
+
+        $items = [
+            [
+                'name' => 'Youtube',
+                'url' => 'user-data',
+                'icon' => 'ri-facebook-fill',
+            ],
+            [
+                'name' => 'Facebook',
+                'url' => 'user-data',
+                'icon' => 'ri-facebook-fill',
+            ],
+            [
+                'name' => 'Twitter (X)',
+                'url' => 'user-data',
+                'icon' => 'ri-facebook-fill',
+            ],
+            [
+                'name' => 'Instagram',
+                'url' => 'user-data',
+                'icon' => 'ri-facebook-fill',
+            ],
+            [
+                'name' => 'LinkedIn',
+                'url' => 'user-data',
+                'icon' => 'ri-facebook-fill',
+            ],
+        ];
+
+        return static::colletor($items);
+    }
+
     public static function auth(): Collection
     {
         $items = [
