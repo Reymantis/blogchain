@@ -21,7 +21,7 @@
     </div>
 
     <div class="flex items-center justify-between mb-6">
-        <div class="flex flex-col">
+        <div class="flex flex-col items-center">
             <div class="flex items-baseline gap-1">
                 <span class="text-4xl font-bold" x-text="weather.temperature  + '°c'"></span>
             </div>
