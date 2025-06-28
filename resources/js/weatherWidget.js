@@ -3,6 +3,7 @@ function weatherWidget() {
         loading: true,
         error: null,
         weather: null,
+        locationName: null,
 
         async getLocation() {
             if (!navigator.geolocation) {
@@ -25,6 +26,7 @@ function weatherWidget() {
                 const lat = position.coords.latitude;
                 const lon = position.coords.longitude;
                 this.getWeather(lat, lon);
+                this.getLocationName(lat, lon);
             } catch (err) {
                 this.loading = false;
                 if (err.code === 1) {
@@ -42,9 +44,21 @@ function weatherWidget() {
                 const res = await fetch(url);
                 const data = await res.json();
                 this.weather = data.current_weather;
-                this.loading = false;
             } catch (err) {
                 this.error = "Failed to load weather.";
+            }
+        },
+
+        async getLocationName(lat, lon) {
+            const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                this.locationName = data.display_name;
+                this.loading = false;
+            } catch (err) {
+                this.error = "Failed to load location name.";
                 this.loading = false;
             }
         },
