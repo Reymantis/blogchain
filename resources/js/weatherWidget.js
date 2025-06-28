@@ -6,6 +6,7 @@ function weatherWidget() {
         locationName: null,
         weatherIcon: null,
         weatherCondition: null,
+        icon: null,
 
         async getLocation() {
             if (!navigator.geolocation) {
@@ -71,23 +72,27 @@ function weatherWidget() {
                 case 0:
                     this.weatherIcon = '☀️';
                     this.weatherCondition = 'Sunny';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 1:
                 case 2:
                 case 3:
                     this.weatherIcon = '⛅️';
                     this.weatherCondition = 'Partly Cloudy';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 45:
                 case 48:
                     this.weatherIcon = '🌫️';
                     this.weatherCondition = 'Foggy';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 51:
                 case 53:
                 case 55:
                     this.weatherIcon = '☁️';
                     this.weatherCondition = 'Drizzle';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 56:
                 case 57:
@@ -96,42 +101,50 @@ function weatherWidget() {
                 case 65:
                     this.weatherIcon = '🌧️';
                     this.weatherCondition = 'Rainy';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 66:
                 case 67:
                     this.weatherIcon = '❄️';
                     this.weatherCondition = 'Sleet';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 71:
                 case 73:
                 case 75:
                     this.weatherIcon = '❄️';
                     this.weatherCondition = 'Snowy';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 77:
                     this.weatherIcon = '☃️';
                     this.weatherCondition = 'Snow Grains';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 80:
                 case 81:
                 case 82:
                     this.weatherIcon = '🌧️';
                     this.weatherCondition = 'Showers';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 85:
                 case 86:
                     this.weatherIcon = '❄️';
                     this.weatherCondition = 'Snow Showers';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 case 95:
                 case 96:
                 case 99:
                     this.weatherIcon = '⛈️';
                     this.weatherCondition = 'Thunderstorm';
+                    this.icon = 'ionicon-sunny-outline';
                     break;
                 default:
                     this.weatherIcon = '';
                     this.weatherCondition = 'Unknown';
+                    this.icon = 'ionicon-sunny-outline';
             }
         },
 
