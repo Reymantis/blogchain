@@ -32,7 +32,7 @@ function weatherWidget() {
             } catch (err) {
                 this.loading = false;
                 if (err.code === 1) {
-                    this.error = "Location access denied. Please enable location services.";
+                    this.error = "Location access denied";
                 } else {
                     this.error = "Failed to get location.";
                 }

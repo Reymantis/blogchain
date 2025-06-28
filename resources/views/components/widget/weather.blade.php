@@ -1,6 +1,11 @@
 <x-parts.card>
-    <div class="weather-widget" x-data="weatherWidget()">
-        <h2>🌤️ Weather Now</h2>
+    <div class="weather-widget text-center space-y-2" x-data="weatherWidget()" x-if="weather && locationName">
+
+        <div class="text-sm font-bold inline-block text-gray-900 dark:text-white/75 px-4 py-0.5 rounded-full border border-gray-900 dark:border-white/5
+        tracking-wider">Weather
+        </div>
+
+        <div class="text-5xl font-bold text-gray-900 dark:text-white/75 font-mono tracking-tight">Raining</div>
 
         <template x-if="loading">
             <p class="loading">Getting your location...</p>

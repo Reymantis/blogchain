@@ -6,7 +6,7 @@
             @foreach($posts as $post)
                 @if($loop->iteration == 2)
                     <x-widget.clock/>
-                    <x-widget.weather/>
+                    <x-widget.weather-2/>
                 @endif
 
                 @if($loop->iteration %=10)
