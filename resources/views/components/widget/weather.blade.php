@@ -20,7 +20,7 @@
                 </p>
                 <p><strong>Temperature:</strong> <span x-text="weather.temperature + '°C'"></span></p>
                 <p><strong>Wind Speed:</strong> <span x-text="weather.windspeed + ' km/h'"></span></p>
-                <p><strong>Time:</strong> <span x-text="formatTime(weather.time)"></span></p>
+
             </div>
         </template>
     </div>
