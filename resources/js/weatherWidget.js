@@ -44,7 +44,7 @@ function weatherWidget() {
                 const data = await res.json();
                 this.weather = data.current_weather;
                 this.setWeatherIcon(data.current_weather.weathercode);
-                console.log(data, this.weatherCondition, this.weatherIcon);
+                console.log(this.weather);
             } catch (err) {
                 this.error = "Failed to load weather.";
             }
