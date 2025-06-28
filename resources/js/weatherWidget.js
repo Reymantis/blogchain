@@ -55,7 +55,9 @@ function weatherWidget() {
             try {
                 const res = await fetch(url);
                 const data = await res.json();
-                this.locationName = data.display_name;
+                const city = data.address.city || data.address.town || data.address.village;
+                const country = data.address.country;
+                this.locationName = `${city}, ${country}`;
                 this.loading = false;
             } catch (err) {
                 this.error = "Failed to load location name.";
