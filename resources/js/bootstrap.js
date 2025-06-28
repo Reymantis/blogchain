@@ -2,7 +2,8 @@ import axios from 'axios';
 import {Alpine, Livewire} from '../../vendor/livewire/livewire/dist/livewire.esm';
 import resize from '@alpinejs/resize'
 import {collapse} from "@alpinejs/collapse/builds/module.js";
-
+import './clockWidget.js'
+import './weatherWidget.js'
 
 window.axios = axios;
 
