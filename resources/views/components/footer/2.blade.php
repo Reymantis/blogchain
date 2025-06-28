@@ -7,11 +7,11 @@
                 <ul class="list-outside list-circle pl-2 ">
                     @foreach(Menu::legal() as $item)
                         <li class="ml-4">
-                            <a href="#"
-                                @class([
-                                   'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
-                                   items-center hover:text-primary-500 dark:hover:text-primary-400'
-                                 ])>
+                            <a href="{{ route($item->route) }}"
+                                    @class([
+                                       'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
+                                       items-center hover:text-primary-500 dark:hover:text-primary-400'
+                                     ])>
                                 {{ $item->name }}
                             </a>
                             @endforeach
@@ -26,10 +26,10 @@
                             <a href="{{ $item->url }}"
                                target="_blank"
                                rel="nofollow"
-                                @class([
-                                   'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
-                                   items-center hover:text-primary-500 dark:hover:text-primary-400'
-                                 ])>
+                                    @class([
+                                       'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
+                                       items-center hover:text-primary-500 dark:hover:text-primary-400'
+                                     ])>
                                 {{--                                <x-dynamic-component :component="$item->icon" class="size-4"/>--}}
                                 <span>{{ $item->name }}</span>
                             </a>
@@ -37,22 +37,7 @@
                         </li>
                 </ul>
             </div>
-            <div class="p-6">
-                <p class="text-lg font-semibold mb-2">Legal Documents</p>
-                <ul class="list-outside list-circle pl-2 ">
-                    @foreach(Menu::legal() as $item)
-                        <li class="ml-4">
-                            <a href="#"
-                                @class([
-                                   'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
-                                   items-center hover:text-primary-500 dark:hover:text-primary-400'
-                                 ])>
-                                {{ $item->name }}
-                            </a>
-                            @endforeach
-                        </li>
-                </ul>
-            </div>
+
             <div class="p-6 col-span-full flex flex-col md:flex-row items-center justify-between text-gray-500">
                 <div>Design &amp; Developed by <a class="text-primary-500 hover:underline" target="_blank"
                                                   href="https://designbycode.co.za">designbycode</a></div>

@@ -14,7 +14,6 @@
                     </li>
                     <li>
                         <a href="#">Cookie Policy</a>
-                        
                     </li>
                     <li>
                         <a href="#">User Data</a>

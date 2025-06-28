@@ -77,7 +77,7 @@ class Menu
             [
                 'name' => 'Privacy Policy',
                 'slug' => 'privacy-policy',
-                'route' => 'home',
+                'route' => 'privacy-policy',
             ],
             [
                 'name' => 'Terms of Service',
@@ -102,33 +102,8 @@ class Menu
     public static function social(): Collection
     {
 
-        $items = [
-            [
-                'name' => 'Youtube',
-                'url' => 'user-data',
-                'icon' => 'ri-facebook-fill',
-            ],
-            [
-                'name' => 'Facebook',
-                'url' => 'user-data',
-                'icon' => 'ri-facebook-fill',
-            ],
-            [
-                'name' => 'Twitter (X)',
-                'url' => 'user-data',
-                'icon' => 'ri-facebook-fill',
-            ],
-            [
-                'name' => 'Instagram',
-                'url' => 'user-data',
-                'icon' => 'ri-facebook-fill',
-            ],
-            [
-                'name' => 'LinkedIn',
-                'url' => 'user-data',
-                'icon' => 'ri-facebook-fill',
-            ],
-        ];
+        $items = collect(config('social'));
+
 
         return static::colletor($items);
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Categories\CategoriesShowController;
 use App\Http\Controllers\Pages\HomePageController;
+use App\Http\Controllers\Pages\MarkdownPagesController;
 use App\Http\Controllers\Posts\PostsIndexController;
 use App\Http\Controllers\Posts\PostsShowController;
 use App\Http\Controllers\Tags\TagsShowController;
@@ -15,7 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', HomePageController::class)->name('home');
 
 
-Route::view('/about-us', 'pages.about-us')->name('about-us');
+Route::get('/about-us', [MarkdownPagesController::class, 'about_us'])->name('about-us');
+Route::get('/legal/privacy-policy', [MarkdownPagesController::class, 'privacy_policy'])->name('privacy-policy');
 Route::view('/contact-us', 'pages.contact-us')->name('contact-us');
 
 Route::get('/contributors', UsersIndexController::class)->name('users.index');
