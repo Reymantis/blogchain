@@ -14,30 +14,29 @@
         </div>
     </template>
 
-    <template x-if="true">
 
-        <div class="flex items-center gap-2 mb-4">
-            <x-heroicon-s-map-pin class="size-4 "/>
-            <span class="text-sm font-medium text-white/90" x-text="locationName"></span>
-        </div>
+    <div class="flex items-center gap-2 mb-4">
+        <x-heroicon-s-map-pin class="size-4 "/>
+        <span class="text-sm font-medium text-white/90" x-text="locationName"></span>
+    </div>
 
-        <div class="flex items-center justify-between mb-6">
-            <div class="flex flex-col">
-                <div class="flex items-baseline gap-1">
-                    <span class="text-4xl font-bold" x-text="weather.temperature  + '°c'"></span>
-                </div>
-                <span class="text-lg  mt-1" x-text="weatherCondition"></span>
+    <div class="flex items-center justify-between mb-6">
+        <div class="flex flex-col">
+            <div class="flex items-baseline gap-1">
+                <span class="text-4xl font-bold" x-text="weather.temperature  + '°c'"></span>
             </div>
-            <div class="flex-shrink-0">
-                <span class="text-4xl block" x-html="weatherIcon"></span>
-            </div>
+            <span class="text-lg  mt-1" x-text="weatherCondition"></span>
         </div>
-        <div class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 p-2 rounded-md -mx-2">
-            <div class="inline-flex items-center space-x-1">
-                <x-dynamic-component component="wi-strong-wind" class="size-8 "/>
-                <span>Wind Speed</span>
-                <strong class="text-sm" x-text="weather.windspeed + ' km/h'"></strong>
-            </div>
+        <div class="flex-shrink-0">
+            <span class="text-4xl block" x-html="weatherIcon"></span>
         </div>
-    </template>
+    </div>
+    <div class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 p-2 rounded-md -mx-2">
+        <div class="inline-flex items-center space-x-1">
+            <x-dynamic-component component="wi-strong-wind" class="size-8 "/>
+            <span>Wind Speed</span>
+            <strong class="text-sm" x-text="weather.windspeed + ' km/h'"></strong>
+        </div>
+    </div>
+ 
 </x-parts.card>
