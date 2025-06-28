@@ -5,7 +5,6 @@
 
     <template x-if="error && !weather">
         <div class="flex flex-col justify-center items-center space-y-2 text-gray-700">
-
             <div class="text-lg text-gray-600">Weather not available</div>
             <div class="flex items-center justify-center space-x-2 text-gray-700">
                 <x-heroicon-o-map-pin class="size-4 "/>
@@ -14,7 +13,7 @@
         </div>
     </template>
 
-    <template x-if="locationName">
+    <template x-if="weather">
         <div class="flex items-center gap-2 mb-4">
             <x-heroicon-s-map-pin class="size-4 "/>
             <span class="text-sm font-medium text-white/90" x-text="locationName"></span>
