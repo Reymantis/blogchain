@@ -2,11 +2,11 @@ function weatherWidget() {
     return {
         loading: true,
         error: null,
-        weather: null,
-        locationName: null,
-        weatherIcon: null,
-        weatherCondition: null,
-        icon: null,
+        weather: {},
+        locationName: '',
+        weatherIcon: '',
+        weatherCondition: '',
+        icon: '',
 
         async getLocation() {
             if (!navigator.geolocation) {
