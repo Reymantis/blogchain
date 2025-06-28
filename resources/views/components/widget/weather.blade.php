@@ -16,7 +16,7 @@
                 <p><strong>Location:</strong> <span x-text="locationName"></span></p>
                 <p>
                     <span class="weather-icon" x-html="weatherIcon"></span>
-                    <strong>Weather:</strong> <span x-text="weather.weathersymbol_caption"></span>
+                    <span x-text="weatherCondition"></span>
                 </p>
                 <p><strong>Temperature:</strong> <span x-text="weather.temperature + '°C'"></span></p>
                 <p><strong>Wind Speed:</strong> <span x-text="weather.windspeed + ' km/h'"></span></p>
