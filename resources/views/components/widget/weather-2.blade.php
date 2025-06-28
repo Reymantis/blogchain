@@ -3,7 +3,7 @@
         <p class="loading text-center">Getting your location...</p>
     </template>
 
-    <template x-if="error && !weather">
+    <template x-if="error">
         <div class="flex flex-col justify-center items-center space-y-2 text-gray-700">
             <div class="text-lg text-gray-600">Weather not available</div>
             <div class="flex items-center justify-center space-x-2 text-gray-700">
