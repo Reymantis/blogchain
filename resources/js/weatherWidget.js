@@ -4,6 +4,7 @@ function weatherWidget() {
         error: null,
         weather: null,
         locationName: null,
+        weatherIcon: null,
 
         async getLocation() {
             if (!navigator.geolocation) {
@@ -44,6 +45,7 @@ function weatherWidget() {
                 const res = await fetch(url);
                 const data = await res.json();
                 this.weather = data.current_weather;
+                this.setWeatherIcon(data.current_weather.weathercode);
             } catch (err) {
                 this.error = "Failed to load weather.";
             }
@@ -62,6 +64,63 @@ function weatherWidget() {
             } catch (err) {
                 this.error = "Failed to load location name.";
                 this.loading = false;
+            }
+        },
+
+        setWeatherIcon(code) {
+            switch (code) {
+                case 0:
+                    this.weatherIcon = '☀️';
+                    break;
+                case 1:
+                case 2:
+                case 3:
+                    this.weatherIcon = '⛅️';
+                    break;
+                case 45:
+                case 48:
+                    this.weatherIcon = '🌫️';
+                    break;
+                case 51:
+                case 53:
+                case 55:
+                    this.weatherIcon = '☁️';
+                    break;
+                case 56:
+                case 57:
+                case 61:
+                case 63:
+                case 65:
+                    this.weatherIcon = '🌧️';
+                    break;
+                case 66:
+                case 67:
+                    this.weatherIcon = '❄️';
+                    break;
+                case 71:
+                case 73:
+                case 75:
+                    this.weatherIcon = '❄️';
+                    break;
+                case 77:
+                    this.weatherIcon = '☃️';
+                    break;
+                case 80:
+                case 81:
+                case 82:
+                    this.weatherIcon = '🌧️';
+                    break;
+                case 85:
+                case 86:
+                    this.weatherIcon = '❄️';
+                    break;
+                case 95:
+                case 96:
+                case 99:
+                    this.weatherIcon = '⛈️';
+                    break;
+                default:
+                    this.weatherIcon = '';
             }
         },
 
