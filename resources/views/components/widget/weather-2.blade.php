@@ -28,7 +28,7 @@
             <span class="text-lg  mt-1" x-text="weatherCondition"></span>
         </div>
         <div class="flex-shrink-0">
-            <span class="text-4xl block" x-html="weatherIcon"></span>
+            <span class="text-7xl block" x-html="weatherIcon"></span>
         </div>
     </div>
     <div class="flex items-center gap-2 bg-gray-100 dark:bg-white/5 p-2 rounded-md -mx-2">
@@ -38,5 +38,5 @@
             <strong class="text-sm" x-text="weather.windspeed + ' km/h'"></strong>
         </div>
     </div>
- 
+
 </x-parts.card>
