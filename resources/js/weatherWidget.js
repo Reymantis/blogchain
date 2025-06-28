@@ -5,6 +5,7 @@ function weatherWidget() {
         weather: null,
         locationName: null,
         weatherIcon: null,
+        weatherCondition: null,
 
         async getLocation() {
             if (!navigator.geolocation) {
@@ -72,20 +73,24 @@ function weatherWidget() {
             switch (code) {
                 case 0:
                     this.weatherIcon = '☀️';
+                    this.weatherCondition = 'Sunny';
                     break;
                 case 1:
                 case 2:
                 case 3:
                     this.weatherIcon = '⛅️';
+                    this.weatherCondition = 'Partly Cloudy';
                     break;
                 case 45:
                 case 48:
                     this.weatherIcon = '🌫️';
+                    this.weatherCondition = 'Foggy';
                     break;
                 case 51:
                 case 53:
                 case 55:
                     this.weatherIcon = '☁️';
+                    this.weatherCondition = 'Drizzle';
                     break;
                 case 56:
                 case 57:
@@ -93,35 +98,43 @@ function weatherWidget() {
                 case 63:
                 case 65:
                     this.weatherIcon = '🌧️';
+                    this.weatherCondition = 'Rainy';
                     break;
                 case 66:
                 case 67:
                     this.weatherIcon = '❄️';
+                    this.weatherCondition = 'Sleet';
                     break;
                 case 71:
                 case 73:
                 case 75:
                     this.weatherIcon = '❄️';
+                    this.weatherCondition = 'Snowy';
                     break;
                 case 77:
                     this.weatherIcon = '☃️';
+                    this.weatherCondition = 'Snow Grains';
                     break;
                 case 80:
                 case 81:
                 case 82:
                     this.weatherIcon = '🌧️';
+                    this.weatherCondition = 'Showers';
                     break;
                 case 85:
                 case 86:
                     this.weatherIcon = '❄️';
+                    this.weatherCondition = 'Snow Showers';
                     break;
                 case 95:
                 case 96:
                 case 99:
                     this.weatherIcon = '⛈️';
+                    this.weatherCondition = 'Thunderstorm';
                     break;
                 default:
                     this.weatherIcon = '';
+                    this.weatherCondition = 'Unknown';
             }
         },
 
