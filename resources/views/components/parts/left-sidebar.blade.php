@@ -7,7 +7,6 @@
 
 >
     <!-- Toggle button - visible only on medium screens -->
-
     <x-parts.card class="w-full relative">
         <button
             type="button"

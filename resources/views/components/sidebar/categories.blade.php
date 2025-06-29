@@ -5,7 +5,7 @@
     <ul class="marker:text-primary-500 text-sm">
         @foreach($categories->toTree() as $category)
             <li>
-                <a href="{{ route('categories.show', $category->slug) }}"
+                <a wire:navigate.hover href="{{ route('categories.show', $category->slug) }}"
                     @class([
                         'rounded-md px-2 py-1 hover:bg-gray-50 hover:dark:bg-white/5 block dark:text-gray-100/75 items-center hover:text-primary-500
                         dark:hover:text-primary-400 flex justify-between items-center',
@@ -18,7 +18,7 @@
                     <ul class="list-outside list-circle pl-2">
                         @foreach($category->children as $child)
                             <li class="ml-4">
-                                <a wire:navigate href="{{ route('posts.index', $child->slug) }}"
+                                <a wire:navigate.hover href="{{ route('posts.index', $child->slug) }}"
                                     @class([
                                        'rounded-md px-2 py-1 flex justify-between hover:bg-gray-50 hover:dark:bg-white/5 block dark:text-gray-100/75
                                        items-center

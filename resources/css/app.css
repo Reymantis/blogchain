@@ -13,6 +13,7 @@
 
 @layer utilities {
     .no-scrollbar-track::-webkit-scrollbar-track {
+        
         @apply bg-white/5;
     }
 

@@ -21,7 +21,7 @@
 
                 @if($post->hasMedia('posts'))
                     <div class="aspect-video flex-1">
-                        <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}">
+                        <a wire:navigate.hover href="{{ route('posts.show', [$post->category, $post]) }}">
                             <img
                                 src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
                                 alt="Image for {{ $post->title }} blog post"
@@ -61,7 +61,7 @@
             </div>
         </div>
         <div class="p-6 flex-1 flex flex-col">
-            <a wire:navigate href="{{ route('posts.show', [$post->category, $post]) }}" class="group-link">
+            <a wire:navigate.hover href="{{ route('posts.show', [$post->category, $post]) }}" class="group-link">
                 <h3 class="font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-lg
             2xl:text-xl line-clamp-2">
                     {{ $post->title }}

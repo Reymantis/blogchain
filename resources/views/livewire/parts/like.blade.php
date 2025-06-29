@@ -15,7 +15,6 @@
                 :component="'heroicon-' . ($this->isLiked ? 's' : 'o') . '-' . str_replace(['heroicon-s-', 'heroicon-o-'], '', $this->icon)"
                 :class="$size . ' ' . $this->colorClass"
             />
-
             @if($showCount)
                 <span class="text-md font-medium transition-colors duration-200 {{ $this->isLiked ? $this->colorClass : 'text-gray-500' }}">
                     {{ $this->likeCount }}

@@ -9,7 +9,7 @@
                 <span class="flex space-x-2 items-center px-1.5 text-black/25 dark:text-white/25">
                 <x-heroicon-m-arrow-turn-left-up class="size-3"/>
                 <small class="text-xs ">Listed in
-                    <a wire:navigate
+                    <a wire:navigate.hover
                        class="text-primary-500 hover:underline"
                        href="{{ route('categories.show',  $category->ancestors[0])}}">
                     {{  $category->ancestors[0]->name }}</a>

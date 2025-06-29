@@ -4,7 +4,6 @@
             <x-text.heading as="h1" icon="heroicon-o-envelope" class="!mb-0">
                 Contact Us
             </x-text.heading>
-
             <x-button.back/>
         </x-parts.card>
         <x-parts.card>
@@ -12,6 +11,5 @@
                 <livewire:forms.contact-us/>
             </div>
         </x-parts.card>
-        
     </div>
 </x-app-layout>

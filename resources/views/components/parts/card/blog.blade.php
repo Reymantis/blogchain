@@ -23,7 +23,7 @@
         @endif
     </div>
     <div class="p-6 flex-1 flex flex-col">
-        <a wire:navigate href="{{ route('post.show', [$post->category, $post]) }}" class="group-link">
+        <a wire:navigate.hover href="{{ route('post.show', [$post->category, $post]) }}" class="group-link">
             <h3 class="font-bold text-gray-900 dark:text-white mb-3 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors text-md
             2xl:text-xl line-clamp-2">
                 {{ $post->title }}
