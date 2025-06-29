@@ -14,27 +14,29 @@ use Illuminate\View\View;
 use Livewire\Attributes\Reactive;
 use Livewire\Component;
 
-class LikeReactions extends Component implements HasForms, HasActions
+class LikeReactions extends Component implements HasActions, HasForms
 {
-    use InteractsWithForms;
     use InteractsWithActions;
+    use InteractsWithForms;
 
     #[Reactive]
     public Model $model;
 
     public array $availableTypes;
+
     public bool $showCounts = true;
+
     public string $layout = 'horizontal'; // horizontal, vertical, compact
+
     public bool $allowMultiple = false; // Allow multiple reactions or single
 
     public function mount(
-        Model  $model,
-        array  $types = null,
-        bool   $showCounts = true,
+        Model $model,
+        ?array $types = null,
+        bool $showCounts = true,
         string $layout = 'horizontal',
-        bool   $allowMultiple = false
-    ): void
-    {
+        bool $allowMultiple = false
+    ): void {
         $this->model = $model;
 
         // Fix: Use string values directly instead of undefined constants
@@ -44,7 +46,7 @@ class LikeReactions extends Component implements HasForms, HasActions
             'laugh',
             'wow',
             'sad',
-            'angry'
+            'angry',
         ];
 
         $this->showCounts = $showCounts;
@@ -55,20 +57,21 @@ class LikeReactions extends Component implements HasForms, HasActions
     public function toggleReaction(string $type): array
     {
         // Check if reactions are enabled
-        if (!config('blogchain.enable_likes', true)) {
+        if (! config('blogchain.enable_likes', true)) {
             return ['success' => false, 'message' => 'Reactions are disabled'];
         }
 
         // Check authentication
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             $this->mountAction('loginRequired');
+
             return ['success' => false, 'message' => 'Authentication required'];
         }
 
         $user = auth()->user();
 
         try {
-            if (!$this->allowMultiple) {
+            if (! $this->allowMultiple) {
                 // Single reaction mode: remove existing reactions first
                 foreach ($this->availableTypes as $existingType) {
                     if ($this->model->likedBy($user, $existingType)) {
@@ -87,15 +90,15 @@ class LikeReactions extends Component implements HasForms, HasActions
                 'success' => true,
                 'action' => $result,
                 'counts' => $this->getReactionCountsProperty(),
-                'userReactions' => $this->getUserReactionsProperty()
+                'userReactions' => $this->getUserReactionsProperty(),
             ];
 
         } catch (Exception $e) {
-            logger()->error('Reaction error: ' . $e->getMessage(), [
+            logger()->error('Reaction error: '.$e->getMessage(), [
                 'user_id' => auth()->id(),
                 'model_type' => get_class($this->model),
                 'model_id' => $this->model->id,
-                'reaction_type' => $type
+                'reaction_type' => $type,
             ]);
 
             return ['success' => false, 'message' => 'Something went wrong. Please try again.'];
@@ -111,6 +114,7 @@ class LikeReactions extends Component implements HasForms, HasActions
         foreach ($this->availableTypes as $type) {
             $counts[$type] = $this->model->getLikeCount($type);
         }
+
         return $counts;
     }
 
@@ -119,7 +123,7 @@ class LikeReactions extends Component implements HasForms, HasActions
      */
     public function getUserReactionsProperty(): array
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return [];
         }
 
@@ -138,7 +142,7 @@ class LikeReactions extends Component implements HasForms, HasActions
      */
     public function getUserReactionProperty(): ?string
     {
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             return null;
         }
 

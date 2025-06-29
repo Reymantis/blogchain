@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\CategoryResource\Pages;
-use App\Filament\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -20,7 +19,6 @@ class CategoryResource extends Resource
     protected static ?string $navigationGroup = 'Admin';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
 
     public static function form(Form $form): Form
     {
@@ -44,14 +42,13 @@ class CategoryResource extends Resource
                     ->columnSpanFull()
                     ->maxLength(255),
 
-
                 Forms\Components\Select::make('parent_id')
                     ->label('Parent Category')
                     ->columnSpanFull()
                     ->relationship(
                         name: 'parent',
                         titleAttribute: 'name',
-                        modifyQueryUsing: fn($query) => $query->whereIsRoot()
+                        modifyQueryUsing: fn ($query) => $query->whereIsRoot()
                     )
                     ->searchable()
                     ->preload()
@@ -104,8 +101,7 @@ class CategoryResource extends Resource
                     ->label('Posts Count')
                     ->alignCenter()
                     ->verticallyAlignCenter()
-                    ->counts('posts')
-                ,
+                    ->counts('posts'),
 
                 Tables\Columns\ColorColumn::make('color')
                     ->searchable()
@@ -129,7 +125,7 @@ class CategoryResource extends Resource
 
             ])
             ->actions([
-//                Tables\Actions\ViewAction::make(),
+                //                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -153,7 +149,7 @@ class CategoryResource extends Resource
         return [
             'index' => Pages\ListCategories::route('/'),
             'create' => Pages\CreateCategory::route('/create'),
-//            'view' => Pages\ViewCategory::route('/{record}'),
+            //            'view' => Pages\ViewCategory::route('/{record}'),
             'edit' => Pages\EditCategory::route('/{record}/edit'),
         ];
     }

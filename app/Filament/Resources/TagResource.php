@@ -3,13 +3,11 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\TagResource\Pages;
-use App\Filament\Resources\TagResource\RelationManagers;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Spatie\Tags\Tag;
-
 
 class TagResource extends Resource
 {
@@ -23,7 +21,6 @@ class TagResource extends Resource
     {
         return false;
     }
-    
 
     public static function shouldRegisterNavigation(): bool
     {

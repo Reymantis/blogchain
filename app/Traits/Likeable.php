@@ -16,9 +16,11 @@ trait Likeable
     {
         if ($this->likedBy($user, $type)) {
             $this->removeLike($user, $type);
+
             return 'unliked';
         } else {
             $this->addLike($user, $type);
+
             return 'liked';
         }
     }
@@ -71,7 +73,7 @@ trait Likeable
 
         return $this->likes()->create([
             'user_id' => $userId,
-            'like_type' => $type
+            'like_type' => $type,
         ]);
     }
 
@@ -94,7 +96,7 @@ trait Likeable
     /**
      * Get all likes with user information
      */
-    public function getLikesWithUsers(string $type = null): Collection
+    public function getLikesWithUsers(?string $type = null): Collection
     {
         $query = $this->likes()->with('user');
 
@@ -150,7 +152,7 @@ trait Likeable
             return null;
         }
 
-        return array_key_first((array)array_slice(arsort($counts), 0, 1, true));
+        return array_key_first((array) array_slice(arsort($counts), 0, 1, true));
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace App\Observers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Log;
 
 class UserObserver
 {
@@ -23,12 +22,12 @@ class UserObserver
         $counter = 1;
 
         while (User::where('username', $username)->exists()) {
-            $username = $baseUsername . rand(10, 99); // 2-digit random number
+            $username = $baseUsername.rand(10, 99); // 2-digit random number
             $counter++;
 
             // Fallback: if we've tried too many times, use timestamp
             if ($counter > 10) {
-                $username = $baseUsername . time();
+                $username = $baseUsername.time();
                 break;
             }
         }
@@ -41,7 +40,7 @@ class UserObserver
      */
     public function updating(User $user): void
     {
-        $user->username = strtolower(str_replace([' ', '.'],'', $user->username));
+        $user->username = strtolower(str_replace([' ', '.'], '', $user->username));
     }
 
     /**

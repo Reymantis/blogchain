@@ -13,7 +13,7 @@
         @class([
         'rounded-lg hover:shadow-lg h-full flex flex-col group',
         'col-span-full md:col-span-1 md:row-span-1' => (boolean) !$loop->first,
-        'col-span-full md:col-span-2 md:row-span-3' => (boolean) $loop->first
+        'col-span-full md:col-span-2 md:row-span-2' => (boolean) $loop->first
         ])
     >
         <div class="relative ">

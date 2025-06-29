@@ -29,7 +29,7 @@ class RolesRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->disabled(),
-                Tables\Columns\TextColumn::make('guard_name')
+                Tables\Columns\TextColumn::make('guard_name'),
             ])
             ->filters([
                 //

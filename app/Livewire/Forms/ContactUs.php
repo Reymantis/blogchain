@@ -17,7 +17,6 @@ use Livewire\Component;
 
 class ContactUs extends Component implements HasForms
 {
-
     use InteractsWithForms;
 
     public ?array $data = [];
@@ -61,7 +60,6 @@ class ContactUs extends Component implements HasForms
     {
         $data = $this->form->getState();
 
-
         try {
             // Send emails
             Mail::to(config('mail.from.address'))->send(new ContactUsForm($data));
@@ -86,7 +84,7 @@ class ContactUs extends Component implements HasForms
                 ->send();
 
             // Log the error
-            Log::error('Contact form error: ' . $e->getMessage());
+            Log::error('Contact form error: '.$e->getMessage());
         }
     }
 

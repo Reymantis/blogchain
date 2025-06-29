@@ -15,13 +15,12 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-
         $this->call([
             RolesSeeder::class,
             CategorySeeder::class,
             UserSeeder::class,
             PostSeeder::class,
-//            TagSeeder::class,
+            //            TagSeeder::class,
         ]);
 
         $user = User::factory()->create([
@@ -30,7 +29,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user->assignRole('Super Admin');
-
 
         $user = User::factory()->create([
             'name' => 'Renier Grobler',

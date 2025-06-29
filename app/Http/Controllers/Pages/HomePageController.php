@@ -9,16 +9,16 @@ use Illuminate\View\View;
 
 class HomePageController extends Controller
 {
-
     /**
      * Handle the incoming request.
      */
     public function __invoke(): View
     {
-        $posts = Cache::remember('front-page.posts', config('cache.time_to_live'), fn() => Post::with('user', 'media', 'category')
+        $posts = Cache::remember('front-page.posts', config('cache.time_to_live'), fn () => Post::with('user', 'media', 'category')
             //    ->orderBy('view_count','asc')
             ->latest()
             ->get()->take(8));
+
         return view('pages.home', compact('posts'));
     }
 }

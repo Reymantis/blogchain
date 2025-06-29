@@ -12,12 +12,10 @@ class AppLayout extends Component
      * Create a new component instance.
      */
     public function __construct(
-        public ?string           $title = null,
-        public ?string           $description = null,
+        public ?string $title = null,
+        public ?string $description = null,
         public array|string|null $keywords = null,
-    )
-    {
-    }
+    ) {}
 
     /**
      * Get the view / contents that represent the component.

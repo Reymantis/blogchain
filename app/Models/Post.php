@@ -20,17 +20,18 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Tags\HasTags;
 
-class Post extends Model implements HasMedia, CanVisit
+class Post extends Model implements CanVisit, HasMedia
 {
     /** @use HasFactory<PostFactory> */
     use HasFactory;
-    use SoftDeletes;
+
     use HasTags;
+    use HasVisits;
     use InteractsWithMedia;
     use Likeable;
-    use LogsViews;
     use Live;
-    use HasVisits;
+    use LogsViews;
+    use SoftDeletes;
 
     protected $fillable = [
         'title',
@@ -44,7 +45,7 @@ class Post extends Model implements HasMedia, CanVisit
         'view_count',
         'youtube_url',
         'approved_at',
-        'created_at'
+        'created_at',
     ];
 
     protected $casts = [
@@ -55,18 +56,11 @@ class Post extends Model implements HasMedia, CanVisit
 
     protected $appends = [];
 
-
-    /**
-     * @return BelongsTo
-     */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class);
@@ -94,10 +88,6 @@ class Post extends Model implements HasMedia, CanVisit
             });
     }
 
-
-    /**
-     * @return Attribute
-     */
     public function estimatedReadTime(): Attribute
     {
         return Attribute::get(function () {
@@ -107,9 +97,8 @@ class Post extends Model implements HasMedia, CanVisit
 
             $wpm = 200;
             $wordCount = str_word_count(strip_tags($this->content));
+
             return ceil($wordCount / $wpm);
         });
     }
-
-
 }

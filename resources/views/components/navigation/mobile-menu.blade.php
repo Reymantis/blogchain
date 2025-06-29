@@ -4,7 +4,7 @@
 
     @foreach($menu as $item)
         @if(!$item->children)
-            <a wire:navigate class="px-2 py-1 flex flex-1 hover:bg-gray-500/15 rounded-md" wire:navigate href="{{ route($item->route) }}">
+            <a wire:navigate.hover class="px-2 py-1 flex flex-1 hover:bg-gray-500/15 rounded-md" href="{{ route($item->route) }}">
                 {{ $item->name }}
             </a>
         @else
@@ -18,7 +18,7 @@
                         <a
                             href="{{ route($child['route'], $child['slug']) }}"
                             class="px-2 py-1 hover:bg-gray-500/15 rounded-md"
-                            wire:navigate
+                            wire:navigate.hover
                         >
                             {{ $child['name'] }}
                         </a>

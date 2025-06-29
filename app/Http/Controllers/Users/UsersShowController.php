@@ -14,6 +14,7 @@ class UsersShowController extends Controller
     public function __invoke(User $user): View
     {
         $user->loadCount('posts');
+
         return view('pages.users.show', compact('user'));
     }
 }

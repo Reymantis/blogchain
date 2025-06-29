@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PostResource\Pages;
-use App\Filament\Resources\PostResource\RelationManagers;
 use App\Models\Post;
 use Closure;
 use CodeWithDennis\FilamentSelectTree\SelectTree;
@@ -23,7 +22,6 @@ class PostResource extends Resource
     protected static ?string $navigationGroup = 'Blog';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
 
     public static function getEloquentQuery(): Builder
     {
@@ -85,7 +83,7 @@ class PostResource extends Resource
                                                     }
                                                 }
 
-                                                if (!$isValid) {
+                                                if (! $isValid) {
                                                     $fail('Please enter a valid YouTube video URL.');
                                                 }
                                             };
@@ -125,7 +123,6 @@ class PostResource extends Resource
                                     ->unique(ignoreRecord: true)
                                     ->maxLength(191),
 
-
                                 SelectTree::make('category_id')
                                     ->label('Category')
                                     ->expandSelected(true)
@@ -162,7 +159,6 @@ class PostResource extends Resource
 
                     ])->columnSpanFull(),
 
-
             ]);
     }
 
@@ -183,7 +179,7 @@ class PostResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('user.name')
-                    ->hidden(!auth()->user()->isSuperAdmin())
+                    ->hidden(! auth()->user()->isSuperAdmin())
                     ->sortable(),
 
                 Tables\Columns\TextColumn::make('category.name')
@@ -212,7 +208,7 @@ class PostResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-//                Tables\Actions\ViewAction::make(),
+                //                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -236,7 +232,7 @@ class PostResource extends Resource
         return [
             'index' => Pages\ListPosts::route('/'),
             'create' => Pages\CreatePost::route('/create'),
-//            'view' => Pages\ViewPost::route('/{record}'),
+            //            'view' => Pages\ViewPost::route('/{record}'),
             'edit' => Pages\EditPost::route('/{record}/edit'),
         ];
     }

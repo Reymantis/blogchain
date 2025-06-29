@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-
 use Illuminate\Database\Seeder;
 use Spatie\Tags\Tag;
 
@@ -1221,7 +1220,6 @@ class TagSeeder extends Seeder
             'Value Proposition',
             'Business Model Canvas',
             'Lean Canvas',
-
 
         ];
 

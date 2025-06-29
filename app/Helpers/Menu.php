@@ -7,10 +7,6 @@ use Illuminate\Support\Collection;
 
 class Menu
 {
-
-    /**
-     * @return Collection
-     */
     public static function main(): Collection
     {
         $items = [
@@ -18,7 +14,7 @@ class Menu
                 'name' => 'Home',
                 'route' => 'home',
                 'active' => 'home',
-                'children' => null
+                'children' => null,
             ],
             [
                 'name' => 'Categories',
@@ -35,39 +31,35 @@ class Menu
                             'active' => 'categories.show',
                             'children_count' => $category->children_count,
                         ];
-                    })
+                    }),
             ],
             [
                 'name' => 'Contributors',
                 'route' => 'users.index',
                 'active' => 'users.index',
-                'children' => null
+                'children' => null,
             ],
             [
                 'name' => 'About Us',
                 'route' => 'about-us',
                 'active' => 'about-us',
-                'children' => null
+                'children' => null,
             ],
             [
                 'name' => 'Contact Us',
                 'route' => 'contact-us',
                 'active' => 'contact-us',
-                'children' => null
+                'children' => null,
             ],
         ];
 
         return static::colletor($items);
     }
 
-    /**
-     * @param $items
-     * @return Collection
-     */
     protected static function colletor($items): Collection
     {
         return collect($items)->map(function ($item) {
-            return (object)$item;
+            return (object) $item;
         });
     }
 
@@ -96,6 +88,7 @@ class Menu
             ],
 
         ];
+
         return static::colletor($items);
     }
 
@@ -103,7 +96,6 @@ class Menu
     {
 
         $items = collect(config('social'));
-
 
         return static::colletor($items);
     }
@@ -120,7 +112,7 @@ class Menu
                 'name' => 'Register',
                 'route' => 'admin.register',
                 'active' => 'admin.register',
-            ]
+            ],
         ];
 
         return static::colletor($items);
@@ -135,7 +127,6 @@ class Menu
                 'active' => 'admin.dashboard',
             ],
         ];
-
 
         return static::colletor($items);
     }

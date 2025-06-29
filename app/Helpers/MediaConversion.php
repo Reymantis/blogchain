@@ -10,6 +10,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 class MediaConversion
 {
     private HasMedia $model;
+
     private string $collection;
 
     public function __construct(HasMedia $model, string $collection = 'default')

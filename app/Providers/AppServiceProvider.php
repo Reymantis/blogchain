@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-
 use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Support\Facades\Schema;
@@ -15,11 +14,10 @@ class AppServiceProvider extends ServiceProvider
      * Bootstrap any application services.
      */
     public function boot(): void
-
     {
         Schema::defaultStringLength(191);
         URL::forceHttps(config('app.force_https'));
-//        Model::preventLazyLoading();
+        //        Model::preventLazyLoading();
 
         FilamentColor::register([
             'danger' => Color::Red,

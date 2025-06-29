@@ -36,7 +36,7 @@ class CategorySeeder extends Seeder
                         'live' => true,
                     ],
 
-                ]
+                ],
             ],
             [
                 'name' => 'Local Regions',
@@ -67,8 +67,7 @@ class CategorySeeder extends Seeder
                         'live' => true,
                     ],
 
-
-                ]
+                ],
             ],
             [
                 'name' => 'DeFi',
@@ -123,8 +122,7 @@ class CategorySeeder extends Seeder
 
                     ],
 
-
-                ]
+                ],
             ],
             [
                 'name' => 'Web & Tech',
@@ -169,7 +167,7 @@ class CategorySeeder extends Seeder
                         'live' => true,
                     ],
 
-                ]
+                ],
             ],
             [
                 'name' => 'Arts & Media',
@@ -207,7 +205,7 @@ class CategorySeeder extends Seeder
                         'live' => true,
                     ],
 
-                ]
+                ],
             ],
             [
                 'name' => 'User Generated Content',
@@ -231,10 +229,8 @@ class CategorySeeder extends Seeder
                         'live' => true,
                     ],
 
-
-                ]
+                ],
             ]];
-
 
         foreach ($categories as $category) {
             Category::create($category);

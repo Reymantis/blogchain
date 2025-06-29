@@ -21,10 +21,11 @@ class Category extends Model implements HasMedia
 {
     /** @use HasFactory<CategoryFactory> */
     use HasFactory;
-    use SoftDeletes;
+
     use InteractsWithMedia;
     use Live;
     use NodeTrait;
+    use SoftDeletes;
     use SortableTrait;
 
     public array $sortable = [
@@ -39,27 +40,21 @@ class Category extends Model implements HasMedia
         'color',
         'live',
         'parent_id',
-        'order_column'
+        'order_column',
     ];
 
     protected $casts = [
-        'live' => 'boolean'
+        'live' => 'boolean',
     ];
 
     private MediaConversion $mediaConversion;
 
-    /**
-     * @param array $attributes
-     */
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
         $this->mediaConversion = new MediaConversion($this, 'categories');
     }
 
-    /**
-     * @return HasMany
-     */
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
@@ -86,6 +81,4 @@ class Category extends Model implements HasMedia
                 }
             });
     }
-
-
 }

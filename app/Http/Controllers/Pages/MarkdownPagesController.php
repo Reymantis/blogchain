@@ -11,16 +11,15 @@ class MarkdownPagesController extends Controller
     {
         return view('pages.markdown', [
             'title' => 'About Us',
-            'file' => 'about-us'
+            'file' => 'about-us',
         ]);
     }
-
 
     public function privacy_policy(): View
     {
         return view('pages.markdown', [
             'title' => 'Privacy Policy',
-            'file' => 'privacy-policy'
+            'file' => 'privacy-policy',
         ]);
     }
 }

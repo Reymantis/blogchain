@@ -15,18 +15,22 @@ class Like extends Model
 
     // Define like types as constants
     const TYPE_LOVE = 'love';
+
     const TYPE_DISLIKE = 'dislike';
+
     const TYPE_ANGRY = 'angry';
+
     const TYPE_LAUGH = 'laugh';
+
     const TYPE_SAD = 'sad';
+
     const TYPE_WOW = 'wow';
 
-    
     protected $fillable = [
         'user_id',
         'likeable_id',
         'likeable_type',
-        'like_type'
+        'like_type',
     ];
 
     /**

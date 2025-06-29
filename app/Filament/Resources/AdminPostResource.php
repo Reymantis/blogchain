@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\AdminPostResource\Pages;
-use App\Filament\Resources\AdminPostResource\RelationManagers;
 use App\Models\Post;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -14,8 +13,11 @@ use Filament\Tables\Table;
 class AdminPostResource extends Resource
 {
     protected static ?string $model = Post::class;
+
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
     protected static ?string $navigationGroup = 'Admin';
+
     protected static ?string $navigationLabel = 'Approve Posts';
 
     public static function shouldRegisterNavigation(): bool
@@ -39,7 +41,7 @@ class AdminPostResource extends Resource
                 TextColumn::make('user.name')->label('Author'),
                 TextColumn::make('status')
                     ->badge()
-                    ->color(fn(string $state): string => match ($state) {
+                    ->color(fn (string $state): string => match ($state) {
                         'pending' => 'warning',
                         'approved' => 'success',
                         'rejected' => 'danger',

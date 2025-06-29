@@ -21,8 +21,9 @@ class PostsShowController extends Controller
                 $query->withCount('posts');
             },
             'media',
-            'tags'
+            'tags',
         ]);
+
         return view('pages.posts.show', compact('category', 'post'));
     }
 }

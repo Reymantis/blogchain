@@ -20,15 +20,20 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
     use Forms\Concerns\InteractsWithForms;
 
     protected static ?string $navigationIcon = 'heroicon-o-user';
+
     protected static string $view = 'filament.pages.my-profile';
+
     protected static ?string $navigationLabel = 'My Profile';
+
     protected static ?string $title = 'My Profile';
+
     protected static ?string $slug = 'my-profile';
 
     public ?array $profileData = [];
-    public ?array $passwordData = [];
-    public ?array $socialData = [];
 
+    public ?array $passwordData = [];
+
+    public ?array $socialData = [];
 
     public function mount(): void
     {
@@ -41,7 +46,6 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
             $user->attributesToArray(),
         );
     }
-
 
     public function editProfileForm(Form $form): Forms\Form
     {
@@ -67,7 +71,6 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->uploadingMessage('Uploading avatar...')
                         ->image(),
 
-
                     Forms\Components\TextInput::make('name')
                         ->required()
                         ->maxLength(255),
@@ -78,7 +81,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                             'string',
                             'max:25',
                             'alpha_dash',
-                            'unique:users,username,' . auth()->id(),
+                            'unique:users,username,'.auth()->id(),
                         ])
                         ->required()
                         ->maxLength(255),
@@ -91,7 +94,7 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                     Forms\Components\Textarea::make('bio')
                         ->label('Bio'),
 
-                ])
+                ]),
         ])
             ->model(User::class)
             ->statePath('profileData');
@@ -119,12 +122,11 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->password()
                         ->required()
                         ->dehydrated(false),
-                ])
+                ]),
         ])
             ->model(User::class)
             ->statePath('passwordData');
     }
-
 
     public function editSocialForm(Form $form): Forms\Form
     {
@@ -148,14 +150,17 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->validationAttribute('Facebook profile')
                         ->rule(function () {
                             return function (string $attribute, $value, Closure $fail) {
-                                if (empty($value)) return;
-
-                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                                    $fail('Please enter a valid URL.');
+                                if (empty($value)) {
                                     return;
                                 }
 
-                                if (!preg_match('/^https?:\/\/(www\.)?(facebook\.com|fb\.me)\/[a-zA-Z0-9._-]+\/?$/', $value)) {
+                                if (! filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+
+                                    return;
+                                }
+
+                                if (! preg_match('/^https?:\/\/(www\.)?(facebook\.com|fb\.me)\/[a-zA-Z0-9._-]+\/?$/', $value)) {
                                     $fail('Please enter a valid Facebook profile URL (e.g., https://facebook.com/username).');
                                 }
                             };
@@ -168,14 +173,17 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->validationAttribute('X profile')
                         ->rule(function () {
                             return function (string $attribute, $value, Closure $fail) {
-                                if (empty($value)) return;
-
-                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                                    $fail('Please enter a valid URL.');
+                                if (empty($value)) {
                                     return;
                                 }
 
-                                if (!preg_match('/^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[a-zA-Z0-9_]+\/?$/', $value)) {
+                                if (! filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+
+                                    return;
+                                }
+
+                                if (! preg_match('/^https?:\/\/(www\.)?(x\.com|twitter\.com)\/[a-zA-Z0-9_]+\/?$/', $value)) {
                                     $fail('Please enter a valid X/Twitter profile URL (e.g., https://x.com/username).');
                                 }
                             };
@@ -188,14 +196,17 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->validationAttribute('YouTube channel')
                         ->rule(function () {
                             return function (string $attribute, $value, Closure $fail) {
-                                if (empty($value)) return;
-
-                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                                    $fail('Please enter a valid URL.');
+                                if (empty($value)) {
                                     return;
                                 }
 
-                                if (!preg_match('/^https?:\/\/(www\.)?youtube\.com\/([@c]\/[a-zA-Z0-9_-]+|channel\/[a-zA-Z0-9_-]+|user\/[a-zA-Z0-9_-]+)\/?$/', $value)) {
+                                if (! filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+
+                                    return;
+                                }
+
+                                if (! preg_match('/^https?:\/\/(www\.)?youtube\.com\/([@c]\/[a-zA-Z0-9_-]+|channel\/[a-zA-Z0-9_-]+|user\/[a-zA-Z0-9_-]+)\/?$/', $value)) {
                                     $fail('Please enter a valid YouTube channel URL (e.g., https://youtube.com/@username).');
                                 }
                             };
@@ -208,19 +219,22 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
                         ->validationAttribute('GitHub profile')
                         ->rule(function () {
                             return function (string $attribute, $value, Closure $fail) {
-                                if (empty($value)) return;
-
-                                if (!filter_var($value, FILTER_VALIDATE_URL)) {
-                                    $fail('Please enter a valid URL.');
+                                if (empty($value)) {
                                     return;
                                 }
 
-                                if (!preg_match('/^https?:\/\/(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/', $value)) {
+                                if (! filter_var($value, FILTER_VALIDATE_URL)) {
+                                    $fail('Please enter a valid URL.');
+
+                                    return;
+                                }
+
+                                if (! preg_match('/^https?:\/\/(www\.)?github\.com\/[a-zA-Z0-9_-]+\/?$/', $value)) {
                                     $fail('Please enter a valid GitHub profile URL (e.g., https://github.com/username).');
                                 }
                             };
                         }),
-                ])
+                ]),
         ])
             ->model(User::class)
             ->statePath('socialData');
@@ -260,18 +274,19 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
         $data = $this->editPasswordForm->getState();
 
         // Verify current password
-        if (!Hash::check($data['current_password'], auth()->user()->password)) {
+        if (! Hash::check($data['current_password'], auth()->user()->password)) {
             Notification::make()
                 ->danger()
                 ->title('Error')
                 ->body('Current password is incorrect.')
                 ->send();
+
             return;
         }
 
         // Update password
         auth()->user()->update([
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
         ]);
 
         // Clear the form
@@ -318,10 +333,9 @@ class MyProfile extends Page implements Forms\Contracts\HasForms
         return [
             'editProfileForm',
             'editPasswordForm',
-            'editSocialForm'
+            'editSocialForm',
         ];
     }
-
 
     protected function getFormActions(): array
     {

@@ -37,7 +37,7 @@ class SyncViewCount extends Command
             })
                 ->toArray();
 
-            batch()->update(new $model(), $views, 'id');
+            batch()->update(new $model, $views, 'id');
         });
     }
 }

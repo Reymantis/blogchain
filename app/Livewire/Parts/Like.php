@@ -11,27 +11,30 @@ use Livewire\Component;
 
 class Like extends Component
 {
-
     #[Reactive]
     public Model $model;
 
     public string $likeType = 'like';
+
     public bool $showCount = true;
+
     public string $size = 'size-3';
+
     public string $color = 'text-red-500';
+
     public string $buttonClass = '';
+
     public bool $showConfetti = true; // New property to control confetti
 
     public function mount(
-        Model  $model,
+        Model $model,
         string $likeType = 'like',
-        bool   $showCount = true,
+        bool $showCount = true,
         string $size = 'size-5',
         string $color = 'text-red-500',
         string $buttonClass = '',
-        bool   $showConfetti = true
-    ): void
-    {
+        bool $showConfetti = true
+    ): void {
         $this->model = $model;
         $this->likeType = $likeType;
         $this->showCount = $showCount;
@@ -45,7 +48,7 @@ class Like extends Component
     {
 
         // Check authentication
-        if (!auth()->check()) {
+        if (! auth()->check()) {
             Notification::make()
                 ->danger()
                 ->color('danger')
@@ -53,6 +56,7 @@ class Like extends Component
                 ->title('Authentication Required')
                 ->body('You need to log in to like this content.')
                 ->send();
+
             return;
         }
 
@@ -73,7 +77,7 @@ class Like extends Component
                 if ($this->showConfetti) {
                     $this->dispatch('trigger-confetti', [
                         'type' => $this->likeType,
-                        'buttonId' => 'like-button-' . $this->model->id . '-' . $this->likeType
+                        'buttonId' => 'like-button-'.$this->model->id.'-'.$this->likeType,
                     ]);
                 }
             }
@@ -89,11 +93,11 @@ class Like extends Component
                 ->send();
 
             // Log the error for debugging
-            logger()->error('Like error: ' . $e->getMessage(), [
+            logger()->error('Like error: '.$e->getMessage(), [
                 'user_id' => auth()->id(),
                 'model_type' => get_class($this->model),
                 'model_id' => $this->model->id,
-                'like_type' => $this->likeType
+                'like_type' => $this->likeType,
             ]);
         }
     }
@@ -132,7 +136,7 @@ class Like extends Component
      */
     public function getButtonIdProperty(): string
     {
-        return 'like-button-' . $this->model->id . '-' . $this->likeType;
+        return 'like-button-'.$this->model->id.'-'.$this->likeType;
     }
 
     /**
@@ -158,8 +162,8 @@ class Like extends Component
      */
     public function getColorClassProperty(): string
     {
-        if (!$this->isLiked) {
-            return 'text-gray-400 hover:' . $this->color;
+        if (! $this->isLiked) {
+            return 'text-gray-400 hover:'.$this->color;
         }
 
         return match ($this->likeType) {

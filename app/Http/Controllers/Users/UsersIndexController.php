@@ -15,8 +15,8 @@ class UsersIndexController extends Controller
     {
         return view('pages.users.index', [
             'users' => User::has('posts') // only users with posts
-            ->withCount('posts')      // add posts_count
-            ->latest()
+                ->withCount('posts')      // add posts_count
+                ->latest()
                 ->paginate(config('blogchain.pagination.per_page')),
         ]);
     }

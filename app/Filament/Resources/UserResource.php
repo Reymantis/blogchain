@@ -23,7 +23,6 @@ class UserResource extends Resource
 
     protected static ?int $navigationSort = -1;
 
-
     public static function form(Form $form): Form
     {
         return $form
@@ -37,16 +36,16 @@ class UserResource extends Resource
                     ->maxLength(191),
                 Forms\Components\DateTimePicker::make('email_verified_at')
                     ->columnSpanFull(),
-//                Forms\Components\TextInput::make('password')
-//                    ->password()
-//                    ->required()
-//                    ->maxLength(191),
+                //                Forms\Components\TextInput::make('password')
+                //                    ->password()
+                //                    ->required()
+                //                    ->maxLength(191),
                 Forms\Components\Select::make('role')
                     ->relationship('roles', 'name')
                     ->multiple()
                     ->searchable()
                     ->preload()
-                    ->getOptionLabelFromRecordUsing(fn(Role $record) => "{$record->name} ({$record->guard_name})")
+                    ->getOptionLabelFromRecordUsing(fn (Role $record) => "{$record->name} ({$record->guard_name})")
                     ->columnSpanFull(),
             ]);
     }
@@ -63,7 +62,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('client_ip')
                     ->label('IP Address'),
 
-//                IPToCountryFlagColumn::make('client_ip')->flagPosition('left'),
+                //                IPToCountryFlagColumn::make('client_ip')->flagPosition('left'),
 
                 Tables\Columns\TextColumn::make('email_verified_at')
                     ->dateTime()
@@ -85,7 +84,7 @@ class UserResource extends Resource
                 Tables\Filters\TrashedFilter::make(),
             ])
             ->actions([
-//                Tables\Actions\ViewAction::make(),
+                //                Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
@@ -100,7 +99,7 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-//            RolesRelationManager::class
+            //            RolesRelationManager::class
 
         ];
     }
@@ -110,7 +109,7 @@ class UserResource extends Resource
         return [
             'index' => Pages\ListUsers::route('/'),
             'create' => Pages\CreateUser::route('/create'),
-//            'view' => Pages\ViewUser::route('/{record}'),
+            //            'view' => Pages\ViewUser::route('/{record}'),
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }

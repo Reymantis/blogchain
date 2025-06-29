@@ -7,7 +7,7 @@
                 <ul class="list-outside list-circle pl-2 ">
                     @foreach(Menu::legal() as $item)
                         <li class="ml-4">
-                            <a href="{{ route($item->route) }}"
+                            <a wire.navigate.hover href="{{ route($item->route) }}"
                                     @class([
                                        'rounded-md px-2 py-1 inline-flex hover:underline block dark:text-gray-100/75
                                        items-center hover:text-primary-500 dark:hover:text-primary-400'

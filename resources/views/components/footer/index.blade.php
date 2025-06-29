@@ -14,6 +14,7 @@
                     </li>
                     <li>
                         <a href="#">Cookie Policy</a>
+
                     </li>
                     <li>
                         <a href="#">User Data</a>
@@ -23,7 +24,7 @@
             <div>
                 <ul class="space-y-2">
                     <li>
-
+                    </li>
                 </ul>
 
             </div>

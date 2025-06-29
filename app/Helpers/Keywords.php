@@ -6,9 +6,6 @@ class Keywords
 {
     /**
      * Convert keywords to a comma-separated string.
-     *
-     * @param array|string|null $keywords
-     * @return string
      */
     public static function toString(array|string|null $keywords): string
     {
@@ -17,9 +14,6 @@ class Keywords
 
     /**
      * Convert keywords to an array, trimming each entry.
-     *
-     * @param array|string|null $keywords
-     * @return array
      */
     public static function toArray(array|string|null $keywords): array
     {

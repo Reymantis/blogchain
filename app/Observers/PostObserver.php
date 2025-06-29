@@ -22,6 +22,4 @@ class PostObserver
     {
         $post->slug = Str::slug($post->title);
     }
-
-
 }

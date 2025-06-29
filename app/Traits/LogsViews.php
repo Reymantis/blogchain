@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Redis;
 
 trait LogsViews
 {
-
     public function logView(): void
     {
         Redis::pfadd(sprintf('%s.%s.views', $this->getTable(), $this->id), [request()->ip()]);
@@ -16,6 +15,4 @@ trait LogsViews
     {
         return Redis::pfcount(sprintf('%s.%s.views', $this->getTable(), $this->id));
     }
-
-
 }

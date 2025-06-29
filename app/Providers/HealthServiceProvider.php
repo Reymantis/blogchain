@@ -15,8 +15,6 @@ use Spatie\Health\Checks\Checks\PingCheck;
 use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
 use Spatie\Health\Facades\Health;
 
-
-
 class HealthServiceProvider extends ServiceProvider
 {
     /**

@@ -22,7 +22,7 @@ class CategoriesShowController extends Controller
             'media',
             'tags',
             'category',
-            'user'
+            'user',
         ];
         if ($userId) {
             $with['likes'] = function ($q) use ($userId) {
@@ -35,7 +35,7 @@ class CategoriesShowController extends Controller
             ->withCount([
                 'likes as like_count' => function ($q) {
                     $q->where('like_type', 'like');
-                }
+                },
             ])
             ->latest()
             ->paginate(10);
@@ -45,5 +45,4 @@ class CategoriesShowController extends Controller
             'posts' => $posts,
         ]);
     }
-
 }

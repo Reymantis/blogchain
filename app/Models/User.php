@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Althinect\FilamentSpatieRolesPermissions\Concerns\HasSuperAdmin;
 use Database\Factories\UserFactory;
 use Filament\Models\Contracts\FilamentUser;
@@ -20,7 +19,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasMedia
+class User extends Authenticatable implements FilamentUser, HasMedia, MustVerifyEmail
 {
     /**
      * The attributes that are mass assignable.
@@ -38,19 +37,20 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
         'social_facebook',
         'social_github',
         'social_x',
-        'website'
+        'website',
     ];
 
     /** @use HasFactory<UserFactory> */
     use HasFactory;
-    use Notifiable;
+
     use HasRoles;
     use HasSuperAdmin;
-    use SoftDeletes;
     use InteractsWithMedia;
-
+    use Notifiable;
+    use SoftDeletes;
 
     protected $appends = ['avatar_url'];
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -75,35 +75,34 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
             if ($this->avatar) {
                 // Ensure correct slash between path segments
-                return asset('storage/' . ltrim($this->avatar, '/'));
+                return asset('storage/'.ltrim($this->avatar, '/'));
             }
 
             // Fallback to UI-Avatars with user's name or email
             $name = urlencode($this->name ?? $this->email ?? 'User');
+
             return "https://ui-avatars.com/api/?name={$name}&color=7F9CF5&background=EBF4FF";
         });
     }
 
     public function username(): string
     {
-        return '@' . $this->username;
+        return '@'.$this->username;
     }
 
     public function getAvatar(): ?string
     {
         if ($this->avatar) {
             // Ensure correct slash between path segments
-            return asset('storage/' . ltrim($this->avatar, '/'));
+            return asset('storage/'.ltrim($this->avatar, '/'));
         }
 
         // Fallback to UI-Avatars with user's name or email
         $name = urlencode($this->name ?? $this->email ?? 'User');
+
         return "https://ui-avatars.com/api/?name={$name}&color=7F9CF5&background=random";
     }
 
-    /**
-     * @return HasMany
-     */
     public function posts(): HasMany
     {
         return $this->hasMany(Post::class);
@@ -154,5 +153,4 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
         ];
     }
-
 }

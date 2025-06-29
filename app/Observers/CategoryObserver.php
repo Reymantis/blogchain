@@ -7,12 +7,8 @@ use Illuminate\Support\Str;
 
 class CategoryObserver
 {
-
     /**
      * Handle the Category "creating" event.
-     *
-     * @param Category $category
-     * @return void
      */
     public function creating(Category $category): void
     {
@@ -21,9 +17,6 @@ class CategoryObserver
 
     /**
      * Generate a nested slug for the category (parent-slug/child-slug)
-     *
-     * @param Category $category
-     * @return string
      */
     private function generateNestedSlug(Category $category): string
     {
@@ -41,10 +34,6 @@ class CategoryObserver
 
     /**
      * Ensure the slug is unique among siblings
-     *
-     * @param string $slug
-     * @param Category $category
-     * @return string
      */
     private function ensureUniqueSlug(string $slug, Category $category): string
     {
@@ -76,9 +65,6 @@ class CategoryObserver
 
     /**
      * Handle the Category "updating" event.
-     *
-     * @param Category $category
-     * @return void
      */
     public function updating(Category $category): void
     {
@@ -94,9 +80,6 @@ class CategoryObserver
 
     /**
      * Check if parent was changed
-     *
-     * @param Category $category
-     * @return bool
      */
     private function parentChanged(Category $category): bool
     {
@@ -105,9 +88,6 @@ class CategoryObserver
 
     /**
      * Update slugs for all children recursively
-     *
-     * @param Category $category
-     * @return void
      */
     private function updateChildrenSlugs(Category $category): void
     {
