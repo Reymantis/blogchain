@@ -4,6 +4,7 @@ import resize from '@alpinejs/resize'
 import {collapse} from "@alpinejs/collapse/builds/module.js";
 import './clockWidget.js'
 import './weatherWidget.js'
+import './games/wordle.js'
 
 window.axios = axios;
 

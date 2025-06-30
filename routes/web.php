@@ -26,3 +26,6 @@ Route::get('/articles/{category:slug}', PostsIndexController::class)->name('post
 
 Route::get('/article/{category:slug}/{post:slug}', PostsShowController::class)->name('posts.show');
 Route::get('/tags/{tag}', TagsShowController::class)->name('tags.show');
+
+
+Route::view('/games/wordle', 'pages.games.wordle')->name('games.wordle');
