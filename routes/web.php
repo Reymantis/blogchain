@@ -10,12 +10,12 @@ use App\Http\Controllers\Users\UsersIndexController;
 use App\Http\Controllers\Users\UsersShowController;
 use Illuminate\Support\Facades\Route;
 
-// request()->server->add(['REMOTE_ADDR' => '148.0.0.1']);
 
 Route::get('/', HomePageController::class)->name('home');
 
 Route::get('/about-us', [MarkdownPagesController::class, 'about_us'])->name('about-us');
 Route::get('/legal/privacy-policy', [MarkdownPagesController::class, 'privacy_policy'])->name('privacy-policy');
+
 Route::view('/contact-us', 'pages.contact-us')->name('contact-us');
 
 Route::get('/contributors', UsersIndexController::class)->name('users.index');

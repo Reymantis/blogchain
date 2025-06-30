@@ -9,16 +9,18 @@
     ">--}}
     {{--        <x-heroicon-o-newspaper class="size-6  mx-auto mt-2"/>--}}
     {{--    </a>--}}
-    <a wire:navigate.hover href="{{ route('filament.admin.resources.posts.create') }}"
-       class="size-10 bg-primary-500 text-gray-900 dark:text-white hover:bg-gray-950/5 hover:dark:bg-primary-500/75 rounded-md ">
-        <x-heroicon-o-plus class="size-6  mx-auto mt-2"/>
-    </a>
-    {{--    <a wire:navigate.hover href="#" class="size-10 text-gray-900 dark:text-white hover:bg-gray-950/5 hover:dark:bg-white/5 rounded-md ">--}}
-    {{--        <x-heroicon-o-users class="size-6  mx-auto mt-2"/>--}}
-    {{--    </a>--}}
     <a wire:navigate.hover href="{{ route('contact-us') }}" class="size-10 text-gray-900 dark:text-white hover:bg-gray-950/5 hover:dark:bg-white/5 rounded-md ">
         <x-heroicon-o-envelope-open
             class="size-6  mx-auto mt-2"/>
     </a>
+    <a wire:navigate.hover href="{{ route('filament.admin.resources.posts.create') }}"
+       class="size-10 bg-primary-500 text-gray-900 dark:text-white hover:bg-gray-950/5 hover:dark:bg-primary-500/75 rounded-md ">
+        <x-heroicon-o-plus class="size-6  mx-auto mt-2"/>
+    </a>
+    {{--    <a wire:navigate.hover href="{{ route('filament.admin.auth.login') }}"--}}
+    {{--       class="size-10 text-gray-900 dark:text-white hover:bg-gray-950/5 hover:dark:bg-white/5 rounded-md ">--}}
+    {{--        <x-heroicon-o-user class="size-6  mx-auto mt-2"/>--}}
+    {{--    </a>--}}
+
 
 </div>

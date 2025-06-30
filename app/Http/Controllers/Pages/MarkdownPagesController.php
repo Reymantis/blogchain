@@ -22,4 +22,12 @@ class MarkdownPagesController extends Controller
             'file' => 'privacy-policy',
         ]);
     }
+
+    public function bla(): View
+    {
+        return view('pages.markdown', [
+            'title' => 'Privacy Policy',
+            'file' => 'privacy-policy',
+        ]);
+    }
 }

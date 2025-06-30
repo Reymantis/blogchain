@@ -4,10 +4,10 @@
 
         @if($posts)
             @foreach($posts as $post)
-                @if($loop->iteration == 2)
-                    <x-widget.clock/>
-                    <x-widget.weather/>
-                @endif
+                {{--                @if($loop->iteration == 2)--}}
+                {{--                    <x-widget.clock/>--}}
+                {{--                    <x-widget.weather/>--}}
+                {{--                @endif--}}
 
                 @if($loop->iteration %=10)
                     <x-parts.card.blog-2 :$loop :$post/>
@@ -17,6 +17,11 @@
             @endforeach
         @endif
     </div>
-    {{--    <x-slot name="rightSidebar">--}}
-    {{--    </x-slot>--}}
+    <x-slot name="rightSidebar">
+        <div class="space-y-5">
+            <x-widget.clock/>
+            <x-sidebar.tags/>
+        </div>
+
+    </x-slot>
 </x-app-layout>
