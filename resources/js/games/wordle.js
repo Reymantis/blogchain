@@ -1,58 +1,10 @@
+import words from "./words.txt"
+
 function wordleGame() {
     return {
-        // Word list
-        wordList: [
-            "SLOPE", "SHAKY", "LEMON", "QUIET", "FLAME", "SNAKE", "QUEEN", "IMAGE", "HAUNT", "GRASP",
-            "FABLE", "HAUNT", "VAPOR", "GUILT", "BRAVE", "LODGE", "HORSE", "KNEAD", "JEWEL", "WALTZ",
-            "GLOVE", "SHINE", "VALVE", "QUIRK", "WALTZ", "ABBEY", "CHESS", "JOLLY", "ROAST", "DRINK",
-            "KNEAD", "KNIFE", "DIZZY", "ZILCH", "VIVID", "AMBER", "IMAGE", "DEPTH", "MOOSE", "WHALE",
-            "SNAKE", "ORBIT", "TOXIC", "ELBOW", "ABBEY", "VALVE", "INPUT", "LEMON", "ELBOW", "CLING",
-            "WHALE", "PIANO", "ROAST", "VIGOR", "BASIL", "HORSE", "BRAVE", "VAPOR", "XENON", "NASTY",
-            "LODGE", "URBAN", "DRILL", "ABBEY", "GLOVE", "GUILT", "APPLE", "JOLLY", "TIMID", "YIELD",
-            "ZONAL", "DRINK", "UNITE", "HORSE", "YIELD", "ULTRA", "EVOKE", "JELLY", "APPLE", "HASTE",
-            "BRAVE", "SHINE", "JELLY", "MINOR", "PUNCH", "JOUST", "QUIET", "OCEAN", "IRONY", "APPLE",
-            "NERDY", "DIZZY", "MINOR", "HAUNT", "VAPOR", "KARMA", "OCEAN", "ADOBE", "URBAN", "LIVER",
-            "JELLY", "PLUSH", "FLESH", "CRISP", "TOXIC", "NOBLE", "ABBEY", "LATCH", "NASTY", "BEACH",
-            "JELLY", "DEPTH", "QUILT", "HASTE", "GLOVE", "FABLE", "MIRTH", "IRONY", "NERDY", "EVOKE",
-            "URBAN", "HORSE", "ELOPE", "WRATH", "UNITE", "LODGE", "IMAGE", "IMAGE", "GUILT", "YOUNG",
-            "SNAKE", "DRILL", "NERDY", "JEWEL", "OXIDE", "WALTZ", "RISKY", "ZEBRA", "ADOBE", "DIZZY",
-            "GUILT", "DEPTH", "CRANE", "AMBER", "CRANE", "GLOVE", "DRINK", "KNIFE", "DRILL", "VIVID",
-            "AMBER", "MODEL", "WOVEN", "INPUT", "LODGE", "SLOPE", "ORGAN", "KNEEL", "QUIET", "WALTZ",
-            "FABLE", "NASTY", "YOUNG", "CLING", "VAPOR", "OXIDE", "ZILCH", "MOOSE", "ULTRA", "VALVE",
-            "TOXIC", "EVOKE", "BASIL", "WHALE", "RAVEN", "CHANT", "IMAGE", "HOVER", "BRAVE", "BLAME",
-            "HOVER", "UNITE", "CHANT", "KNEEL", "JELLY", "KNEEL", "HOVER", "ELOPE", "INBOX", "JELLY",
-            "DIZZY", "TRICK", "PIANO", "BLISS", "KNEAD", "BLISS", "ROAST", "PUNCH", "ORGAN", "POUCH",
-            "QUIET", "GRAPE", "PLUSH", "WOVEN", "GRAPE", "TIMID", "BLAME", "DRILL", "BASIL", "YOUTH",
-            "TRICK", "URBAN", "ZEBRA", "ORBIT", "MAGIC", "PLUSH", "LEMON", "TRICK", "UNDER", "BRAVE",
-            "QUIET", "MODEL", "EAGLE", "RAVEN", "PLUSH", "CRANE", "EAGLE", "FABLE", "ZONAL", "UNDER",
-            "CHANT", "HASTE", "PLUSH", "CRANE", "TOXIC", "DIZZY", "WHALE", "ADOBE", "GUILT", "XENON",
-            "URBAN", "WALTZ", "LEMON", "VIGOR", "POUCH", "DIZZY", "JELLY", "TOXIC", "MAGIC", "APPLE",
-            "ROAST", "DIZZY", "INBOX", "APPLE", "WRATH", "QUEEN", "YUMMY", "GROOM", "PLUSH", "RAVEN",
-            "MAGIC", "WOVEN", "PUNCH", "BRAVE", "PLUSH", "QUIRK", "INBOX", "ULTRA", "JOLLY", "KNEAD",
-            "QUIET", "GRASP", "PLUSH", "TOXIC", "AMBER", "FROST", "SNAKE", "ADOBE", "FABLE", "FROST",
-            "TIGER", "GROOM", "DIZZY", "HAUNT", "MODEL", "EAGLE", "ELOPE", "YOUTH", "FLAME", "WOVEN",
-            "WHALE", "YOUTH", "DRILL", "ROAST", "WALTZ", "MANGO", "TRICK", "MODEL", "GRAPE", "KARMA",
-            "FLESH", "CRANE", "FABLE", "ZEBRA", "ORBIT", "NOBLE", "KNEAD", "WALTZ", "FLAME", "XENON",
-            "EAGLE", "RAVEN", "WALTZ", "INPUT", "JELLY", "APPLE", "LEMON", "HASTE", "RAVEN", "DEPTH",
-            "YOUTH", "FABLE", "PUNCH", "PLUSH", "ZILCH", "URBAN", "PLUSH", "SNAKE", "WALTZ", "YUMMY",
-            "SLOPE", "GUILT", "WOVEN", "DRINK", "BRAVE", "GUILT", "PLUSH", "WHALE", "RAVEN", "YOUTH",
-            "FROST", "ELOPE", "CRANE", "JELLY", "BLISS", "KNIFE", "KNEAD", "GLOVE", "LEMON", "INPUT",
-            "UNDER", "PLUSH", "POUCH", "ROAST", "INPUT", "VIGOR", "JOLLY", "RAVEN", "TRICK", "ADOBE",
-            "BRAVE", "URBAN", "DRINK", "APPLE", "VAPOR", "JELLY", "PLUSH", "LEMON", "NASTY", "AMBER",
-            "HORSE", "APPLE", "MODEL", "YIELD", "FABLE", "IMAGE", "WHALE", "BLAME", "GLASS", "DIZZY",
-            "JOLLY", "JELLY", "SLOPE", "WRATH", "JOLLY", "PLUSH", "WHALE", "WALTZ", "ZEBRA", "TOXIC",
-            "YUMMY", "CRANE", "ULTRA", "MANGO", "JELLY", "BRAVE", "YOUTH", "URBAN", "MODEL", "TRICK",
-            "PLUSH", "HAUNT", "GRAPE", "ROAST", "HORSE", "RAVEN", "TRICK", "BRAVE", "PLUSH", "WOVEN",
-            "CRANE", "APPLE", "FABLE", "YOUTH", "JOLLY", "DIZZY", "MANGO", "PLUSH", "URBAN", "LEMON",
-            "WHALE", "GLOVE", "ZONAL", "NASTY", "PLUSH", "MOOSE", "AMBER", "KNEEL", "ROAST", "DIZZY",
-            "TIGER", "BRAVE", "FABLE", "WALTZ", "RAVEN", "TRICK", "JOLLY", "APPLE", "ULTRA", "PLUSH",
-            "QUIRK", "GLOVE", "ZEBRA", "CRANE", "PUNCH", "LEMON", "KARMA", "RAVEN", "INPUT", "GROOM",
-            "JELLY", "ZEBRA", "SLOPE", "UNDER", "FLESH", "BRAVE", "NASTY", "URBAN", "ZEBRA", "APPLE",
-            "FLAME", "ROAST", "WOVEN", "URBAN", "RAVEN", "JOLLY", "WALTZ", "MODEL", "ZILCH", "WALTZ",
-            "HORSE", "YOUTH", "ZONAL", "JELLY", "CRANE", "FROST", "NASTY", "PLUSH", "URBAN", "RAVEN",
-            "EAGLE", "DIZZY", "KNEEL", "AMBER", "YUMMY", "KNEEL", "ZILCH", "GLOVE", "TRICK", "YOUTH",
-            "XENON", "ZEBRA", "APPLE", "DRINK", "GUILT", "BLAME", "HORSE", "MODEL", "ZONAL", "WALTZ"
-        ],
+        // Word list (will be loaded from words.txt)
+        wordList: [],
+        wordListLoaded: false,
 
         // Game state
         targetWord: '',
@@ -76,15 +28,40 @@ function wordleGame() {
         },
 
         init() {
-            this.resetGame();
+            this.loadWordList().then(() => {
+                this.resetGame();
+            });
+        },
+
+        async loadWordList() {
+            try {
+                const response = await fetch(words); // Make sure this path is correct
+                const text = await response.text();
+                this.wordList = text
+                    .toUpperCase()
+                    .split('\n')
+                    .map(word => word.trim())
+                    .filter(word => word.length === 5); // Only keep 5-letter words
+
+                this.wordListLoaded = true;
+            } catch (error) {
+                console.error("Failed to load word list:", error);
+                this.showToast("Error loading word list!", "error");
+            }
         },
 
         resetGame() {
+            if (!this.wordListLoaded || this.wordList.length === 0) {
+                this.showToast("Words not loaded yet!", "error");
+                return;
+            }
+
             this.targetWord = this.wordList[Math.floor(Math.random() * this.wordList.length)];
             this.guesses = [];
             this.currentGuess = '';
             this.gameStatus = 'playing';
             this.currentRow = 0;
+
             console.log('Target word:', this.targetWord); // For debugging
         },
 
@@ -157,7 +134,7 @@ function wordleGame() {
 
         getKeyClass(key) {
             const isSpecial = key === 'ENTER' || key === 'BACKSPACE';
-            let baseClass = isSpecial ? 'px-3' : 'w-10';
+            let baseClass = isSpecial ? 'px-2 md:px-3' : 'w-8 md:w-10';
 
             if (key.length === 1) {
                 const letterState = this.getKeyboardLetterState(key);
@@ -189,7 +166,7 @@ function wordleGame() {
         },
 
         handleKeyPress(key) {
-            if (this.gameStatus !== 'playing') return;
+            if (this.gameStatus !== 'playing' || !this.wordListLoaded) return;
 
             if (key === 'ENTER') {
                 if (this.currentGuess.length !== 5) {
