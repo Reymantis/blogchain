@@ -2,7 +2,7 @@ function wordleGame() {
     return {
         // Word list
         wordList: [
-            'AMBER', 'BREAD', 'ANGLE', 'ABOUT', 'STREAM'
+            'AMBER', 'BREAD', 'ANGLE', 'ABOUT'
         ],
 
         // Game state
