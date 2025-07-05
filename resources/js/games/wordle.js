@@ -1,9 +1,14 @@
+import words from "./words.txt"
+
 function wordleGame() {
     return {
-        // Word list
-        wordList: [
-            "ABOUT", "ABOVE", "ABUSE", "ACTOR", "ACUTE", "ADMIT", "ADOPT", "ADULT", "AFTER", "AGAIN",
-        ],
+
+
+
+        // Word list (will be loaded from words.txt)
+        wordList: [],
+        wordListLoaded: false,
+
 
         // Game state
         targetWord: '',
@@ -27,15 +32,40 @@ function wordleGame() {
         },
 
         init() {
-            this.resetGame();
+            this.loadWordList().then(() => {
+                this.resetGame();
+            });
+        },
+
+        async loadWordList() {
+            try {
+                const response = await fetch(words); // Make sure this path is correct
+                const text = await response.text();
+                this.wordList = text
+                    .toUpperCase()
+                    .split('\n')
+                    .map(word => word.trim())
+                    .filter(word => word.length === 5); // Only keep 5-letter words
+
+                this.wordListLoaded = true;
+            } catch (error) {
+                console.error("Failed to load word list:", error);
+                this.showToast("Error loading word list!", "error");
+            }
         },
 
         resetGame() {
+            if (!this.wordListLoaded || this.wordList.length === 0) {
+                this.showToast("Words not loaded yet!", "error");
+                return;
+            }
+
             this.targetWord = this.wordList[Math.floor(Math.random() * this.wordList.length)];
             this.guesses = [];
             this.currentGuess = '';
             this.gameStatus = 'playing';
             this.currentRow = 0;
+
             console.log('Target word:', this.targetWord); // For debugging
         },
 
@@ -108,7 +138,7 @@ function wordleGame() {
 
         getKeyClass(key) {
             const isSpecial = key === 'ENTER' || key === 'BACKSPACE';
-            let baseClass = isSpecial ? 'px-3' : 'w-10';
+            let baseClass = isSpecial ? 'px-2 md:px-3' : 'w-8 md:w-10';
 
             if (key.length === 1) {
                 const letterState = this.getKeyboardLetterState(key);
@@ -140,7 +170,7 @@ function wordleGame() {
         },
 
         handleKeyPress(key) {
-            if (this.gameStatus !== 'playing') return;
+            if (this.gameStatus !== 'playing' || !this.wordListLoaded) return;
 
             if (key === 'ENTER') {
                 if (this.currentGuess.length !== 5) {

@@ -1,13 +1,20 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-CzjN6Eml.css",
+    "file": "assets/app-YaRaKUL1.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
   "resources/js/app.js": {
-    "file": "assets/app-6C0zXu4x.js",
+    "file": "assets/app-Bv3PIvRp.js",
     "name": "app",
     "src": "resources/js/app.js",
-    "isEntry": true
+    "isEntry": true,
+    "assets": [
+      "assets/words-CmRpfe2t.txt"
+    ]
+  },
+  "resources/js/games/words.txt": {
+    "file": "assets/words-CmRpfe2t.txt",
+    "src": "resources/js/games/words.txt"
   }
 }
