@@ -2,9 +2,9 @@
     x-data="wordleGame()"
     x-init="init()"
     @keydown.window="handleKeyDown($event)"
-    class="min-h-screen flex items-center justify-center p-4 bg-gray-100"
+    class="min-h-screen flex items-center justify-center p-1 md:p-4 bg-gray-100 "
 >
-    <div class="w-full max-w-md mx-auto">
+    <div class="w-full max-w-lg mx-auto scale-90 md:scale-100 origin-center">
         <!-- Header -->
         <div class="text-center mb-6">
             <h1 class="text-3xl sm:text-4xl font-bold mb-2">Wordle</h1>
@@ -12,7 +12,7 @@
         </div>
 
         <!-- Game Grid -->
-        <div class="bg-white border border-gray-200 text-gray-800 rounded-lg shadow-sm p-4 sm:p-6 mb-6">
+        <div class="bg-white border border-gray-200 text-gray-800 rounded-lg shadow-sm p-2 sm:p-6 mb-6">
             <div class="flex flex-col gap-1.5 items-center mb-4">
                 <template x-for="(row, rowIndex) in 6" :key="rowIndex">
                     <div class="flex gap-1.5">
@@ -37,14 +37,14 @@
             </div>
 
             <!-- Keyboard -->
-            <div class="flex flex-col gap-1.5 mt-4">
+            <div class="flex flex-col sm:gap-1.5 gap-1 mt-4">
                 <template x-for="(row, rowIndex) in keyboardRows" :key="rowIndex">
-                    <div class="flex gap-1 justify-center">
+                    <div class="flex gap-0.5 md:gap-1 justify-center">
                         <template x-for="key in row" :key="key">
                             <button
                                 @click="handleKeyPress(key)"
                                 :disabled="gameStatus !== 'playing'"
-                                class="h-8 sm:h-10 text-xs sm:text-sm font-semibold rounded transition-colors disabled:opacity-50 flex items-center justify-center"
+                                class="h-10 text-[11px] lg:text-sm font-semibold rounded transition-colors disabled:opacity-50 flex items-center justify-center"
                                 :class="getKeyClass(key)"
                                 x-text="key === 'BACKSPACE' ? '⌫' : key">
                             </button>

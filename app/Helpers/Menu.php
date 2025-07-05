@@ -51,6 +51,20 @@ class Menu
                 'active' => 'contact-us',
                 'children' => null,
             ],
+            [
+                'name' => 'Games',
+                'route' => "home",
+                'active' => 'games*',
+                'children' => [
+                    [
+                        'name' => 'Wordle',
+                        'route' => 'games.wordle',
+                        'active' => 'games*',
+                        'children' => null,
+                        'slug' => '',
+                    ],
+                ]
+            ],
         ];
 
         return static::colletor($items);
