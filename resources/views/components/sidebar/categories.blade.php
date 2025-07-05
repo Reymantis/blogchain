@@ -1,6 +1,6 @@
 <div class="sticky top-0 pb-12">
     <x-text.heading as="h4" icon="heroicon-o-folder-open">
-        Categories Tree
+        Categories
     </x-text.heading>
     <ul class="marker:text-primary-500 text-sm">
         @foreach($categories->toTree() as $category)

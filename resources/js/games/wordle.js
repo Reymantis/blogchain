@@ -2,7 +2,7 @@ function wordleGame() {
     return {
         // Word list
         wordList: [
-            "Claude", "RENIER", "ABOUT", "ABOVE", "ABUSE", "ACTOR", "ACUTE", "ADMIT", "ADOPT", "ADULT", "AFTER", "AGAIN",
+            "ABOUT", "ABOVE", "ABUSE", "ACTOR", "ACUTE", "ADMIT", "ADOPT", "ADULT", "AFTER", "AGAIN",
         ],
 
         // Game state

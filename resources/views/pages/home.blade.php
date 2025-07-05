@@ -19,7 +19,7 @@
     </div>
     <x-slot name="rightSidebar">
         <div class="space-y-5">
-            <x-widget.clock/>
+            <x-widget.weather/>
             <x-sidebar.tags/>
         </div>
 

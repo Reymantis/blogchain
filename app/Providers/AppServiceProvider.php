@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +19,7 @@ class AppServiceProvider extends ServiceProvider
         Schema::defaultStringLength(191);
         URL::forceHttps(config('app.force_https'));
         //        Model::preventLazyLoading();
+
 
         FilamentColor::register([
             'danger' => Color::Red,
