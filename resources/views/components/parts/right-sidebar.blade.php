@@ -9,7 +9,7 @@
     <!-- Toggle button - visible only on medium screens -->
     <button
         type="button"
-        class="bg-white dark:bg-gray-900 border xl:hidden border-gray-200 dark:border-gray-800 grid place-content-center rounded-l-lg size-10
+        class="bg-primary-500 border lg:hidden border-gray-200 dark:border-gray-800 grid place-content-center rounded-l-lg size-10
                 absolute top-20 -left-[39px] border-r-0"
         @click="rightSidebarOpen = !rightSidebarOpen"
     >

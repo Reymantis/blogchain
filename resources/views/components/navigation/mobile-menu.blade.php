@@ -27,5 +27,14 @@
             </div>
         @endif
     @endforeach
+    @auth
+            <form action="{{ route('filament.admin.auth.logout') }}" method="POST">
+                @csrf
+                <button type="submit" class="px-2 py-1 flex flex-1 justify-between items-center hover:bg-gray-500/15 rounded-md w-full text-left">
+                    <span>Logout</span>
+                    <x-heroicon-s-arrow-right-on-rectangle class="size-4"/>
+                </button>
+            </form>
+    @endauth
 
 </div>

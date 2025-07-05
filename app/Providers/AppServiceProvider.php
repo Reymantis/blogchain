@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -21,9 +22,11 @@ class AppServiceProvider extends ServiceProvider
         URL::forceHttps(config('app.force_https'));
         //        Model::preventLazyLoading();
 
+
         Gate::define('viewPulse', function (User $user) {
             return $user->isSuperAdmin();
         });
+
 
 
         FilamentColor::register([

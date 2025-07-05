@@ -118,7 +118,20 @@ selection:text-primary-50">
         </path>
     </svg>
 </div>
+@session('status')
 
+    <div class="fixed top-0 left-1/2 transform -translate-x-1/2 z-[1000] bg-green-500 text-white px-4 py-2 rounded-md shadow-lg transition-all duration-300 ease-in-out"
+         x-data="{ show: true }" x-show="show" x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 translate-y-[-20px]"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200"
+         x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 translate-y-[20px]"
+         @click.away="show = false">
+        {{ session('status') }}
+    </div>
+
+@endsession
 <x-navigation/>
 <div class="flex flex-rows gap-4 flex-1 relative max-w-full overflow-x-clip">
     <x-parts.left-sidebar>

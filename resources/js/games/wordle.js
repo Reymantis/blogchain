@@ -2,9 +2,13 @@ import words from "./words.txt"
 
 function wordleGame() {
     return {
+
+
+
         // Word list (will be loaded from words.txt)
         wordList: [],
         wordListLoaded: false,
+
 
         // Game state
         targetWord: '',
