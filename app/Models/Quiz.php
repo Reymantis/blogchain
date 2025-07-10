@@ -20,8 +20,8 @@ class Quiz extends Model
     protected $casts = [
         'time_limit' => 'integer',
     ];
-    // public function questions()
-    // {
-    //     return $this->hasMany(Question::class);
-    // }
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }
