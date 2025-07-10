@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\QuestionResource\Pages;
 use App\Filament\Resources\QuestionResource\RelationManagers;
+use App\Filament\Resources\QuestionResource\RelationManagers\OptionsRelationManager;
 use App\Models\Question;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -27,7 +28,19 @@ class QuestionResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('question_text')
+                    ->required()
+                    ->maxLength(255)
+                    ->label('Question Text'),
+                Forms\Components\Select::make('quiz_id')
+                    ->relationship('quiz', 'title')
+                    ->required()
+                    ->label('Quiz'),
+                Forms\Components\TextInput::make('points')
+                    ->numeric()
+                    ->required()
+                    ->default(1)
+                    ->label('Points'),
             ]);
     }
 
@@ -35,7 +48,15 @@ class QuestionResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('question_text')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Question Text'),
+                Tables\Columns\TextColumn::make('quiz.title')
+                    ->searchable()
+                    ->sortable()
+                    ->label('Quiz Title'),
+                    Tables\Columns\TextColumn::make('points')
             ])
             ->filters([
                 //
@@ -53,7 +74,7 @@ class QuestionResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            OptionsRelationManager::class
         ];
     }
 
