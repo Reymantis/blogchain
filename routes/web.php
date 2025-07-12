@@ -5,6 +5,9 @@ use App\Http\Controllers\Pages\HomePageController;
 use App\Http\Controllers\Pages\MarkdownPagesController;
 use App\Http\Controllers\Posts\PostsIndexController;
 use App\Http\Controllers\Posts\PostsShowController;
+use App\Http\Controllers\Quiz\QuizIndexController;
+use App\Http\Controllers\Quiz\QuizResultsController;
+use App\Http\Controllers\Quiz\QuizShowController;
 use App\Http\Controllers\Tags\TagsShowController;
 use App\Http\Controllers\Users\UsersIndexController;
 use App\Http\Controllers\Users\UsersShowController;
@@ -29,3 +32,7 @@ Route::get('/tags/{tag}', TagsShowController::class)->name('tags.show');
 
 
 Route::view('/games/wordle', 'pages.games.wordle')->name('games.wordle');
+
+Route::get('/quiz', QuizIndexController::class)->name('quiz.index');
+Route::get('/quiz/{quiz}', QuizShowController::class)->name('quiz.show');
+Route::get('/quiz/results/{attempt}', QuizResultsController::class)->name('quiz.results');

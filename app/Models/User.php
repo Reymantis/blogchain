@@ -75,7 +75,7 @@ class User extends Authenticatable implements FilamentUser, HasMedia, MustVerify
 
             if ($this->avatar) {
                 // Ensure correct slash between path segments
-                return asset('storage/'.ltrim($this->avatar, '/'));
+                return asset('storage/' . ltrim($this->avatar, '/'));
             }
 
             // Fallback to UI-Avatars with user's name or email
@@ -87,14 +87,14 @@ class User extends Authenticatable implements FilamentUser, HasMedia, MustVerify
 
     public function username(): string
     {
-        return '@'.$this->username;
+        return '@' . $this->username;
     }
 
     public function getAvatar(): ?string
     {
         if ($this->avatar) {
             // Ensure correct slash between path segments
-            return asset('storage/'.ltrim($this->avatar, '/'));
+            return asset('storage/' . ltrim($this->avatar, '/'));
         }
 
         // Fallback to UI-Avatars with user's name or email
@@ -138,6 +138,11 @@ class User extends Authenticatable implements FilamentUser, HasMedia, MustVerify
             ->addMediaConversion('large')
             ->fit(Fit::Crop, 600, 600)
             ->nonQueued();
+    }
+
+    public function quizAttempts(): HasMany
+    {
+        return $this->hasMany(QuizAttempt::class);
     }
 
     /**
