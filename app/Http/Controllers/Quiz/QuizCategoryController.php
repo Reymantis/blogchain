@@ -6,15 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\QuizCategory;
 use Illuminate\View\View;
 
-class QuizIndexController extends Controller
+class QuizCategoryController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(QuizCategory $category): View
+    public function __invoke(QuizCategory $quizCategory): View
     {
-        return view('pages.quiz.index', [
-            'category' => $category->load(['quizzes']),
+        return view('pages.quiz.categories', [
+            'quizCategory' => $quizCategory->get(),
         ]);
     }
 }

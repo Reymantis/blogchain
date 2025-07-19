@@ -6,16 +6,14 @@
             </x-text.heading>
             <x-button.back/>
         </x-parts.card>
-        @foreach($quizzes as $quiz)
+        @foreach($category->quizzes as $quiz)
             <x-parts.card class="space-y-3">
                 <x-heroicon-o-academic-cap class="w-12 h-12 inline-flex mx-auto mb-2"/>
                 <div class="flex flex-col">
                     <p class="text-xl font-semibold">{{ $quiz->title }}</p>
                     <p class="text-sm opacity-75">{{ $quiz->description }}</p>
                 </div>
-                <a class="px-4 hidden md:inline-block py-2 text-sm bg-primary-500  hover:bg-primary-600 hover:text-white rounded-md"
-                   href="{{ route('quiz.show', $quiz) }}">Take
-                    Quiz</a>
+                <x-button.anchor wire:navigate href="{{ route('quiz.show', $quiz) }}">Take Quiz</x-button.anchor>
             </x-parts.card>
         @endforeach
     </div>

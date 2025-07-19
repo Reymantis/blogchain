@@ -23,7 +23,7 @@
                     <div class="aspect-video flex-1">
                         <a wire:navigate.hover href="{{ route('posts.show', [$post->category, $post]) }}">
                             <img
-                                src="{{ $post->getFirstMediaUrl('posts', 'screen') }}"
+                                src="{{ $post->getFirstMediaUrl('posts', 'card') }}"
                                 alt="Image for {{ $post->title }} blog post"
                                 class="w-full rounded-lg aspect-video object-cover transition-transform duration-300 "
                             />

@@ -9,7 +9,7 @@
             @if($post->youtube_url)
                 <x-video.youtube :youtube_url="$post->youtube_url"/>
             @elseif($post->hasMedia('posts'))
-                <img src="{{ $post->getFirstMediaUrl('posts', 'screen') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">
+                <img src="{{ $post->getFirstMediaUrl('posts', 'main') }}" alt="image for {{ $post->title }}" class="w-full h-auto rounded-lg mb-4">
             @endif
 
             <h1 class="text-2xl font-bold">{{ $post->title }}</h1>

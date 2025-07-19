@@ -52,8 +52,14 @@ class Menu
                 'children' => null,
             ],
             [
+                'name' => 'Learning',
+                'route' => 'quiz-category.index',
+                'active' => 'quiz-category.index',
+                'children' => null,
+            ],
+            [
                 'name' => 'Games',
-                'route' => "home",
+                'route' => 'home',
                 'active' => 'games*',
                 'children' => [
                     [
@@ -63,7 +69,7 @@ class Menu
                         'children' => null,
                         'slug' => '',
                     ],
-                ]
+                ],
             ],
         ];
 
@@ -73,7 +79,7 @@ class Menu
     protected static function colletor($items): Collection
     {
         return collect($items)->map(function ($item) {
-            return (object) $item;
+            return (object)$item;
         });
     }
 

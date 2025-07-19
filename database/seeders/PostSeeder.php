@@ -13,8 +13,8 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        Post::factory()->times(500)
-            ->state(new Sequence(fn ($sequence) => ['created_at' => now()->subHour($sequence->index)]))
+        Post::factory()->times(50)
+            ->state(new Sequence(fn($sequence) => ['created_at' => now()->subHour($sequence->index)]))
             ->create();
     }
 }

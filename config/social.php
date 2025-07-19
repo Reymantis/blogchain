@@ -1,14 +1,14 @@
 <?php
 
 return [
-    'facebook' => [
-        'name' => 'Facebook',
-        'url' => env('FACEBOOK_URL', 'https://www.facebook.com'),
-    ],
-    'twitter' => [
-        'name' => 'Twitter',
-        'url' => env('TWITTER_URL', 'https://www.twitter.com'),
-    ],
+//    'facebook' => [
+//        'name' => 'Facebook',
+//        'url' => env('FACEBOOK_URL', 'https://www.facebook.com'),
+//    ],
+//    'twitter' => [
+//        'name' => 'Twitter',
+//        'url' => env('TWITTER_URL', 'https://www.twitter.com'),
+//    ],
     'instagram' => [
         'name' => 'Instagram',
         'url' => env('INSTAGRAM_URL', 'https://www.instagram.com'),

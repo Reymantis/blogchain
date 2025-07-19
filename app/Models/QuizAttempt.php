@@ -17,13 +17,13 @@ class QuizAttempt extends Model
         'quiz_id',
         'score',
         'submitted_at',
-        'answers'
+        'answers',
     ];
 
     public function casts(): array
     {
         return [
-            'answers' => 'array'
+            'answers' => 'array',
         ];
     }
 
@@ -36,6 +36,4 @@ class QuizAttempt extends Model
     {
         return $this->belongsTo(Quiz::class);
     }
-
-
 }

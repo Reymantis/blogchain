@@ -3,11 +3,13 @@
 namespace App\Livewire\Quiz;
 
 use App\Models\Quiz;
+use App\Models\QuizAttempt;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Livewire\Component;
 
-class QuizComponent extends Component
+class QuizAuthComponent extends Component
 {
     public Quiz $quiz;
 
@@ -51,14 +53,6 @@ class QuizComponent extends Component
         $this->currentQuestionIndex = count($this->questions);
     }
 
-    public function restartQuiz(): void
-    {
-        $this->score = 0;
-        $this->showResults = false;
-        $this->currentQuestionIndex = 0;
-        $this->userAnswers = [];
-    }
-
     public function submitQuiz(): void
     {
         $this->score = 0;
@@ -68,11 +62,18 @@ class QuizComponent extends Component
             }
         }
 
+        QuizAttempt::create([
+            'user_id' => Auth::id(),
+            'quiz_id' => $this->quiz->id,
+            'score' => $this->score,
+            'answers' => $this->userAnswers,
+        ]);
+
         $this->showResults = true;
     }
 
     public function render(): View
     {
-        return view('livewire.quiz.quiz-component');
+        return view('livewire.quiz.quiz-auth-component');
     }
 }

@@ -12,7 +12,7 @@ class QuizResultsController extends Controller
      */
     public function __invoke(QuizAttempt $attempt)
     {
-      
+
         return view('pages.quiz.results', compact('attempt'));
     }
 }

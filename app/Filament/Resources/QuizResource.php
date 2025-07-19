@@ -3,8 +3,8 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\QuizResource\Pages;
-use App\Filament\Resources\QuizResource\RelationManagers;
 use App\Models\Quiz;
+use App\Models\QuizCategory;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -16,6 +16,7 @@ class QuizResource extends Resource
     protected static ?string $model = Quiz::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationGroup = 'Quiz Section';
 
     public static function form(Form $form): Form
     {
@@ -26,6 +27,10 @@ class QuizResource extends Resource
                     ->required(),
 
                 Forms\Components\Textarea::make('description')
+                    ->required(),
+
+                Forms\Components\Select::make('quiz_categories_id')
+                    ->options(QuizCategory::all()->pluck('name', 'id'))
                     ->required(),
 
                 Forms\Components\Textarea::make('content')
@@ -39,14 +44,14 @@ class QuizResource extends Resource
 
                         Forms\Components\Repeater::make('options')
                             ->relationship('options')
-                            ->defaultItems(4)
+                            ->defaultItems(2)
                             ->schema([
                                 Forms\Components\TextInput::make('option')
                                     ->required(),
-                                Forms\Components\Toggle::make('is_correct')
-                            ])
+                                Forms\Components\Toggle::make('is_correct'),
+                            ]),
 
-                    ])
+                    ]),
             ]);
     }
 

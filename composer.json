@@ -12,6 +12,7 @@
         "php": "^8.2",
         "althinect/filament-spatie-roles-permissions": "^2.3",
         "andreiio/blade-remix-icon": "^3.6",
+        "calebporzio/sushi": "^2.5",
         "codeat3/blade-codicons": "^1.34",
         "codeat3/blade-weather-icons": "^1.7",
         "coderflexx/laravisit": "^2.1",

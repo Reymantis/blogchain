@@ -4,7 +4,6 @@
             <x-parts.card>
                 <h1 class="text-2xl font-bold mb-4">Quiz Results</h1>
                 <p class="mb-4">You scored {{ $attempt->score }} out of {{ $attempt->quiz->questions->count() }}</p>
-                {{ dump($attempt->quiz->questions) }}
                 <h2 class="text-xl font-bold mb-2">Your Answers</h2>
                 {{--                @foreach($attempt->quiz->questions as $question)--}}
                 {{--                    <div class="mb-4">--}}
