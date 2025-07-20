@@ -44,7 +44,7 @@ class QuizResource extends Resource
 
                         Forms\Components\Repeater::make('options')
                             ->relationship('options')
-                            ->defaultItems(2)
+                            ->defaultItems(4)
                             ->schema([
                                 Forms\Components\TextInput::make('option')
                                     ->required(),
