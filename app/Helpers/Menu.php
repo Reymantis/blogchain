@@ -40,13 +40,13 @@ class Menu
                 'children' => null,
             ],
             [
-                'name' => 'About Us',
+                'name' => 'About',
                 'route' => 'about-us',
                 'active' => 'about-us',
                 'children' => null,
             ],
             [
-                'name' => 'Contact Us',
+                'name' => 'Contact',
                 'route' => 'contact-us',
                 'active' => 'contact-us',
                 'children' => null,
@@ -91,21 +91,21 @@ class Menu
                 'slug' => 'privacy-policy',
                 'route' => 'privacy-policy',
             ],
-            [
-                'name' => 'Terms of Service',
-                'slug' => 'terms-of-service',
-                'route' => 'home',
-            ],
-            [
-                'name' => 'Cookie Policy',
-                'slug' => 'cookie-policy',
-                'route' => 'home',
-            ],
-            [
-                'name' => 'User Data',
-                'slug' => 'user-data',
-                'route' => 'home',
-            ],
+//            [
+//                'name' => 'Terms of Service',
+//                'slug' => 'terms-of-service',
+//                'route' => 'home',
+//            ],
+//            [
+//                'name' => 'Cookie Policy',
+//                'slug' => 'cookie-policy',
+//                'route' => 'home',
+//            ],
+//            [
+//                'name' => 'User Data',
+//                'slug' => 'user-data',
+//                'route' => 'home',
+//            ],
 
         ];
 

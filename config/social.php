@@ -11,14 +11,14 @@ return [
 //    ],
     'instagram' => [
         'name' => 'Instagram',
-        'url' => env('INSTAGRAM_URL', 'https://www.instagram.com'),
+        'url' => env('INSTAGRAM_URL', 'https://www.instagram.com/blogchainnews'),
     ],
-    'linkedin' => [
-        'name' => 'LinkedIn',
-        'url' => env('LINKEDIN_URL', 'https://www.linkedin.com'),
-    ],
+//    'linkedin' => [
+//        'name' => 'LinkedIn',
+//        'url' => env('LINKEDIN_URL', 'https://www.linkedin.com'),
+//    ],
     'youtube' => [
         'name' => 'Youtube',
-        'url' => env('YOUTUBE_URL', 'https://www.youtube.com'),
+        'url' => env('YOUTUBE_URL', 'https://www.youtube.com/@BlogChainNews'),
     ],
 ];
